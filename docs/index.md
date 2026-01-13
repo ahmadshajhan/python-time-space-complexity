@@ -1,0 +1,62 @@
+# Python Time & Space Complexity Reference
+
+Welcome to the comprehensive guide for Python operation complexity. This resource documents the time and space complexity of Python's built-in operations, standard library functions, and their behavior across different Python versions and implementations.
+
+## Quick Start
+
+- **[Built-in Types](builtins/index.md)** - Complexity analysis for lists, dicts, sets, strings, and tuples
+- **[Standard Library](stdlib/index.md)** - Modules like collections, heapq, bisect, and more
+- **[Implementations](implementations/index.md)** - CPython, PyPy, Jython, and other implementation details
+- **[Versions](versions/index.md)** - Changes and optimizations by Python version
+
+## Why This Matters
+
+Understanding complexity helps you:
+- Write performant Python code
+- Choose the right data structure for your use case
+- Predict how your code scales with larger inputs
+- Optimize algorithms effectively
+
+## Example: List Operations
+
+The complexity of list operations varies:
+
+| Operation | Time Complexity | Space |
+|-----------|-----------------|-------|
+| `append()` | O(1) amortized | - |
+| `insert(0, x)` | O(n) | - |
+| `pop()` | O(1) | - |
+| `pop(0)` | O(n) | - |
+| `in` (search) | O(n) | - |
+| `sort()` | O(n log n) | O(n) |
+
+See [Built-in Types](builtins/list.md) for detailed analysis.
+
+## How to Use This Guide
+
+1. **Search** - Use the search bar to find specific operations
+2. **Browse** - Navigate by type or module
+3. **Filter** - Select Python version or implementation
+4. **Check Notes** - Read implementation-specific considerations
+
+## Coverage
+
+- **Python Versions**: 3.8, 3.9, 3.10, 3.11, 3.12+
+- **Implementations**: CPython, PyPy, Jython, IronPython
+- **Operations**: Over 100+ built-in and stdlib operations
+- **Updates**: Regularly updated with new Python releases
+
+## Contributing
+
+Found an inaccuracy or want to add content? See our [Contributing Guidelines](../CONTRIBUTING.md).
+
+## Sources
+
+- [Python Official Documentation](https://docs.python.org/3/)
+- [TimeComplexity Wiki](https://wiki.python.org/moin/TimeComplexity)
+- CPython source code and implementation details
+- Performance testing and benchmarking
+
+---
+
+**Disclaimer**: While we strive for accuracy, complexity characteristics may vary based on specific contexts, input sizes, and implementation details. Always verify with benchmarks for performance-critical code.
