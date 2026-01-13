@@ -99,8 +99,5 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/heikkitoivonen/python-time-space-complexity
-  analytics:
-    provider: google
-    property: G_YOUR_GOOGLE_ANALYTICS_ID
 
 copyright: Copyright &copy; 2026

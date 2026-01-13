@@ -207,9 +207,8 @@ mkdocs serve
 ### To Customize
 1. Update site_url in mkdocs.yml
 2. Change theme colors and fonts
-3. Add Google Analytics
-4. Add search functionality
-5. Create custom CSS
+3. Add search functionality
+4. Create custom CSS
 
 ## Key Features
 
