@@ -11,7 +11,7 @@ MAIN FILES (Quick Reference)
 ✓ QUICK_REFERENCE.md    - Cheat sheet of common operations
 ✓ PROJECT_STRUCTURE.md  - Detailed breakdown of all files
 ✓ CONTRIBUTING.md       - How to contribute
-✓ LICENSE               - MIT License
+✓ LICENSE.txt               - MIT License
 
 DOCUMENTATION (/docs) - 30+ Pages, 3,800+ Lines
 ===============================================

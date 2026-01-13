@@ -42,7 +42,7 @@ def test_project_files_exist():
     assert (project_root / "Makefile").exists()
     assert (project_root / "README.md").exists()
     assert (project_root / "CONTRIBUTING.md").exists()
-    assert (project_root / "LICENSE").exists()
+    assert (project_root / "LICENSE.txt").exists()
 
 
 def test_mkdocs_yml_exists():

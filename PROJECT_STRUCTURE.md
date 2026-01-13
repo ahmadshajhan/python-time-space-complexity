@@ -17,7 +17,7 @@ A complete, production-ready GitHub repository for documenting Python complexity
 ### Root Level
 ```
 README.md               - Project overview and quick links
-LICENSE                - MIT License
+LICENSE.txt                - MIT License
 CONTRIBUTING.md        - Contribution guidelines
 SETUP.md              - Quick start for developers
 PROJECT_STRUCTURE.md  - This file

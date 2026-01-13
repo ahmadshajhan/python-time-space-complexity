@@ -115,7 +115,7 @@ python-time-space-complexity/
 ├── Makefile                 # Common development commands
 ├── UV_SETUP.md              # Detailed uv setup guide
 ├── README.md                # Project overview
-├── LICENSE                  # MIT License
+├── LICENSE.txt                  # MIT License
 └── CONTRIBUTING.md          # Contribution guidelines
 ```
 
