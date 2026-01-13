@@ -1,6 +1,7 @@
 """Tests for documentation content and structure."""
 
 import json
+import subprocess
 from pathlib import Path
 
 
@@ -123,7 +124,7 @@ def test_minimum_builtin_coverage():
         report = json.load(f)
 
     # Coverage should not decrease below current level
-    min_coverage = 5.0  # Current: 5.3%
+    min_coverage = 8.0  # Current: 8.1%
     current = report["builtins"]["coverage_percent"]
     assert current >= min_coverage, (
         f"Builtin coverage dropped: {current}% < {min_coverage}%"
@@ -137,8 +138,45 @@ def test_minimum_stdlib_coverage():
         report = json.load(f)
 
     # Coverage should not decrease below current level
-    min_coverage = 2.5  # Current: 3.6%
+    min_coverage = 3.8  # Current: 3.9%
     current = report["stdlib"]["coverage_percent"]
     assert current >= min_coverage, (
         f"Stdlib coverage dropped: {current}% < {min_coverage}%"
     )
+
+
+def test_mkdocs_build_valid():
+    """Test that mkdocs configuration and markdown files are valid."""
+    project_root = Path(__file__).parent.parent
+
+    # Run mkdocs build in quiet mode to validate config and files
+    result = subprocess.run(
+        ["uv", "run", "mkdocs", "build", "--quiet"],
+        cwd=project_root,
+        capture_output=True,
+        text=True,
+    )
+
+    assert result.returncode == 0, (
+        f"mkdocs build failed:\nstdout: {result.stdout}\nstderr: {result.stderr}"
+    )
+
+
+def test_mkdocs_yaml_valid():
+    """Test that mkdocs.yml has valid structure."""
+    mkdocs_file = Path(__file__).parent.parent / "mkdocs.yml"
+    content = mkdocs_file.read_text()
+
+    # Check for required top-level keys
+    assert "site_name:" in content, "mkdocs.yml missing 'site_name:'"
+    assert "nav:" in content, "mkdocs.yml missing 'nav:'"
+    assert "theme:" in content, "mkdocs.yml missing 'theme:'"
+
+    # Check for tabs (YAML doesn't allow tabs for indentation)
+    lines = content.split("\n")
+    for i, line in enumerate(lines, 1):
+        if line and not line.startswith("#"):
+            if "\t" in line:
+                raise AssertionError(
+                    f"mkdocs.yml line {i} contains tabs instead of spaces"
+                )
