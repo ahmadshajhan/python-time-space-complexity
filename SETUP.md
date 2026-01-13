@@ -3,28 +3,78 @@
 ## Initial Setup
 
 ### Prerequisites
-- Python 3.8+
-- pip
+- Python 3.8+ (3.11+ recommended)
+- [uv](https://github.com/astral-sh/uv) (fast Python package manager)
 - Git
 
 ### Installation
 
 ```bash
-# Clone the repository
+# 1. Install uv (one-time setup)
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# 2. Clone the repository
 git clone https://github.com/yourusername/python-time-space-complexity.git
 cd python-time-space-complexity
 
-# Install dependencies
-pip install -r requirements.txt
+# 3. Install dependencies with uv
+uv sync
 ```
 
+For detailed uv setup instructions, see [UV_SETUP.md](UV_SETUP.md).
+
 ## Development
+
+### Quick Start Commands
+
+The project includes a `Makefile` for common tasks:
+
+```bash
+# Install dependencies
+make dev
+
+# Serve documentation locally
+make serve
+
+# Build static site
+make build
+
+# Check code quality
+make lint
+
+# Format code
+make format
+
+# Run tests
+make test
+
+# See all available commands
+make help
+```
+
+### Using uv Directly
+
+```bash
+# Install dependencies
+uv sync
+
+# Run a command
+uv run mkdocs serve
+
+# Add a dependency
+uv add package-name
+
+# Update dependencies
+uv lock --upgrade
+```
 
 ### Serve Documentation Locally
 
 ```bash
 # Start local server
-mkdocs serve
+make serve
+# or
+uv run mkdocs serve
 
 # Open browser to http://localhost:8000
 ```
@@ -33,7 +83,9 @@ mkdocs serve
 
 ```bash
 # Generate static files
-mkdocs build
+make build
+# or
+uv run mkdocs build
 
 # Output in site/ directory
 # Ready to deploy to GitHub Pages
@@ -55,10 +107,13 @@ python-time-space-complexity/
 ├── scripts/                   # Utility scripts
 │   ├── generate_docs.py      # Generate docs from data
 │   └── validate_data.py      # Validate complexity claims
+├── tests/                     # Test files
 ├── .github/workflows/         # GitHub Actions CI/CD
 │   └── deploy.yml           # Deploy to GitHub Pages
+├── pyproject.toml           # Project metadata and dependencies
 ├── mkdocs.yml               # MkDocs configuration
-├── requirements.txt         # Python dependencies
+├── Makefile                 # Common development commands
+├── UV_SETUP.md              # Detailed uv setup guide
 ├── README.md                # Project overview
 ├── LICENSE                  # MIT License
 └── CONTRIBUTING.md          # Contribution guidelines
@@ -124,15 +179,41 @@ git push -u origin main
 
 1. Create or edit `.md` file in `docs/`
 2. Add link to `mkdocs.yml` navigation
-3. Test locally: `mkdocs serve`
-4. Commit and push: `git push`
-5. GitHub Actions automatically deploys to GitHub Pages
+3. Test locally: `make serve`
+4. Check quality: `make lint`
+5. Commit and push: `git push`
+6. GitHub Actions automatically deploys to GitHub Pages
 
-### Adding Data
+### Adding Tests
 
-1. Add structured data to `data/*.json`
-2. Update scripts to generate docs if needed
-3. Verify with `scripts/validate_data.py`
+1. Create test file in `tests/`
+2. Run tests: `make test`
+3. Commit and push
+
+### Code Quality
+
+```bash
+# Check for issues
+make lint
+
+# Fix formatting
+make format
+
+# Run all checks
+make check
+```
+
+### Adding Dependencies
+
+```bash
+# Add a production dependency
+uv add package-name
+
+# Add a dev dependency
+uv add --dev pytest-plugin-name
+
+# This automatically updates pyproject.toml and uv.lock
+```
 
 ### Making Changes
 
@@ -142,7 +223,16 @@ git checkout -b feature/add-numpy-docs
 
 # Make changes
 # Test locally
-mkdocs serve
+make serve
+
+# Check quality
+make lint
+
+# Format code
+make format
+
+# Run tests
+make test
 
 # Commit changes
 git add .
@@ -162,12 +252,13 @@ git push origin feature/add-numpy-docs
 - Add new version documentation
 - Update obsolete information
 - Fix broken links
+- Update dependencies: `uv lock --upgrade`
 
 ### Performance Monitoring
 
 - Track page load times
 - Monitor site uptime
-- Keep dependencies updated
+- Keep dependencies updated: `make update`
 
 ### Community
 
@@ -182,21 +273,25 @@ git push origin feature/add-numpy-docs
 
 ```bash
 # Clean and rebuild
-rm -rf site/
-mkdocs build
+make clean
+make build
 
 # Check for errors
-mkdocs serve --verbose
+uv run mkdocs serve --verbose
 ```
 
 ### Dependency Issues
 
 ```bash
 # Reinstall dependencies
-pip install --upgrade -r requirements.txt
+uv sync
 
-# Check versions
-pip list
+# Force recreate virtual environment
+rm -rf .venv/
+uv sync
+
+# Update dependencies
+make update
 ```
 
 ### GitHub Pages Not Updating
@@ -208,6 +303,8 @@ pip list
 
 ## Resources
 
+- [uv Documentation](https://docs.astral.sh/uv/)
+- [UV_SETUP.md](UV_SETUP.md) - Detailed uv setup guide
 - [MkDocs Documentation](https://www.mkdocs.org/)
 - [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/)
 - [Python Documentation](https://docs.python.org/)

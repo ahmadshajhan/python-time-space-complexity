@@ -37,35 +37,131 @@ Visit the documentation at: [pythoncomplexity.com](https://pythoncomplexity.com)
 ├── scripts/                   # Data generation and processing
 │   ├── generate_docs.py      # Generate documentation
 │   └── validate_data.py      # Validate complexity data
-├── mkdocs.yml               # MkDocs configuration
+├── tests/                     # Test suite
+├── pyproject.toml            # Project metadata and dependencies
+├── mkdocs.yml                # MkDocs configuration
+├── Makefile                  # Development commands
 ├── .github/
 │   └── workflows/
-│       └── deploy.yml       # GitHub Pages deployment
-└── requirements.txt         # Python dependencies
+│       └── deploy.yml        # GitHub Pages deployment
+└── UV_SETUP.md              # Detailed uv setup guide
 ```
 
 ## Getting Started
 
-### Local Development
+### Requirements
+
+- Python 3.8+ (3.11+ recommended)
+- [uv](https://github.com/astral-sh/uv) - Fast Python package manager
+
+### Quick Start
 
 ```bash
+# Install uv (one-time)
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Clone and set up
+git clone https://github.com/yourusername/python-time-space-complexity.git
+cd python-time-space-complexity
+
 # Install dependencies
-pip install -r requirements.txt
+uv sync
 
-# Serve documentation locally
-mkdocs serve
+# Start development server
+make serve
+# or
+uv run mkdocs serve
 
-# Open browser to http://localhost:8000
+# Open http://localhost:8000
 ```
 
-### Building
+### Common Commands
+
+```bash
+# Install with dev tools
+make dev
+
+# Serve documentation locally
+make serve
+
+# Build static site
+make build
+
+# Run linter
+make lint
+
+# Format code
+make format
+
+# Run tests
+make test
+
+# See all commands
+make help
+```
+
+### Build
 
 ```bash
 # Build static site
-mkdocs build
+make build
 
 # Output goes to site/ directory
 ```
+
+## Development
+
+### Setup
+
+```bash
+# Install dependencies with uv
+uv sync
+
+# Activate virtual environment (optional)
+source .venv/bin/activate  # macOS/Linux
+# or
+.venv\Scripts\activate  # Windows
+```
+
+### Testing
+
+```bash
+# Run all tests
+make test
+# or
+uv run pytest
+
+# Run specific test
+uv run pytest tests/test_example.py
+```
+
+### Code Quality
+
+```bash
+# Check for issues
+make lint
+
+# Fix formatting
+make format
+
+# Run all checks
+make check
+```
+
+### Adding Dependencies
+
+```bash
+# Add a production dependency
+uv add package-name
+
+# Add a dev dependency
+uv add --dev pytest-plugin
+
+# Update all dependencies
+uv lock --upgrade
+```
+
+See [UV_SETUP.md](UV_SETUP.md) for detailed uv setup and workflows.
 
 ## Contributing
 
