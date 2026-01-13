@@ -2,8 +2,8 @@
   "timestamp": null,
   "builtins": {
     "total": 149,
-    "documented": 8,
-    "coverage_percent": 5.4,
+    "documented": 12,
+    "coverage_percent": 8.1,
     "missing": [
       "ArithmeticError",
       "AssertionError",
@@ -86,7 +86,6 @@
       "any",
       "ascii",
       "bin",
-      "bool",
       "breakpoint",
       "bytearray",
       "callable",
@@ -104,7 +103,6 @@
       "exec",
       "exit",
       "filter",
-      "float",
       "format",
       "getattr",
       "globals",
@@ -114,11 +112,9 @@
       "hex",
       "id",
       "input",
-      "int",
       "isinstance",
       "issubclass",
       "iter",
-      "len",
       "license",
       "locals",
       "map",
@@ -309,8 +305,8 @@
   },
   "stdlib": {
     "total": 228,
-    "documented": 6,
-    "coverage_percent": 2.6,
+    "documented": 9,
+    "coverage_percent": 3.9,
     "missing": [
       "abc",
       "aifc",
@@ -353,7 +349,6 @@
       "ctypes",
       "curses",
       "dataclasses",
-      "datetime",
       "dateutil",
       "dbm",
       "decimal",
@@ -423,7 +418,6 @@
       "opcode",
       "operator",
       "optparse",
-      "os",
       "packaging",
       "paginate",
       "pathlib",
@@ -455,7 +449,6 @@
       "queue",
       "quopri",
       "random",
-      "re",
       "reprlib",
       "requests",
       "rlcompleter",
@@ -539,7 +532,7 @@
   },
   "summary": {
     "total_items": 377,
-    "total_documented": 14,
-    "overall_coverage_percent": 3.7
+    "total_documented": 21,
+    "overall_coverage_percent": 5.6
   }
 }
