@@ -54,6 +54,7 @@ nav:
     - Bisect: stdlib/bisect.md
     - JSON: stdlib/json.md
     - OS: stdlib/os.md
+    - Pathlib: stdlib/pathlib.md
     - Regular Expressions: stdlib/re.md
     - Datetime: stdlib/datetime.md
   - Implementations:
