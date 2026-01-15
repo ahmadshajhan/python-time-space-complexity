@@ -41,7 +41,7 @@ Visit the documentation at: [pythoncomplexity.com](https://pythoncomplexity.com)
 ├── .github/
 │   └── workflows/
 │       └── deploy.yml        # GitHub Pages deployment
-└── UV_SETUP.md              # Detailed uv setup guide
+
 ```
 
 ## Getting Started
@@ -158,7 +158,7 @@ uv add --dev pytest-plugin
 uv lock --upgrade
 ```
 
-See [UV_SETUP.md](UV_SETUP.md) for detailed uv setup and workflows.
+
 
 ## Contributing
 

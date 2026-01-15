@@ -239,8 +239,7 @@ git commit -m "updated docs"  # ❌ NO! Check first!
 If you need guidance:
 1. Check CONTRIBUTING.md for contribution guidelines
 2. Check DEV_GUIDE.md for development workflow
-3. Check TESTING_REPORT.md for testing details
-4. Check README.md for project overview
+3. Check README.md for project overview
 
 ---
 

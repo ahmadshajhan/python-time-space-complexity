@@ -21,7 +21,7 @@ cd python-time-space-complexity
 uv sync
 ```
 
-For detailed uv setup instructions, see [UV_SETUP.md](UV_SETUP.md).
+
 
 ## Development
 
@@ -113,7 +113,7 @@ python-time-space-complexity/
 ├── pyproject.toml           # Project metadata and dependencies
 ├── mkdocs.yml               # MkDocs configuration
 ├── Makefile                 # Common development commands
-├── UV_SETUP.md              # Detailed uv setup guide
+
 ├── README.md                # Project overview
 ├── LICENSE.txt                  # MIT License
 └── CONTRIBUTING.md          # Contribution guidelines
@@ -304,7 +304,7 @@ make update
 ## Resources
 
 - [uv Documentation](https://docs.astral.sh/uv/)
-- [UV_SETUP.md](UV_SETUP.md) - Detailed uv setup guide
+
 - [MkDocs Documentation](https://www.mkdocs.org/)
 - [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/)
 - [Python Documentation](https://docs.python.org/)
