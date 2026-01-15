@@ -47,6 +47,9 @@ make lint
 # Format code
 make format
 
+# Run type checker
+make types
+
 # Run tests
 make test
 
@@ -115,14 +118,21 @@ make test
 make format
 ```
 
-### 5. Commit Changes
+### 5. Type Check
+
+```bash
+# Check for type errors
+make types
+```
+
+### 6. Commit Changes
 
 ```bash
 git add .
 git commit -m "Add: NumPy array complexity documentation"
 ```
 
-### 6. Push and Create PR
+### 7. Push and Create PR
 
 ```bash
 git push origin feature/add-numpy-complexity
@@ -163,6 +173,27 @@ uv run ruff format .
 # - Auto-fixes (ruff check --fix)
 # - Import sorting (isort)
 ```
+
+### Type Checking
+
+Project uses [pyright](https://github.com/microsoft/pyright) for static type checking.
+
+```bash
+# Check type errors
+make types
+# or
+uv run pyright
+
+# Output shows:
+# - Number of type errors, warnings, and informations
+# - File-by-file breakdown
+# - Detailed error messages with line numbers
+```
+
+Configuration in `pyproject.toml`:
+- Strict type checking enabled
+- Python 3.8+ compatibility
+- Detects unused imports, undefined variables, type mismatches
 
 ### Testing
 
@@ -323,7 +354,16 @@ make check
 
 # This includes:
 # - Linting (ruff check)
+# - Type checking (pyright)
 # - Tests (pytest)
+```
+
+Or run individually:
+
+```bash
+make lint   # Code quality checks
+make types  # Type error checks
+make test   # Run tests
 ```
 
 ## Documentation
