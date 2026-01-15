@@ -8,17 +8,19 @@ This file contains instructions for AI agents (like Amp, Claude, etc.) working o
 
 **Before creating ANY git commit, you MUST:**
 
-1. Run `make check` (lint + tests)
+1. Run `make check` (lint + types + tests)
    ```bash
    make check
    ```
    - All ruff linting must pass
-   - All pytest tests must pass (6/6)
+   - All pyright type checks must pass (0 errors)
+   - All pytest tests must pass (10/10)
 
 2. Verify output shows:
    ```
    All checks passed!
-   ====== 6 passed ======
+   0 errors, 0 warnings, 0 informations
+   ====== 10 passed ======
    ```
 
 3. Do NOT commit if checks fail
@@ -49,7 +51,8 @@ git commit -m "Your message"
 ### Quality Assurance
 - `make lint` - Check code quality (must pass before commit)
 - `make format` - Format code automatically
-- `make check` - Run lint + tests (must pass before commit)
+- `make types` - Run pyright type checker (must pass before commit)
+- `make check` - Run lint + types + tests (must pass before commit)
 - `make test` - Run pytest (must pass before commit)
 
 ### Maintenance
@@ -99,9 +102,10 @@ git commit -m "Your message"
 ## Testing Requirements
 
 ### Before Every Commit
-1. Run `make test` - all tests must pass
-2. Run `make lint` - all linting must pass
-3. Never commit broken code
+1. Run `make lint` - all linting must pass
+2. Run `make types` - all type checks must pass
+3. Run `make test` - all tests must pass
+4. Never commit broken code
 
 ### Test Files Location
 - `tests/test_documentation.py` - Main test file
@@ -109,8 +113,10 @@ git commit -m "Your message"
 
 ### Running Tests
 ```bash
+make lint           # Run linting
+make types          # Run type checks
 make test           # Run all tests
-make check          # Run lint + tests (recommended before commit)
+make check          # Run lint + types + tests (recommended before commit)
 ```
 
 ## Dependency Management
@@ -158,6 +164,7 @@ uv add --dev package-name
 ### ❌ DO NOT
 - Commit without running `make check`
 - Commit if `make lint` fails
+- Commit if `make types` fails
 - Commit if `make test` fails
 - Ignore test failures
 - Manually edit lock files (use uv commands)
@@ -196,7 +203,8 @@ uv add --dev package-name
 Before every commit, verify:
 
 - [ ] `make lint` passes (0 errors)
-- [ ] `make test` passes (6/6)
+- [ ] `make types` passes (0 errors)
+- [ ] `make test` passes (10/10)
 - [ ] No uncommitted changes
 - [ ] Commit message is clear
 - [ ] Changes are focused/minimal
@@ -216,7 +224,8 @@ make serve  # View in browser
 
 # Quality checks
 make lint   # All checks passed!
-make test   # 6 passed
+make types  # 0 errors, 0 warnings, 0 informations
+make test   # 10 passed
 
 # Commit
 git add .
