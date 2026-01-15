@@ -5,11 +5,12 @@ import inspect
 import json
 import pkgutil
 from pathlib import Path
+from typing import Any
 
 
-def get_all_builtins():
+def get_all_builtins() -> dict[str, list[str]]:
     """Get all built-in functions, types, and exceptions."""
-    builtin_items = {}
+    builtin_items: dict[str, list[str]] = {}
 
     for name in dir(builtins):
         obj = getattr(builtins, name)
@@ -38,9 +39,9 @@ def get_all_builtins():
     return builtin_items
 
 
-def get_all_stdlib_modules():
+def get_all_stdlib_modules() -> list[str]:
     """Get list of all standard library modules."""
-    stdlib_modules = []
+    stdlib_modules: list[str] = []
 
     for _importer, modname, _ispkg in pkgutil.iter_modules():
         # Filter to main stdlib modules (no underscores at start)
@@ -50,9 +51,9 @@ def get_all_stdlib_modules():
     return sorted(stdlib_modules)
 
 
-def get_documented_files(docs_dir):
+def get_documented_files(docs_dir: Path) -> dict[str, list[str]]:
     """Get list of documented files from docs directory."""
-    documented = {"builtins": [], "stdlib": []}
+    documented: dict[str, list[str]] = {"builtins": [], "stdlib": []}
 
     # Check builtins
     builtins_dir = docs_dir / "builtins"
@@ -73,7 +74,7 @@ def get_documented_files(docs_dir):
     return documented
 
 
-def generate_audit_report(workspace_root):
+def generate_audit_report(workspace_root: Path) -> dict[str, Any]:
     """Generate a comprehensive audit report."""
     docs_dir = workspace_root / "docs"
 
@@ -83,7 +84,7 @@ def generate_audit_report(workspace_root):
     documented = get_documented_files(docs_dir)
 
     # Flatten builtins for comparison
-    all_builtins = []
+    all_builtins: list[str] = []
     for _category, items in builtins_by_category.items():
         all_builtins.extend(items)
 
@@ -92,7 +93,7 @@ def generate_audit_report(workspace_root):
     missing_stdlib = [s for s in stdlib_modules if s not in documented["stdlib"]]
 
     # Create report
-    report = {
+    report: dict[str, Any] = {
         "timestamp": None,
         "builtins": {
             "total": len(all_builtins),
@@ -127,7 +128,7 @@ def generate_audit_report(workspace_root):
     return report
 
 
-def save_audit_report(report, workspace_root):
+def save_audit_report(report: dict[str, Any], workspace_root: Path) -> Path:
     """Save audit report to JSON file."""
     data_dir = workspace_root / "data"
     data_dir.mkdir(exist_ok=True)
@@ -139,7 +140,7 @@ def save_audit_report(report, workspace_root):
     return report_file
 
 
-def print_report(report):
+def print_report(report: dict[str, Any]) -> None:
     """Print a formatted report to console."""
     print("\n" + "=" * 70)
     print("DOCUMENTATION COVERAGE AUDIT")

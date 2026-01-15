@@ -7,21 +7,21 @@ from structured data rather than manually writing markdown.
 """
 
 
-def generate_builtin_docs():
+def generate_builtin_docs() -> None:
     """Generate docs for built-in types."""
     # TODO: Load from data/builtins.json
     # TODO: Generate markdown tables
     pass
 
 
-def generate_stdlib_docs():
+def generate_stdlib_docs() -> None:
     """Generate docs for standard library."""
     # TODO: Load from data/stdlib.json
     # TODO: Generate markdown tables
     pass
 
 
-def main():
+def main() -> None:
     """Run documentation generation."""
     print("Documentation generation placeholder")
     print("This script can be extended to automatically generate docs from data files")

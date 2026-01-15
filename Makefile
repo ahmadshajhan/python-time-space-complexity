@@ -1,4 +1,4 @@
-.PHONY: help install dev serve build lint format check clean test audit
+.PHONY: help install dev serve build lint format types check clean test audit
 
 help:
 	@echo "Python Time & Space Complexity - Development Commands"
@@ -14,6 +14,7 @@ help:
 	@echo "Quality:"
 	@echo "  make lint        Run ruff linter"
 	@echo "  make format      Format code with ruff"
+	@echo "  make types       Run pyright type checker"
 	@echo "  make check       Run lint and type checks"
 	@echo "  make test        Run tests with pytest"
 	@echo "  make audit       Audit documentation coverage"
@@ -41,7 +42,10 @@ format:
 	uv run ruff format .
 	uv run ruff check --fix .
 
-check: lint test
+types:
+	uv run pyright
+
+check: lint types test
 
 test:
 	uv run pytest

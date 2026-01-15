@@ -9,20 +9,20 @@ This script can verify:
 """
 
 
-def validate_complexity_format(data):
+def validate_complexity_format(data: dict) -> None:
     """Validate that complexity data has correct format."""
     # TODO: Implement validation logic
     pass
 
 
-def validate_against_python():
+def validate_against_python() -> None:
     """Validate claims against actual Python behavior."""
     # TODO: Run timing tests
     # TODO: Compare against documentation
     pass
 
 
-def main():
+def main() -> None:
     """Run data validation."""
     print("Data validation placeholder")
     print("This script can be extended to validate complexity claims")
