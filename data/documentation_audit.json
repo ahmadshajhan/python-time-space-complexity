@@ -277,8 +277,8 @@
   },
   "stdlib": {
     "total": 188,
-    "documented": 35,
-    "coverage_percent": 18.6,
+    "documented": 36,
+    "coverage_percent": 19.1,
     "missing": [
       "aifc",
       "antigravity",
@@ -302,7 +302,6 @@
       "compileall",
       "concurrent",
       "configparser",
-      "contextlib",
       "contextvars",
       "copyreg",
       "crypt",
@@ -444,7 +443,7 @@
   },
   "summary": {
     "total_items": 337,
-    "total_documented": 76,
-    "overall_coverage_percent": 22.6
+    "total_documented": 77,
+    "overall_coverage_percent": 22.8
   }
 }
