@@ -106,6 +106,7 @@ nav:
     - Gzip: stdlib/gzip.md
     - Hashlib: stdlib/hashlib.md
     - Heapq: stdlib/heapq.md
+    - Hmac: stdlib/hmac.md
     - IO: stdlib/io.md
     - Itertools: stdlib/itertools.md
     - JSON: stdlib/json.md
