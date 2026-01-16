@@ -277,8 +277,8 @@
   },
   "stdlib": {
     "total": 188,
-    "documented": 41,
-    "coverage_percent": 21.8,
+    "documented": 42,
+    "coverage_percent": 22.3,
     "missing": [
       "aifc",
       "antigravity",
@@ -380,7 +380,6 @@
       "secrets",
       "selectors",
       "setuptools",
-      "shelve",
       "shlex",
       "shutil",
       "signal",
@@ -438,7 +437,7 @@
   },
   "summary": {
     "total_items": 337,
-    "total_documented": 82,
-    "overall_coverage_percent": 24.3
+    "total_documented": 83,
+    "overall_coverage_percent": 24.6
   }
 }
