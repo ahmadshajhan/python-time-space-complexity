@@ -87,6 +87,7 @@ nav:
     - Collections: stdlib/collections.md
     - Codecs: stdlib/codecs.md
     - Concurrent.futures: stdlib/concurrent_futures.md
+    - Contextvars: stdlib/contextvars.md
     - Contextlib: stdlib/contextlib.md
     - Copy: stdlib/copy.md
     - Counter: stdlib/counter.md
