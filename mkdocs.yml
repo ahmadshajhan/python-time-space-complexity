@@ -70,6 +70,10 @@ nav:
     - Hash: builtins/hash.md
     - Format: builtins/format.md
     - Isinstance: builtins/isinstance.md
+    - Next: builtins/next.md
+    - Input: builtins/input.md
+    - Id: builtins/id.md
+    - Globals: builtins/globals.md
   - Standard Library:
     - Overview: stdlib/index.md
     - Collections: stdlib/collections.md
@@ -84,6 +88,9 @@ nav:
     - Decimal: stdlib/decimal.md
     - Urllib: stdlib/urllib.md
     - Csv: stdlib/csv.md
+    - Hashlib: stdlib/hashlib.md
+    - Base64: stdlib/base64.md
+    - Typing: stdlib/typing.md
     - Regular Expressions: stdlib/re.md
     - Datetime: stdlib/datetime.md
   - Implementations:
