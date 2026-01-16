@@ -121,6 +121,7 @@ nav:
     - Sqlite3: stdlib/sqlite3.md
     - Struct: stdlib/struct.md
     - Subprocess: stdlib/subprocess.md
+    - Tarfile: stdlib/tarfile.md
     - Threading: stdlib/threading.md
     - Typing: stdlib/typing.md
     - Unittest: stdlib/unittest.md
