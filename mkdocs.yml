@@ -98,9 +98,11 @@ nav:
     - Functools: stdlib/functools.md
     - Hashlib: stdlib/hashlib.md
     - Heapq: stdlib/heapq.md
+    - IO: stdlib/io.md
     - Itertools: stdlib/itertools.md
     - JSON: stdlib/json.md
     - Logging: stdlib/logging.md
+    - Pickle: stdlib/pickle.md
     - Namedtuple: stdlib/namedtuple.md
     - OrderedDict: stdlib/ordereddict.md
     - OS: stdlib/os.md

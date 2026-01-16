@@ -277,8 +277,8 @@
   },
   "stdlib": {
     "total": 188,
-    "documented": 40,
-    "coverage_percent": 21.3,
+    "documented": 41,
+    "coverage_percent": 21.8,
     "missing": [
       "aifc",
       "antigravity",
@@ -335,7 +335,6 @@
       "imp",
       "importlib",
       "inspect",
-      "io",
       "ipaddress",
       "keyword",
       "lib2to3",
@@ -439,7 +438,7 @@
   },
   "summary": {
     "total_items": 337,
-    "total_documented": 81,
-    "overall_coverage_percent": 24.0
+    "total_documented": 82,
+    "overall_coverage_percent": 24.3
   }
 }
