@@ -63,6 +63,7 @@ nav:
     - Chr: builtins/chr.md
     - Reversed: builtins/reversed.md
     - Divmod: builtins/divmod.md
+    - Slice: builtins/slice.md
   - Standard Library:
     - Overview: stdlib/index.md
     - Collections: stdlib/collections.md

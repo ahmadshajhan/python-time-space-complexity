@@ -2,8 +2,8 @@
   "timestamp": null,
   "builtins": {
     "total": 149,
-    "documented": 29,
-    "coverage_percent": 19.5,
+    "documented": 30,
+    "coverage_percent": 20.1,
     "missing": [
       "ArithmeticError",
       "AssertionError",
@@ -120,7 +120,6 @@
       "quit",
       "repr",
       "setattr",
-      "slice",
       "staticmethod",
       "super",
       "type",
@@ -474,7 +473,7 @@
   },
   "summary": {
     "total_items": 337,
-    "total_documented": 39,
-    "overall_coverage_percent": 11.6
+    "total_documented": 40,
+    "overall_coverage_percent": 11.9
   }
 }
