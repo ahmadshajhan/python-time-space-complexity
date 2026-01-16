@@ -102,6 +102,7 @@ nav:
     - Functools: stdlib/functools.md
     - Glob: stdlib/glob.md
     - Graphlib: stdlib/graphlib.md
+    - Gzip: stdlib/gzip.md
     - Hashlib: stdlib/hashlib.md
     - Heapq: stdlib/heapq.md
     - IO: stdlib/io.md
