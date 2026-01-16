@@ -2,8 +2,8 @@
   "timestamp": null,
   "builtins": {
     "total": 149,
-    "documented": 33,
-    "coverage_percent": 22.1,
+    "documented": 34,
+    "coverage_percent": 22.8,
     "missing": [
       "ArithmeticError",
       "AssertionError",
@@ -104,7 +104,6 @@
       "hex",
       "id",
       "input",
-      "issubclass",
       "license",
       "locals",
       "memoryview",
@@ -284,8 +283,8 @@
   },
   "stdlib": {
     "total": 188,
-    "documented": 11,
-    "coverage_percent": 5.9,
+    "documented": 12,
+    "coverage_percent": 6.4,
     "missing": [
       "abc",
       "aifc",
@@ -322,7 +321,6 @@
       "curses",
       "dataclasses",
       "dbm",
-      "decimal",
       "difflib",
       "dis",
       "distutils",
@@ -469,7 +467,7 @@
   },
   "summary": {
     "total_items": 337,
-    "total_documented": 44,
-    "overall_coverage_percent": 13.1
+    "total_documented": 46,
+    "overall_coverage_percent": 13.6
   }
 }
