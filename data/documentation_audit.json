@@ -277,8 +277,8 @@
   },
   "stdlib": {
     "total": 188,
-    "documented": 39,
-    "coverage_percent": 20.7,
+    "documented": 40,
+    "coverage_percent": 21.3,
     "missing": [
       "aifc",
       "antigravity",
@@ -356,7 +356,6 @@
       "operator",
       "optparse",
       "pdb",
-      "pickle",
       "pickletools",
       "pip",
       "pipes",
@@ -440,7 +439,7 @@
   },
   "summary": {
     "total_items": 337,
-    "total_documented": 80,
-    "overall_coverage_percent": 23.7
+    "total_documented": 81,
+    "overall_coverage_percent": 24.0
   }
 }
