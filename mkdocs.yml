@@ -64,6 +64,7 @@ nav:
     - Reversed: builtins/reversed.md
     - Divmod: builtins/divmod.md
     - Slice: builtins/slice.md
+    - Isinstance: builtins/isinstance.md
   - Standard Library:
     - Overview: stdlib/index.md
     - Collections: stdlib/collections.md
@@ -74,6 +75,7 @@ nav:
     - JSON: stdlib/json.md
     - OS: stdlib/os.md
     - Pathlib: stdlib/pathlib.md
+    - Random: stdlib/random.md
     - Regular Expressions: stdlib/re.md
     - Datetime: stdlib/datetime.md
   - Implementations:

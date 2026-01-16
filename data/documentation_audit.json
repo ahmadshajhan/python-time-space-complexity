@@ -2,8 +2,8 @@
   "timestamp": null,
   "builtins": {
     "total": 149,
-    "documented": 30,
-    "coverage_percent": 20.1,
+    "documented": 31,
+    "coverage_percent": 20.8,
     "missing": [
       "ArithmeticError",
       "AssertionError",
@@ -105,7 +105,6 @@
       "hex",
       "id",
       "input",
-      "isinstance",
       "issubclass",
       "iter",
       "license",
@@ -287,8 +286,8 @@
   },
   "stdlib": {
     "total": 188,
-    "documented": 10,
-    "coverage_percent": 5.3,
+    "documented": 11,
+    "coverage_percent": 5.9,
     "missing": [
       "abc",
       "aifc",
@@ -399,7 +398,6 @@
       "pydoc_data",
       "queue",
       "quopri",
-      "random",
       "reprlib",
       "rlcompleter",
       "runpy",
@@ -473,7 +471,7 @@
   },
   "summary": {
     "total_items": 337,
-    "total_documented": 40,
-    "overall_coverage_percent": 11.9
+    "total_documented": 42,
+    "overall_coverage_percent": 12.5
   }
 }
