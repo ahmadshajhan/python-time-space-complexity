@@ -277,8 +277,8 @@
   },
   "stdlib": {
     "total": 188,
-    "documented": 32,
-    "coverage_percent": 17.0,
+    "documented": 33,
+    "coverage_percent": 17.6,
     "missing": [
       "abc",
       "aifc",
@@ -318,7 +318,6 @@
       "email",
       "encodings",
       "ensurepip",
-      "enum",
       "filecmp",
       "fileinput",
       "fnmatch",
@@ -447,7 +446,7 @@
   },
   "summary": {
     "total_items": 337,
-    "total_documented": 73,
-    "overall_coverage_percent": 21.7
+    "total_documented": 74,
+    "overall_coverage_percent": 22.0
   }
 }
