@@ -153,7 +153,11 @@ uv add --dev package-name
 5. Run `make check` to verify
 6. Commit with message: `Add: Topic name documentation`
 
-**Important:** Always update `DOCUMENTATION_STATUS.md` after adding new documentation files. Run `make audit` to regenerate the coverage report and gap analysis.
+**CRITICAL:** Always update `DOCUMENTATION_STATUS.md` after adding new documentation files:
+- Run `python scripts/audit_documentation.py` to regenerate the coverage report
+- Update the coverage percentages and totals in DOCUMENTATION_STATUS.md
+- Move documented items from "Missing" to "Documented" sections
+- Never commit without updating this file - it tracks project coverage goals
 
 ### Fixing Issues
 1. Identify the problem
