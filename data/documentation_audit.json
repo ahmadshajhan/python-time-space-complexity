@@ -277,8 +277,8 @@
   },
   "stdlib": {
     "total": 188,
-    "documented": 42,
-    "coverage_percent": 22.3,
+    "documented": 43,
+    "coverage_percent": 22.9,
     "missing": [
       "aifc",
       "antigravity",
@@ -306,7 +306,6 @@
       "crypt",
       "ctypes",
       "curses",
-      "dbm",
       "difflib",
       "dis",
       "distutils",
@@ -437,7 +436,7 @@
   },
   "summary": {
     "total_items": 337,
-    "total_documented": 83,
-    "overall_coverage_percent": 24.6
+    "total_documented": 84,
+    "overall_coverage_percent": 24.9
   }
 }

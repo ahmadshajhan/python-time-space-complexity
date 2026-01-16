@@ -89,6 +89,7 @@ nav:
     - Counter: stdlib/counter.md
     - Csv: stdlib/csv.md
     - Dataclasses: stdlib/dataclasses.md
+    - DBM: stdlib/dbm.md
     - Datetime: stdlib/datetime.md
     - Decimal: stdlib/decimal.md
     - Deque: stdlib/deque.md
