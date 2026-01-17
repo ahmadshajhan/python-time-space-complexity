@@ -84,10 +84,10 @@ from collections import deque
 
 dq = deque([1, 2, 3, 4, 5])
 
-# Index access - O(1)
-value = dq[0]  # O(1) - first element
-value = dq[-1]  # O(1) - last element
-value = dq[2]  # O(1) - middle element
+# Index access - O(1) for ends, O(n) for middle
+value = dq[0]  # O(1) - first element (direct access)
+value = dq[-1]  # O(1) - last element (direct access)
+value = dq[2]  # O(n) - middle element (requires block traversal)
 
 # Length - O(1)
 length = len(dq)  # O(1)
