@@ -277,8 +277,8 @@
   },
   "stdlib": {
     "total": 188,
-    "documented": 69,
-    "coverage_percent": 36.7,
+    "documented": 74,
+    "coverage_percent": 39.4,
     "missing": [
       "aifc",
       "antigravity",
@@ -319,7 +319,6 @@
       "imghdr",
       "imp",
       "importlib",
-      "inspect",
       "ipaddress",
       "keyword",
       "lib2to3",
@@ -334,7 +333,6 @@
       "nturl2path",
       "numbers",
       "opcode",
-      "operator",
       "optparse",
       "pdb",
       "pickletools",
@@ -345,7 +343,6 @@
       "platform",
       "plistlib",
       "poplib",
-      "pprint",
       "profile",
       "pstats",
       "pty",
@@ -379,7 +376,6 @@
       "sysconfig",
       "tabnanny",
       "telnetlib",
-      "textwrap",
       "this",
       "timeit",
       "tkinter",
@@ -392,7 +388,6 @@
       "tty",
       "turtle",
       "turtledemo",
-      "types",
       "uu",
       "uuid",
       "validate_data",
@@ -412,7 +407,7 @@
   },
   "summary": {
     "total_items": 337,
-    "total_documented": 110,
-    "overall_coverage_percent": 32.6
+    "total_documented": 115,
+    "overall_coverage_percent": 34.1
   }
 }

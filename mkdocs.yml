@@ -115,6 +115,7 @@ nav:
     - Heapq: stdlib/heapq.md
     - Hmac: stdlib/hmac.md
     - IO: stdlib/io.md
+    - Inspect: stdlib/inspect.md
     - Itertools: stdlib/itertools.md
     - JSON: stdlib/json.md
     - Logging: stdlib/logging.md
@@ -123,10 +124,12 @@ nav:
     - Pickle: stdlib/pickle.md
     - Namedtuple: stdlib/namedtuple.md
     - Ntpath: stdlib/ntpath.md
+    - Operator: stdlib/operator.md
     - OrderedDict: stdlib/ordereddict.md
     - OS: stdlib/os.md
     - Pathlib: stdlib/pathlib.md
     - Posixpath: stdlib/posixpath.md
+    - Pprint: stdlib/pprint.md
     - Queue: stdlib/queue.md
     - Shutil: stdlib/shutil.md
     - Random: stdlib/random.md
@@ -140,7 +143,9 @@ nav:
     - Subprocess: stdlib/subprocess.md
     - Tarfile: stdlib/tarfile.md
     - Tempfile: stdlib/tempfile.md
+    - Textwrap: stdlib/textwrap.md
     - Threading: stdlib/threading.md
+    - Types: stdlib/types.md
     - Typing: stdlib/typing.md
     - Unittest: stdlib/unittest.md
     - Urllib: stdlib/urllib.md
