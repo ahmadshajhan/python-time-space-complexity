@@ -2,8 +2,8 @@
   "timestamp": null,
   "builtins": {
     "total": 149,
-    "documented": 75,
-    "coverage_percent": 50.3,
+    "documented": 76,
+    "coverage_percent": 51.0,
     "missing": [
       "ArithmeticError",
       "AssertionError",
@@ -92,7 +92,6 @@
       "memoryview",
       "object",
       "quit",
-      "super",
       "type"
     ],
     "by_category": {
@@ -281,7 +280,7 @@
   },
   "summary": {
     "total_items": 337,
-    "total_documented": 262,
-    "overall_coverage_percent": 77.7
+    "total_documented": 263,
+    "overall_coverage_percent": 78.0
   }
 }

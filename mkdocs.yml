@@ -110,6 +110,7 @@ nav:
     - Classmethod: builtins/classmethod.md
     - Staticmethod: builtins/staticmethod.md
     - Property: builtins/property.md
+    - Super: builtins/super.md
   - Standard Library:
     - Overview: stdlib/index.md
     - ABC: stdlib/abc.md
