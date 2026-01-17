@@ -195,17 +195,27 @@ All 188 standard library modules are fully documented, with 8 additional documen
 - ✅ `plistlib` - Property list format
 - ✅ `sndhdr` - Sound file format detection
 
-### ❌ Remaining Missing (8 - non-standard modules)
+### ⊘ Excluded Items (8 - intentionally out of scope)
 
-These items are not actual stdlib modules (they're scripts, third-party packages, or internal):
-- `audit_documentation` - Project audit script
-- `generate_docs` - Documentation generation script
-- `validate_data` - Data validation script
+These items are **intentionally not documented** as they are not part of Python's standard library:
+
+**Project Scripts** (not stdlib):
+- `audit_documentation` - Project's own audit script
+- `generate_docs` - Project's own documentation generation script
+- `validate_data` - Project's own data validation script
+
+**Third-party Packages** (external, not stdlib):
+- `pip` - External package manager
+- `pkg_resources` - Part of setuptools (third-party)
+- `setuptools` - Third-party build tool
+
+**Already Covered**:
 - `cProfile` - Already documented as `cprofile`
-- `pip` - Third-party package manager
-- `pkg_resources` - Third-party (setuptools)
-- `setuptools` - Third-party (not stdlib)
-- `turtledemo` - Demo/example (not production stdlib)
+
+**Demo/Examples** (not production stdlib):
+- `turtledemo` - Turtle graphics examples (supplementary, not core API)
+
+**Coverage remains at 104.3%** for actual stdlib modules (all 188 documented).
 
 ### ✅ Priority Tier 1 Complete (9/9 - 100%)
 
