@@ -238,9 +238,158 @@ All file and I/O modules now documented:
 - ✅ `shutil` - High-level file operations
 - ✅ `tempfile` - Temporary files
 
-### ❌ Other Stdlib Modules (204)
+### ❌ Other Stdlib Modules (128)
 
-Remaining standard library modules across various categories.
+Remaining standard library modules:
+
+**Utilities & System (23)**
+- [ ] `ast` - Abstract syntax trees
+- [ ] `dis` - Disassembler for bytecode
+- [ ] `doctest` - Testing via docstrings
+- [ ] `getopt` - Command-line option parsing
+- [ ] `getpass` - Secure password input
+- [ ] `gettext` - Internationalization
+- [ ] `inspect` - Inspect objects
+- [ ] `keyword` - Python keywords
+- [ ] `linecache` - Cache module source
+- [ ] `operator` - Operator functions
+- [ ] `optparse` - Option parsing (deprecated)
+- [ ] `pdb` - Python debugger
+- [ ] `platform` - Platform information
+- [ ] `profile` / `cProfile` - Performance profiling
+- [ ] `pstats` - Profile statistics
+- [ ] `pydoc` - Documentation viewer
+- [ ] `runpy` - Run Python modules
+- [ ] `sched` - Event scheduler
+- [ ] `stat` - File status constants
+- [ ] `statistics` - Basic statistics
+- [ ] `sysconfig` - System configuration
+- [ ] `timeit` - Time execution
+- [ ] `trace` - Trace execution
+
+**String & Text Processing (9)**
+- [ ] `string` - String operations
+- [ ] `stringprep` - Unicode preparation
+- [ ] `textwrap` - Text wrapping and filling
+- [ ] `shlex` - Shell-like syntax analysis
+- [ ] `reprlib` - Alternative repr()
+- [ ] `pprint` - Pretty-printing
+- [ ] `quopri` - Quoted-printable encoding
+- [ ] `uu` - Uuencoding
+- [ ] `html` - HTML parsing/escaping
+
+**Data Serialization (5)**
+- [ ] `email` - Email message handling
+- [ ] `mailbox` - Mailbox formats
+- [ ] `mailcap` - Mailcap file handling
+- [ ] `mimetypes` - MIME type mappings
+- [ ] `pickletools` - Pickle disassembler
+
+**Compression & Encoding (2)**
+- [ ] `aifc` - AIFF/AIFC audio files
+- [ ] `sunau` / `sndhdr` - Audio file handling
+- [ ] `wave` - WAV audio files
+
+**Network & Internet (13)**
+- [ ] `email` - Email handling
+- [ ] `ftplib` - FTP client
+- [ ] `http` - HTTP protocol
+- [ ] `imaplib` - IMAP4 protocol
+- [ ] `ipaddress` - IP addresses
+- [ ] `nntplib` - NNTP protocol
+- [ ] `poplib` - POP3 protocol
+- [ ] `smtplib` - SMTP client
+- [ ] `smtpd` - SMTP server
+- [ ] `socketserver` - Socket server
+- [ ] `ssl` - SSL/TLS support
+- [ ] `telnetlib` - Telnet client
+- [ ] `xmlrpc` - XML-RPC protocol
+
+**File & Path Operations (9)**
+- [ ] `chunk` - IFF chunk reading
+- [ ] `fileinput` - Multi-file processing
+- [ ] `imghdr` - Image file type detection
+- [ ] `mailcap` - Mailcap file handling
+- [ ] `mimetypes` - MIME type mapping
+- [ ] `nturl2path` - URL to path conversion
+- [ ] `pipes` - Shell pipeline interface
+- [ ] `pty` - Pseudo-terminal
+- [ ] `tty` - Terminal control
+
+**Parsing & Compilation (11)**
+- [ ] `codeop` - Compile Python source
+- [ ] `code` - Code evaluation
+- [ ] `compile` / `py_compile` - Compilation
+- [ ] `importlib` - Import machinery
+- [ ] `lib2to3` - Python 2 to 3 conversion
+- [ ] `modulefinder` - Module dependencies
+- [ ] `opcode` - Python opcodes
+- [ ] `pyclbr` - Class/function browser
+- [ ] `sre_compile` - Regular expression compilation
+- [ ] `sre_constants` - Regex constants
+- [ ] `sre_parse` - Regex parsing
+- [ ] `symtable` - Symbol table
+- [ ] `token` / `tokenize` - Tokenization
+
+**Type & Number Operations (6)**
+- [ ] `colorsys` - Color system conversions
+- [ ] `numbers` - Numeric abstract base classes
+- [ ] `types` - Type objects
+- [ ] `uuid` - UUID objects
+- [ ] `weakref` - Weak references
+- [ ] `zoneinfo` - IANA time zone database
+
+**GUI & Interface (4)**
+- [ ] `curses` - Terminal control (Unix)
+- [ ] `idlelib` - IDLE editor library
+- [ ] `tkinter` - Tk GUI toolkit
+- [ ] `turtle` / `turtledemo` - Turtle graphics
+
+**Build & Installation (7)**
+- [ ] `distutils` - Distribution utilities
+- [ ] `ensurepip` - Pip installation
+- [ ] `pip` / `setuptools` - Package management
+- [ ] `pkg_resources` - Package resources
+- [ ] `pkgutil` - Package utilities
+- [ ] `venv` - Virtual environments
+- [ ] `zipapp` - ZIP application creation
+
+**Development & Meta (13)**
+- [ ] `antigravity` - Easter egg
+- [ ] `bdb` - Debugger framework
+- [ ] `cmd` - Interactive command interfaces
+- [ ] `compileall` - Batch compilation
+- [ ] `pydoc_data` - Pydoc data
+- [ ] `rlcompleter` - Readline completion
+- [ ] `tabnanny` - Python indentation checker
+- [ ] `this` - Zen of Python
+- [ ] `traceback` - Exception formatting
+- [ ] `tracemalloc` - Memory allocation tracking
+- [ ] `webbrowser` - Web browser controller
+- [ ] `wsgiref` - WSGI utilities
+- [ ] `zipimport` - Zip import support
+
+**System & Locale (6)**
+- [ ] `locale` - Localization
+- [ ] `netrc` - Netrc file handling
+- [ ] `site` - Site-specific configuration
+- [ ] `spwd` / `crypt` - User password database (Unix)
+- [ ] `grp` / `pwd` - User/group database (Unix)
+- [ ] `fcntl` - File control (Unix)
+
+**Internal & Testing (7)**
+- [ ] `audit_documentation` - Internal script
+- [ ] `concurrent` - Concurrency (parent package)
+- [ ] `copyreg` - Copy registration
+- [ ] `ctypes` - C-compatible data types
+- [ ] `encodings` - Built-in encodings
+- [ ] `generate_docs` - Internal script
+- [ ] `validate_data` - Internal script
+- [ ] `xdrlib` - XDR serialization (deprecated)
+- [ ] `xml` / `html` - XML/HTML parsing
+
+**Not in standard path (2)**
+- [ ] `pydoc_data` - Pydoc data files
 
 ---
 
