@@ -93,6 +93,13 @@ nav:
     - Bytes: builtins/bytes_func.md
     - List: builtins/list_func.md
     - Dict: builtins/dict_func.md
+    - Set: builtins/set_func.md
+    - Frozenset: builtins/frozenset_func.md
+    - Tuple: builtins/tuple_func.md
+    - Bytearray: builtins/bytearray_func.md
+    - Complex: builtins/complex_func.md
+    - Memoryview: builtins/memoryview_func.md
+    - Object: builtins/object_func.md
     - Exceptions: builtins/exceptions.md
   - Standard Library:
     - Overview: stdlib/index.md
