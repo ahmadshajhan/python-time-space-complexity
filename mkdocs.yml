@@ -107,6 +107,9 @@ nav:
     - Setattr: builtins/setattr.md
     - Delattr: builtins/delattr.md
     - Vars: builtins/vars.md
+    - Classmethod: builtins/classmethod.md
+    - Staticmethod: builtins/staticmethod.md
+    - Property: builtins/property.md
   - Standard Library:
     - Overview: stdlib/index.md
     - ABC: stdlib/abc.md

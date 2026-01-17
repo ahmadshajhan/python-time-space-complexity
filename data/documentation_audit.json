@@ -2,8 +2,8 @@
   "timestamp": null,
   "builtins": {
     "total": 149,
-    "documented": 72,
-    "coverage_percent": 48.3,
+    "documented": 75,
+    "coverage_percent": 50.3,
     "missing": [
       "ArithmeticError",
       "AssertionError",
@@ -83,7 +83,6 @@
       "anext",
       "breakpoint",
       "bytearray",
-      "classmethod",
       "complex",
       "copyright",
       "credits",
@@ -92,9 +91,7 @@
       "locals",
       "memoryview",
       "object",
-      "property",
       "quit",
-      "staticmethod",
       "super",
       "type"
     ],
@@ -284,7 +281,7 @@
   },
   "summary": {
     "total_items": 337,
-    "total_documented": 259,
-    "overall_coverage_percent": 76.9
+    "total_documented": 262,
+    "overall_coverage_percent": 77.7
   }
 }
