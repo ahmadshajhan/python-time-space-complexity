@@ -10,7 +10,7 @@ The `urllib` module provides utilities for working with URLs, including fetching
 | `urllib.parse.urlencode()` | O(n*m) | O(n*m) | n = items, m = avg value length |
 | `urllib.parse.quote()` | O(n) | O(n) | n = string length |
 | `urllib.parse.unquote()` | O(n) | O(n) | n = string length |
-| `urllib.request.urlopen()` | O(response) | O(response) | Depends on network/response |
+| `urllib.request.urlopen()` | O(response) | O(response) | Network-bound; response size dominates |
 | `response.read()` | O(n) | O(n) | n = response size |
 
 ## URL Parsing

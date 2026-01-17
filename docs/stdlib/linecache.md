@@ -6,9 +6,10 @@ The `linecache` module allows efficient retrieval of individual lines from Pytho
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| `getline()` | O(n) first access, O(1) cached | O(n) | n = file lines, file is cached on first access |
-| `checkcache()` | O(1) | O(1) | Invalidate cache |
-| First access | O(n) | O(n) | Load entire file |
+| `getline()` first access | O(n) | O(n) | Loads entire file into cache; n = file lines |
+| `getline()` cached | O(1) | O(1) | Returns cached line |
+| `checkcache()` | O(k) | O(1) | k = cached files; checks mtime for invalidation |
+| `clearcache()` | O(1) | O(1) | Clear all cached files |
 
 ## Getting Lines from Files
 

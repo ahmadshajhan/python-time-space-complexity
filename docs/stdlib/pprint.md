@@ -263,7 +263,7 @@ pp = PrettyPrinter(depth=3)
 
 ## Version Notes
 
-- **Python 3.8+**: `compact` parameter added
+- **Python 3.2+**: `compact` parameter added
 - **Python 3.10+**: Better formatting improvements
 
 ## Related Documentation

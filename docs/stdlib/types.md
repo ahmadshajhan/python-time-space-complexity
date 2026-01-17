@@ -9,7 +9,7 @@ The `types` module provides standard names for all Python built-in types, useful
 | Type checking | O(1) | O(1) | Check if type matches |
 | `FunctionType()` | O(1) | O(1) | Create function |
 | `SimpleNamespace()` | O(n) | O(n) | Create namespace |
-| `MappingProxyType()` | O(n) | O(n) | Create read-only dict |
+| `MappingProxyType()` | O(1) | O(1) | Create read-only view of dict; no copy made |
 
 ## Type Constants
 
@@ -122,14 +122,14 @@ ns = types.SimpleNamespace(a=1, b=2, c=3)  # O(n) space for attributes
 
 ### MappingProxyType
 
-#### Time Complexity: O(n)
+#### Time Complexity: O(1)
 
 ```python
 import types
 
-# Create read-only view: O(n) where n = items
+# Create read-only view: O(1) - no copy, just wraps original
 original = {'a': 1, 'b': 2, 'c': 3}
-readonly = types.MappingProxyType(original)  # O(n)
+readonly = types.MappingProxyType(original)  # O(1)
 
 # Access: O(1)
 value = readonly['a']  # 1 - O(1)

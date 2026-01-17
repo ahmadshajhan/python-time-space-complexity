@@ -121,10 +121,10 @@ most_common = mode(data)  # O(6) = 1
 data = [1, 1, 2, 2, 3, 3]
 m = mode(data)  # Returns 1 (first encountered)
 
-# In Python 3.8+, mode() returns the first mode if multimodal
-# (In Python 3.7 and earlier, it raised StatisticsError for multimodal data)
+# Python 3.8+: mode() returns first mode if multimodal
+# Python 3.7 and earlier: raised StatisticsError for multimodal data
 data = [1, 2, 3]  # All equally common
-m = mode(data)    # Returns 1 (first element)
+m = mode(data)    # Returns 1 (first encountered)
 ```
 
 #### Space Complexity: O(n)
@@ -171,22 +171,22 @@ modes = multimode(data)  # O(n) for frequency tracking
 #### Time Complexity: O(n)
 
 ```python
-from statistics import variance, stdev
+from statistics import variance, stdev, pvariance, pstdev
 
 data = [1, 2, 3, 4, 5]
 
-# Calculate variance: O(n)
+# Calculate variance: O(n) - two passes through data
 var = variance(data)  # O(5) = 2.5
 
-# Standard deviation: O(n)
+# Standard deviation: O(n) - two passes (mean then variance)
 std = stdev(data)  # O(5) ≈ 1.58
 
 # Sample vs population variance
-var_sample = variance(data)        # O(n) - sample (default)
-var_pop = pvariance(data)          # O(n) - population
+var_sample = variance(data)        # O(n) - sample (n-1 denominator)
+var_pop = pvariance(data)          # O(n) - population (n denominator)
 
 # Sample vs population stdev
-std_sample = stdev(data)           # O(n) - sample (default)
+std_sample = stdev(data)           # O(n) - sample
 std_pop = pstdev(data)             # O(n) - population
 ```
 

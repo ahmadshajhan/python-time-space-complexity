@@ -11,20 +11,26 @@ The `stringprep` module provides support for internationalized domain names thro
 
 ## String Preparation
 
-### Preparing Unicode Strings
+### Character Table Lookups
 
 ```python
 import stringprep
 
-# Prepare for use - O(n)
-username = stringprep.nameprep('Müller')
+# stringprep provides character table lookup functions
+# Used internally by encodings.idna for domain names
 
-# Prepare domain names
-domain = stringprep.nameprep('münchen.de')
+# Check if character is in table - O(1)
+char = 'A'
+is_mapped = stringprep.in_table_b1(char)  # O(1) - table lookup
 
-# Results are normalized
-print(username)  # Normalized form
+# Check character categories - O(1) each
+stringprep.in_table_c3(char)  # Private use characters
+stringprep.in_table_d1(char)  # Bidi category check
 ```
+
+!!! note "Low-level Module"
+    stringprep is primarily used by higher-level modules like `encodings.idna`.
+    For domain name preparation, use `encodings.idna.nameprep()` instead.
 
 ## Related Documentation
 

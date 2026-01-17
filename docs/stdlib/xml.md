@@ -6,9 +6,9 @@ The `xml` module provides base functionality for parsing and manipulating XML do
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| Parse XML | O(n) | O(n) | n = document size |
-| DOM traversal | O(n) | O(n) | n = nodes |
-| XPath query | O(n) | O(n) | n = matching elements |
+| Parse XML | O(n) | O(n) | n = document size; DOM loads entire tree |
+| DOM traversal | O(n) | O(n) | n = nodes; consider SAX for large files |
+| XPath query | O(n) | O(n) | n = nodes searched; result depends on query |
 
 ## XML Processing
 

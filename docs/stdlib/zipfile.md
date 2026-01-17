@@ -6,11 +6,11 @@ The `zipfile` module provides tools for working with ZIP archives.
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| `ZipFile(filename, 'r')` | O(n) | O(n) | Open and read central directory |
+| `ZipFile(filename, 'r')` | O(n) | O(n) | Open and read central directory; n = file count |
 | `ZipFile.read(name)` | O(m) | O(m) | Read file, m = uncompressed size |
 | `ZipFile.write(filename)` | O(m) | O(m) | Write file to archive |
 | `ZipFile.namelist()` | O(n) | O(n) | List all files, n = file count |
-| `ZipFile.getinfo(name)` | O(n) | O(1) | Get file info |
+| `ZipFile.getinfo(name)` | O(n) | O(1) | Get file info; linear search in central directory |
 | `ZipFile.extractall()` | O(m) | O(m) | Extract all files |
 
 ## Opening Archives

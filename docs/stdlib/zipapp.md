@@ -6,8 +6,8 @@ The `zipapp` module creates executable ZIP applications that can be run directly
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| Create archive | O(n) | O(n) | n = total files |
-| Pack app | O(n) | O(n) | ZIP compression |
+| Create archive | O(n) | O(n) | n = total file sizes; compression overhead |
+| Pack app | O(n) | O(n) | ZIP compression; I/O bound |
 
 ## Creating ZIP Applications
 

@@ -6,7 +6,7 @@ The `venv` module creates isolated Python virtual environments, allowing separat
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| Create venv | O(n) | O(n) | Copy/link files |
+| Create venv | O(n) | O(n) | Copy/link files; I/O bound |
 | Activate | O(1) | O(1) | Update PATH |
 
 ## Creating Virtual Environments

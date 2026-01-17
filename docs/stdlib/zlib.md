@@ -6,7 +6,7 @@ The `zlib` module provides low-level compression and decompression functions usi
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| `zlib.compress(data)` | O(n log n) | O(n) | Compress bytes, n = input size |
+| `zlib.compress(data)` | O(n) to O(n log n) | O(n) | Compress bytes, n = input size; depends on compression level |
 | `zlib.decompress(data)` | O(m) | O(m) | Decompress bytes, m = uncompressed size |
 | `zlib.compressobj()` | O(1) | O(1) | Create compressor object |
 | `Compress.compress(data)` | O(n) | O(k) | Add data to compress, k = buffer |

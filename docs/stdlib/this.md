@@ -6,7 +6,7 @@ The `this` module displays the Zen of Python, a philosophy guide for Python prog
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| Import module | O(1) | O(1) | Print text |
+| Import module | O(1) | O(1) | Decodes and prints Zen text |
 
 ## The Zen of Python
 

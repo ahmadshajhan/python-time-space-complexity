@@ -6,9 +6,9 @@ The `struct` module handles binary data conversions, packing Python values into 
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| `Struct()` compilation | O(n) | O(n) | n = format string length |
-| `pack()` | O(n) | O(n) | n = number of fields |
-| `unpack()` | O(n) | O(n) | n = number of fields |
+| `Struct()` compilation | O(m) | O(m) | m = format string length; compile once |
+| `pack()` | O(k) | O(k) | k = number of fields; O(m) if not pre-compiled |
+| `unpack()` | O(k) | O(k) | k = number of fields |
 | `pack_into()` | O(n) | O(1) | n = number of fields |
 | `unpack_from()` | O(n) | O(n) | n = number of fields |
 | `calcsize()` | O(m) | O(1) | m = format string length |

@@ -6,14 +6,14 @@ The `platform` module provides functions to access platform-specific information
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| `platform()` | O(1) | O(1) | Get platform string |
-| `system()` | O(1) | O(1) | Get OS name |
-| `release()` | O(1) | O(1) | Get OS release |
-| `version()` | O(1) | O(1) | Get OS version |
-| `machine()` | O(1) | O(1) | Get machine type |
-| `node()` | O(1) | O(1) | Get hostname |
-| `python_version()` | O(1) | O(1) | Get Python version |
-| `uname()` | O(1) | O(1) | Get uname info |
+| `platform()` | O(1) | O(1) | Cached after first call |
+| `system()` | O(1) | O(1) | Cached after first call |
+| `release()` | O(1) | O(1) | Cached after first call |
+| `version()` | O(1) | O(1) | Cached after first call |
+| `machine()` | O(1) | O(1) | Cached after first call |
+| `node()` | O(1) | O(1) | May involve syscall on first call |
+| `python_version()` | O(1) | O(1) | Static value |
+| `uname()` | O(1) | O(1) | Cached after first call |
 
 ## Common Operations
 

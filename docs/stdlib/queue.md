@@ -6,15 +6,15 @@ The `queue` module provides thread-safe queue implementations for coordinating w
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| `Queue.put()` | O(1) amortized | O(1) | Add item (blocks if full) |
-| `Queue.get()` | O(1) amortized | O(1) | Remove item (blocks if empty) |
-| `Queue.put_nowait()` | O(1) amortized | O(1) | Add item (raises if full) |
-| `Queue.get_nowait()` | O(1) amortized | O(1) | Remove item (raises if empty) |
+| `Queue.put()` | O(1) | O(1) | Add item (blocks if full); uses deque internally |
+| `Queue.get()` | O(1) | O(1) | Remove item (blocks if empty) |
+| `Queue.put_nowait()` | O(1) | O(1) | Add item (raises Full if full) |
+| `Queue.get_nowait()` | O(1) | O(1) | Remove item (raises Empty if empty) |
 | `Queue.qsize()` | O(1) | O(1) | Get approximate size |
 | `PriorityQueue.put()` | O(log n) | O(1) | Add with priority |
 | `PriorityQueue.get()` | O(log n) | O(1) | Get highest priority |
-| `LifoQueue.put()` | O(1) amortized | O(1) | Add item (LIFO) |
-| `LifoQueue.get()` | O(1) amortized | O(1) | Remove item (LIFO) |
+| `LifoQueue.put()` | O(1) | O(1) | Add item (LIFO); uses list internally |
+| `LifoQueue.get()` | O(1) | O(1) | Remove item (LIFO) |
 
 ## Basic Queue (FIFO)
 
@@ -311,7 +311,7 @@ d.append('item')  # O(1), NOT thread-safe
 
 - **Python 2.6+**: queue module available
 - **Python 3.x**: Same functionality
-- **All versions**: O(1) amortized for standard operations
+- **All versions**: O(1) for standard queue operations
 
 ## Related Modules
 

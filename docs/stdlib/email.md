@@ -30,7 +30,7 @@ Hello, this is a test email.
 
 message = message_from_string(email_text)
 
-# O(1) field access
+# O(h) field access where h = number of headers (linear search)
 from_addr = message['From']  # 'sender@example.com'
 to_addr = message['To']      # 'recipient@example.com'
 subject = message['Subject'] # 'Test Email'
@@ -48,7 +48,7 @@ from email import message_from_file
 with open('email.eml', 'r') as f:
     message = message_from_file(f)
 
-# O(1) access headers
+# O(h) access headers (linear search through header list)
 subject = message['Subject']
 
 # O(n) to get payload
@@ -122,7 +122,7 @@ def extract_email_info(email_text):
     # O(n) to parse where n = email size
     message = message_from_string(email_text)
     
-    # O(1) field access
+    # O(h) field access per header (linear search)
     info = {
         'from': message['From'],
         'to': message['To'],

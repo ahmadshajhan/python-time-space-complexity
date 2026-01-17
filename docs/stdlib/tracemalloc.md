@@ -6,7 +6,7 @@ The `tracemalloc` module traces memory allocations in Python, tracking where mem
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| `start()` | O(1) | O(m) | m = peak memory |
+| `start()` | O(1) | O(m) | m = peak memory; adds overhead to all allocations |
 | `take_snapshot()` | O(n) | O(n) | n = active allocations |
 | `get_traced_memory()` | O(1) | O(1) | Current snapshot |
 | Snapshot comparison | O(n log n) | O(n) | n = allocations |

@@ -6,8 +6,8 @@ The `tty` module provides functions for working with terminal I/O control on Uni
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| `setraw()` / `setcbreak()` | O(1) | O(1) | Configure terminal |
-| Restore mode | O(1) | O(1) | Save/restore settings |
+| `setraw()` / `setcbreak()` | O(1) | O(1) | Configure terminal mode; Unix only |
+| Restore mode | O(1) | O(1) | Save/restore via termios |
 
 ## Terminal Mode Control
 

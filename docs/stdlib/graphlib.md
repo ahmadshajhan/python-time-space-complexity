@@ -9,7 +9,7 @@ The `graphlib` module provides a topological sort implementation for resolving d
 | `TopologicalSorter()` init | O(1) | O(1) | Create sorter |
 | `add(node, *predecessors)` | O(k) | O(k) | Add node with k predecessors |
 | `prepare()` | O(v + e) | O(v) | Prepare sort, v = vertices, e = edges |
-| `get_ready()` | O(1) amortized | O(1) | Get ready nodes (returns tuple) |
+| `get_ready()` | O(1) amortized | O(k) | Get all ready nodes as tuple, k = ready count |
 | `done(node)` | O(d) | O(1) | Mark done, d = node degree |
 | Full sort (static) | O(v + e) | O(v + e) | Complete topological sort |
 
@@ -64,19 +64,19 @@ ts.prepare()
 
 # Process nodes dynamically - O(v + e) total
 processed = []
-while True:
-    # Get next ready node - O(1) amortized
-    ready = ts.get_node()
+while ts.is_active():
+    # Get all ready nodes - O(1) amortized
+    ready = ts.get_ready()  # Returns tuple of ready nodes
     
-    if ready is None:
+    if not ready:
         break
     
-    # Process node
-    print(f"Processing: {ready}")
-    processed.append(ready)
-    
-    # Mark as done - O(d) for degree d
-    ts.done(ready)
+    # Process each ready node
+    for node in ready:
+        print(f"Processing: {node}")
+        processed.append(node)
+        # Mark as done - O(d) for degree d
+        ts.done(node)
 
 print(f"Processed: {processed}")
 ```
@@ -143,15 +143,13 @@ ts.add('test', 'compile')
 
 ts.prepare()
 
-# Process one at a time - O(1) per get_node
-while True:
-    node = ts.get_node()
-    if node is None:
-        break
-    
-    print(f"Processing {node}")
-    # Do work...
-    ts.done(node)
+# Process dynamically - O(1) per get_ready
+while ts.is_active():
+    ready = ts.get_ready()  # Returns tuple of ready nodes
+    for node in ready:
+        print(f"Processing {node}")
+        # Do work...
+        ts.done(node)
 ```
 
 ## Error Detection

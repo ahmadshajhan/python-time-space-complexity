@@ -4,23 +4,23 @@ The `heapq` module provides a min-heap implementation for priority queue operati
 
 ## Operations
 
-| Operation | Time | Notes |
-|-----------|------|-------|
-| `heapify(x)` | O(n) | Transform list into heap |
-| `heappush(heap, item)` | O(log n) | Add item to heap |
-| `heappop(heap)` | O(log n) | Remove and return min item |
-| `heappushpop(heap, item)` | O(log n) | Push then pop |
-| `heapreplace(heap, item)` | O(log n) | Pop then push |
-| `nlargest(n, iterable)` | O(k log n) | k = iterable length, maintains heap of n items |
-| `nsmallest(n, iterable)` | O(k log n) | k = iterable length, maintains heap of n items |
-| `merge(*iterables)` | O(n log k) | n = total items, k = count of iterables |
+| Operation | Time | Space | Notes |
+|-----------|------|-------|-------|
+| `heapify(x)` | O(n) | O(1) | In-place transformation |
+| `heappush(heap, item)` | O(log n) | O(1) | Add item to heap |
+| `heappop(heap)` | O(log n) | O(1) | Remove and return min item |
+| `heappushpop(heap, item)` | O(log n) | O(1) | Push then pop (more efficient than separate calls) |
+| `heapreplace(heap, item)` | O(log n) | O(1) | Pop then push (more efficient than separate calls) |
+| `nlargest(n, iterable)` | O(k log n) | O(n) | k = iterable length, maintains heap of n items |
+| `nsmallest(n, iterable)` | O(k log n) | O(n) | k = iterable length, maintains heap of n items |
+| `merge(*iterables)` | O(n log k) | O(k) | n = total items, k = count of iterables |
 
-## Space Complexity
+## Space Complexity Notes
 
 - `heapify()`: O(1) in-place transformation
-- `heappush()`: O(1) amortized
-- `heappop()`: O(1)
-- `nlargest()`: O(k) for result, k items returned
+- `heappush()`: O(1) - modifies existing list
+- `heappop()`: O(1) - modifies existing list
+- `nlargest(n, ...)`: O(n) for result list of n items
 
 ## Implementation Details
 

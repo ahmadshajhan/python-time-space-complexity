@@ -6,8 +6,8 @@ The `zipimport` module enables importing Python modules and packages directly fr
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| `zipimporter()` | O(n) | O(n) | n = ZIP size |
-| Import module | O(log n) | O(1) | Binary search in ZIP |
+| `zipimporter()` | O(n) | O(n) | n = entries in ZIP; reads central directory |
+| Import module | O(n) | O(m) | n = entries for lookup; m = module size |
 | Load bytecode | O(1) | O(n) | n = module size |
 
 ## Importing from ZIP Files

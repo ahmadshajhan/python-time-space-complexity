@@ -11,7 +11,7 @@ The `sys` module provides access to interpreter variables and functions related 
 | `sys.getrecursionlimit()` | O(1) | O(1) | Get limit |
 | `sys.setrecursionlimit(n)` | O(1) | O(1) | Set limit |
 | `sys.getsizeof(obj)` | O(1) | O(1) | Get object size |
-| `len(sys.path)` | O(1) | O(n) | n = path entries |
+| `len(sys.path)` | O(1) | O(1) | List length is cached |
 | `sys.modules` lookup | O(1) | O(n) | Dict lookup, n = modules |
 
 ## Common Operations
@@ -78,11 +78,11 @@ import sys
 for path in sys.path:
     print(path)
 
-# O(n) to add to path - list append O(1) amortized
-sys.path.insert(0, '/custom/path')  # O(n) due to insert at position 0
+# Insert at front - O(n) due to shifting elements
+sys.path.insert(0, '/custom/path')  # O(n)
 
 # Better: append at end - O(1) amortized
-sys.path.append('/custom/path')
+sys.path.append('/custom/path')  # O(1) amortized
 
 # Check if path is set - O(n) linear search
 if '/some/path' not in sys.path:  # O(n)

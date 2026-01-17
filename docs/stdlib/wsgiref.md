@@ -6,8 +6,8 @@ The `wsgiref` module provides reference implementations and utilities for WSGI (
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| Server setup | O(1) | O(1) | Create server |
-| Handle request | O(n) | O(n) | n = request size |
+| Server setup | O(1) | O(1) | Create server; single-threaded by default |
+| Handle request | O(n) | O(n) | n = request/response size |
 
 ## WSGI Server Implementation
 

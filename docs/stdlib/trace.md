@@ -6,8 +6,8 @@ The `trace` module provides tracing of program execution and coverage analysis, 
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| `Trace.run()` | O(n) | O(n) | n = bytecode instructions |
-| Coverage analysis | O(n) | O(n) | Track executed lines |
+| `Trace.run()` | O(n) | O(n) | n = bytecode instructions; significant overhead per line |
+| Coverage analysis | O(n) | O(n) | Track executed lines; stores line counts |
 
 ## Program Tracing
 

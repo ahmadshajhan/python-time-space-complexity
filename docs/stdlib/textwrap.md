@@ -6,7 +6,7 @@ The `textwrap` module provides utilities for formatting and wrapping text while 
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| `wrap(text, width)` | O(n) | O(n) | Wrap text to width |
+| `wrap(text, width)` | O(n) | O(n) | Wrap text to width; n = text length |
 | `fill(text, width)` | O(n) | O(n) | Fill and return string |
 | `dedent(text)` | O(n) | O(n) | Remove common indent |
 | `indent(text, prefix)` | O(n) | O(n) | Add prefix to lines |

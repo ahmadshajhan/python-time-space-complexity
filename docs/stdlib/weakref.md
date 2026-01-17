@@ -10,8 +10,8 @@ The `weakref` module provides utilities for creating weak references to objects,
 | `proxy(obj)` | O(1) | O(1) | Create proxy object |
 | `getweakrefcount(obj)` | O(1) | O(1) | Count weak refs |
 | `getweakrefs(obj)` | O(n) | O(n) | n = weak refs |
-| `WeakKeyDictionary` operations | O(1) avg | O(n) | n = entries |
-| `WeakValueDictionary` operations | O(1) avg | O(n) | n = entries |
+| `WeakKeyDictionary` operations | O(1) avg | O(n) | n = entries; O(n) worst case due to hash collisions |
+| `WeakValueDictionary` operations | O(1) avg | O(n) | n = entries; O(n) worst case due to hash collisions |
 
 ## Common Operations
 

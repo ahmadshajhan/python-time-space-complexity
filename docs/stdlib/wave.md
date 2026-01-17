@@ -6,8 +6,8 @@ The `wave` module reads and writes WAV (RIFF) audio files, supporting various sa
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| `open()` | O(1) | O(1) | Open file |
-| Read/write | O(n) | O(n) | n = frame count |
+| `open()` | O(1) | O(1) | Open file; reads header |
+| Read/write | O(n) | O(n) | n = frame count; I/O bound |
 
 ## Working with WAV Files
 

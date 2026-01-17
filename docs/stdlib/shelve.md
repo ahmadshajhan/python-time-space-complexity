@@ -7,10 +7,10 @@ The `shelve` module provides persistent dictionary storage using the DBM databas
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
 | `shelve.open()` | O(1) | O(1) | Open/create database |
-| `shelf[key] = value` | O(1) avg | O(k) | Store pickled value, k = size; hash-based |
-| `shelf[key]` | O(1) avg | O(k) | Retrieve and unpickle; hash-based |
-| `del shelf[key]` | O(1) avg | O(1) | Delete key; hash-based |
-| `key in shelf` | O(1) avg | O(1) | Key lookup; hash-based |
+| `shelf[key] = value` | O(1) avg | O(k) | Store pickled value, k = size + O(k) pickle time |
+| `shelf[key]` | O(1) avg | O(k) | Retrieve and unpickle, k = value size |
+| `del shelf[key]` | O(1) avg | O(1) | Delete key |
+| `key in shelf` | O(1) avg | O(1) | Key lookup |
 | `len(shelf)` | O(n) | O(1) | Scan all keys |
 | `shelf.keys()` | O(n) | O(n) | Get all keys |
 | `shelf.close()` | O(n) | O(1) | Flush and close |
@@ -228,18 +228,18 @@ import shelve
 
 with shelve.open('objects.db') as shelf:
     
-    # Primitive types - O(log n)
+    # Primitive types - O(1) avg DBM + O(k) pickle
     shelf['int'] = 42
     shelf['str'] = 'hello'
     shelf['list'] = [1, 2, 3]
     shelf['dict'] = {'a': 1, 'b': 2}
     shelf['tuple'] = (1, 2, 3)
     
-    # Complex objects - O(log n)
+    # Complex objects - O(1) avg DBM + O(k) pickle
     shelf['set'] = {1, 2, 3}
     shelf['bytes'] = b'binary'
     
-    # Nested structures - O(log n)
+    # Nested structures - O(1) avg DBM + O(k) pickle
     shelf['complex'] = {
         'data': [1, 2, 3],
         'config': {'debug': True},
@@ -262,11 +262,11 @@ class Person:
 
 with shelve.open('people.db') as shelf:
     
-    # Store custom object - O(log n) pickle + store
+    # Store custom object - O(1) avg DBM + O(k) pickle
     shelf['person1'] = Person('Alice', 30)
     shelf['person2'] = Person('Bob', 25)
     
-    # Retrieve and use - O(log n) retrieve + unpickle
+    # Retrieve and use - O(1) avg DBM + O(k) unpickle
     person = shelf['person1']
     print(person)  # Person(Alice, 30)
     print(person.age)  # 30

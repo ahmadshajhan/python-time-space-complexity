@@ -7,7 +7,7 @@ The `typing` module provides support for type hints, allowing developers to anno
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
 | Type annotation | O(1) | O(1) | Define hint (no runtime check) |
-| `get_type_hints()` | O(k) | O(k) | k = number of annotations |
+| `get_type_hints()` | O(k) | O(k) | k = number of annotations; involves string evaluation |
 | Type checking with `isinstance()` | O(1) | O(1) | Runtime check (limited) |
 | Generic type creation | O(1) | O(1) | Create parameterized type |
 

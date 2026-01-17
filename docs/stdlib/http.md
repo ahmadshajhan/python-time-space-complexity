@@ -16,12 +16,12 @@ The `http` module provides HTTP client and server implementation, including stat
 ```python
 from http import HTTPStatus
 
-# Access status - O(1)
+# Access status by name - O(1)
 print(HTTPStatus.OK)        # 200
 print(HTTPStatus.NOT_FOUND) # 404
 print(HTTPStatus.FORBIDDEN) # 403
 
-# Check status
+# Access by value - O(n) linear search through enum members
 response_code = 404
 status = HTTPStatus(response_code)
 print(status.name)          # NOT_FOUND

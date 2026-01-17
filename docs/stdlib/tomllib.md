@@ -6,10 +6,8 @@ The `tomllib` module parses TOML (Tom's Obvious, Minimal Language) files. Availa
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| `loads()` | O(n) | O(n) | n = file size |
-| `load()` | O(n) | O(n) | n = file size |
-| Parse string | O(n) | O(n) | Linear in content |
-| Parse file | O(n) | O(n) | Linear in content |
+| `loads()` | O(n) | O(n) | n = string length; parses entire content |
+| `load()` | O(n) | O(n) | n = file size; reads entire file |
 
 ## Basic Parsing
 

@@ -6,9 +6,9 @@ The `traceback` module provides utilities for extracting, formatting, and printi
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| `print_exc()` | O(n) | O(n) | n = traceback depth |
-| `format_exc()` | O(n) | O(n) | Returns formatted string |
-| `extract_tb()` | O(n) | O(n) | Extracts traceback frames |
+| `print_exc()` | O(n) | O(n) | n = traceback depth; reads source lines |
+| `format_exc()` | O(n) | O(n) | Returns formatted string; includes line lookup |
+| `extract_tb()` | O(n) | O(n) | Extracts traceback frames; may access source files |
 | `format_tb()` | O(n) | O(n) | Formats traceback list |
 | `print_tb()` | O(n) | O(1) | Prints to file |
 | `clear_frames()` | O(n) | O(1) | n = frame count |

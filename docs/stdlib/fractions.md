@@ -8,7 +8,7 @@ The `fractions` module provides support for rational number arithmetic, maintain
 |-----------|------|-------|-------|
 | `Fraction()` creation | O(log n) | O(1) | GCD calculation via Euclidean algorithm, n = max(numerator, denominator) |
 | `Fraction` arithmetic | O(log n) | O(1) | GCD for result simplification |
-| `Fraction` comparison | O(1) | O(1) | Cross-multiplication comparison |
+| `Fraction` comparison | O(1) | O(1) | Cross-multiplication (a*d vs b*c) |
 | `Fraction` conversion | O(log n) | O(1) | GCD for reduction |
 | `limit_denominator()` | O(k) | O(1) | k = max denominator |
 
@@ -131,16 +131,16 @@ f1 = Fraction(1, 2)
 f2 = Fraction(2, 4)  # Also 1/2
 f3 = Fraction(1, 3)
 
-# Equality - O(log n) or O(1) if already reduced
+# Equality - O(1) if already reduced (compares numerator and denominator)
 print(f1 == f2)      # True (both 1/2)
 print(f1 == f3)      # False
 
-# Ordering - O(log n) for cross-multiplication
+# Ordering - O(1) cross-multiplication comparison (a/b < c/d iff a*d < b*c)
 print(f1 > f3)       # True (1/2 > 1/3)
 print(f1 < f3)       # False
 print(f1 <= f3)      # False
 
-# With other types - O(log n)
+# With other types - may involve conversion
 print(f1 == 0.5)     # True
 print(f1 > 0.3)      # True
 ```

@@ -6,7 +6,7 @@ The `tokenize` module provides a lexical analyzer for Python source code, tokeni
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| `generate_tokens(readline)` | O(n) | O(1) | n = source length |
+| `generate_tokens(readline)` | O(n) | O(1) | n = source length; generator yields tokens lazily |
 | `tokenize(readline)` | O(n) | O(1) | Binary mode tokenization |
 | `detect_encoding(readline)` | O(n) | O(1) | n = header size |
 | `untokenize(tokens)` | O(n) | O(n) | n = token count |

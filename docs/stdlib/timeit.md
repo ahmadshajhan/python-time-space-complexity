@@ -6,7 +6,7 @@ The `timeit` module provides utilities for measuring execution time of Python co
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| `timeit(stmt, setup)` | O(n*m) | O(1) | Time statement execution |
+| `timeit(stmt, setup)` | O(n*m) | O(1) | n = repetitions, m = stmt complexity |
 | `Timer(stmt, setup)` | O(1) | O(1) | Create timer |
 | `Timer.timeit(n)` | O(n*m) | O(1) | Time n repetitions |
 | `Timer.repeat(n, r)` | O(r*n*m) | O(r) | Repeat timing |

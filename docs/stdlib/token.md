@@ -6,8 +6,8 @@ The `token` module provides token type constants used by Python's tokenizer, rep
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| Access token | O(1) | O(1) | Constant lookup |
-| Classify token | O(1) | O(1) | Static type |
+| Access token constant | O(1) | O(1) | Module-level constants |
+| `tok_name[type]` | O(1) | O(1) | Dict lookup for name |
 
 ## Token Type Constants
 

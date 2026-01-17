@@ -8,7 +8,7 @@ The `sched` module provides a general-purpose event scheduler for scheduling fun
 |-----------|------|-------|-------|
 | `enter()` / `enterabs()` | O(log n) | O(1) | n = scheduled events |
 | `run()` | O(n log n) | O(n) | Process all events |
-| `cancel()` | O(n) | O(1) | Remove event; n = scheduled events |
+| `cancel()` | O(n) | O(1) | Remove event; linear search in queue |
 
 ## Scheduling Events
 
@@ -51,7 +51,7 @@ def callback(msg):
 # Schedule - O(log n)
 event = scheduler.enter(5, 1, callback, argument=('delayed',))
 
-# Cancel - O(1)
+# Cancel - O(n) linear search in queue
 scheduler.cancel(event)
 
 # Event never fires

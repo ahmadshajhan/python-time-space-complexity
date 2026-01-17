@@ -6,8 +6,8 @@ The `uuid` module provides utilities for creating and working with Universal Uni
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| `uuid4()` | O(1) | O(1) | Generate random UUID |
-| `uuid1()` | O(1) | O(1) | Generate time-based UUID |
+| `uuid4()` | O(1) | O(1) | Generate random UUID; uses system entropy |
+| `uuid1()` | O(1) | O(1) | Generate time-based UUID; includes MAC address (privacy concern) |
 | `UUID(string)` | O(n) | O(1) | Parse UUID from string |
 | `UUID.hex` | O(1) | O(1) | Get hex representation |
 | `UUID.bytes` | O(1) | O(1) | Get binary representation |

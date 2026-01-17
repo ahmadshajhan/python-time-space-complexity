@@ -6,8 +6,8 @@ The `webbrowser` module provides a browser control interface, allowing Python pr
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| `open()` | O(1) | O(1) | Launch browser |
-| Open URL | O(1) | O(1) | System call |
+| `open()` | O(1) | O(1) | Launch browser; async system call |
+| Open URL | O(1) | O(1) | System call; returns before page loads |
 
 ## Opening URLs
 

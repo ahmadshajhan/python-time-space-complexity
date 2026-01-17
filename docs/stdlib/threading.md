@@ -9,7 +9,7 @@ The `threading` module enables building multi-threaded applications using thread
 | `Thread()` | O(1) | O(1) | Create thread object |
 | `start()` | O(t) | O(s) | t = thread startup, s = stack |
 | `join()` | O(w) | O(1) | w = wait time |
-| Lock operations | O(1) | O(1) | Mutex acquire/release |
+| Lock operations | O(1) | O(1) | Mutex acquire/release; may block waiting for lock |
 
 ## Basic Threading
 

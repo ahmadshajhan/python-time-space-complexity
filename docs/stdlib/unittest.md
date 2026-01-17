@@ -54,8 +54,8 @@ class TestAssertions(unittest.TestCase):
         self.assertFalse(False)          # O(1)
     
     def test_membership(self):
-        self.assertIn(1, [1, 2, 3])      # O(n)
-        self.assertNotIn(4, [1, 2, 3])   # O(n)
+        self.assertIn(1, [1, 2, 3])      # O(n) for list; O(1) avg for set/dict
+        self.assertNotIn(4, [1, 2, 3])   # O(n) for list; O(1) avg for set/dict
     
     def test_types(self):
         self.assertIsInstance('text', str)  # O(1)

@@ -7,14 +7,14 @@ The `re` module provides regular expression matching operations.
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
 | `re.compile(pattern)` | O(n) | O(n) | n = pattern length |
-| `pattern.match(string)` | O(n*m)* | O(m) | n = pattern, m = string length |
-| `pattern.search(string)` | O(n*m)* | O(m) | Searches full string |
+| `pattern.match(string)` | O(m) typical, O(n*m) worst | O(m) | Worst case with backtracking |
+| `pattern.search(string)` | O(m) typical, O(n*m) worst | O(m) | Searches full string |
 | `pattern.findall(string)` | O(n*m) | O(k) | k = number of matches |
 | `pattern.finditer(string)` | O(n) per match | O(1) per match | Lazy iteration |
 | `pattern.sub(repl, string)` | O(n*m) | O(m) | n = pattern, m = string |
 | `pattern.split(string)` | O(n*m) | O(m) | n = pattern, m = string |
-| `re.match(pattern, string)` | O(n²) | O(m) | Compiles pattern each time |
-| `re.search(pattern, string)` | O(n²) | O(m) | Compiles pattern each time |
+| `re.match(pattern, string)` | O(n + m) | O(m) | Compiles + matches (cached after ~512 patterns) |
+| `re.search(pattern, string)` | O(n + m) | O(m) | Compiles + matches (cached after ~512 patterns) |
 
 *Note: Worst case for catastrophic backtracking; typical cases are much better.
 
@@ -22,7 +22,7 @@ The `re` module provides regular expression matching operations.
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| `re.match(pattern, s)` | O(n²) | O(n+m) | Pattern compiled, cached |
+| `re.match(pattern, s)` | O(n + m) | O(n+m) | Pattern compiled, cached up to ~512 |
 | `compiled = re.compile(p)` | O(n) | O(n) | Explicit compilation |
 | `compiled.match(s)` | O(n*m)* | O(m) | Uses cached pattern |
 

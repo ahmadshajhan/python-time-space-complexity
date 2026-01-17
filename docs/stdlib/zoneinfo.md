@@ -6,7 +6,7 @@ The `zoneinfo` module provides IANA time zone support for accurate timezone hand
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| `ZoneInfo()` | O(1) | O(n) | Load timezone data |
+| `ZoneInfo()` | O(1) | O(n) | Load timezone data; cached after first load |
 | Localize datetime | O(1) | O(1) | Apply timezone |
 
 ## Working with Time Zones

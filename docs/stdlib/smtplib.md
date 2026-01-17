@@ -6,7 +6,7 @@ The `smtplib` module provides a Simple Mail Transfer Protocol (SMTP) client for 
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| `SMTP()` | O(n) | O(n) | n = connection time |
+| `SMTP()` | O(1) + network | O(1) | Network latency dominates |
 | `sendmail()` | O(n) | O(n) | n = message size |
 | `send_message()` | O(n) | O(n) | n = message size |
 | `login()` | O(n) | O(n) | n = handshake |

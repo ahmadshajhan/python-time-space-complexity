@@ -6,9 +6,9 @@ The `turtle` module provides a beginner-friendly graphics library based on Tk, a
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| `forward()` / movement | O(1) | O(1) | Draw line segment |
+| `forward()` / movement | O(1) | O(1) | Draw line segment; Tk rendering overhead |
 | Draw shape | O(n) | O(n) | n = sides/segments |
-| Screen refresh | O(n) | O(n) | Render graphics |
+| Screen refresh | O(n) | O(n) | Render all graphics objects |
 
 ## Drawing with Turtle Graphics
 

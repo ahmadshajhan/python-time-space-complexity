@@ -10,7 +10,7 @@ The `secrets` module provides cryptographically strong random number generation 
 | `token_hex()` | O(n) | O(n) | n = number of bytes |
 | `token_urlsafe()` | O(n) | O(n) | n = number of bytes |
 | `choice()` | O(1) | O(1) | Select from sequence |
-| `randbelow()` | O(log k) | O(1) | k = upper bound |
+| `randbelow()` | O(1) | O(1) | Random int below k |
 
 ## Token Generation
 
@@ -72,10 +72,10 @@ selected = secrets.choice(choices)
 ```python
 import secrets
 
-# Random integer in range [0, k) - O(log k)
+# Random integer in range [0, k) - O(1)
 random_int = secrets.randbelow(100)
 
-# Inclusive range [a, b] - O(log k)
+# Inclusive range [a, b] - O(1)
 def randint(a, b):
     return a + secrets.randbelow(b - a + 1)
 

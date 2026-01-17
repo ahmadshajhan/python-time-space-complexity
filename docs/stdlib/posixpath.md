@@ -12,9 +12,9 @@ The `posixpath` module provides POSIX-compliant path operations. It's automatica
 | `basename(path)` | O(n) | O(n) | Get filename |
 | `abspath(path)` | O(n) | O(n) | Make absolute path |
 | `normpath(path)` | O(n) | O(n) | Normalize path |
-| `exists()` | O(1) | O(1) | Check path exists |
-| `isfile()` | O(1) | O(1) | Check if file |
-| `isdir()` | O(1) | O(1) | Check if directory |
+| `exists(path)` | O(n) | O(1) | Stat syscall; n = path length for resolution |
+| `isfile(path)` | O(n) | O(1) | Stat syscall |
+| `isdir(path)` | O(n) | O(1) | Stat syscall |
 
 ## Path Joining
 

@@ -6,9 +6,9 @@ The `warnings` module provides a framework for issuing and filtering warning mes
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| `warn()` | O(1) | O(1) | Per warning issued |
-| `simplefilter()` | O(1) | O(1) | Per filter added |
-| Filter matching | O(n) | O(1) | n = filters registered |
+| `warn()` | O(n) | O(1) | n = filters to check; includes stack inspection |
+| `simplefilter()` | O(1) | O(1) | Prepends to filter list |
+| Filter matching | O(n) | O(1) | n = filters; checked in order until match |
 
 ## Core Functions
 

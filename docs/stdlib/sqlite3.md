@@ -7,10 +7,10 @@ The `sqlite3` module provides a lightweight embedded SQL database interface for 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
 | `connect()` | O(1) | O(1) | Open database |
-| `execute()` | O(n) | O(n) | n = result rows |
-| SELECT | O(n log n) | O(n) | Query + sort |
-| INSERT | O(log n) | O(1) | n = total rows |
-| UPDATE/DELETE | O(n) | O(1) | n = matching rows |
+| `execute()` | O(n) | O(n) | n = result rows; varies by query |
+| SELECT | O(n) or O(log n) | O(n) | O(log n) with index, O(n) full scan |
+| INSERT | O(log n) | O(1) | B-tree insert |
+| UPDATE/DELETE | O(n) or O(log n) | O(1) | O(log n) with index on WHERE clause |
 
 ## Basic Usage
 
@@ -84,11 +84,11 @@ cursor = conn.cursor()
 cursor.execute('SELECT * FROM posts')
 all_posts = cursor.fetchall()  # O(n)
 
-# Select with WHERE - O(n log n)
+# Select with WHERE - O(log n) with index, O(n) without
 cursor.execute('SELECT * FROM posts WHERE id = ?', (1,))
 post = cursor.fetchone()  # O(1) first match
 
-# Select with ORDER - O(n log n)
+# Select with ORDER - O(n log n) for sorting
 cursor.execute('SELECT * FROM posts ORDER BY id DESC')
 rows = cursor.fetchall()  # O(n)
 

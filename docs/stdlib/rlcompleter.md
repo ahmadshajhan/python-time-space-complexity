@@ -6,8 +6,8 @@ The `rlcompleter` module provides command-line completion for the Python interac
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| `RLCompleter()` | O(n) | O(n) | n = namespace |
-| Completion | O(n) | O(n) | Match suggestions |
+| `Completer()` | O(1) | O(1) | Create completer |
+| `complete(text, state)` | O(n) | O(k) | n = namespace size, k = matches |
 
 ## Readline Completion
 
@@ -17,8 +17,8 @@ The `rlcompleter` module provides command-line completion for the Python interac
 import readline
 import rlcompleter
 
-# Create completer - O(n)
-completer = rlcompleter.RLCompleter()
+# Create completer - O(1)
+completer = rlcompleter.Completer()
 
 # Install completer - O(1)
 readline.set_completer(completer.complete)

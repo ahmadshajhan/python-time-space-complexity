@@ -194,9 +194,9 @@ with tarfile.open('archive.tar', 'w') as tar:
 ```python
 import tarfile
 
-# GZIP compression: O(m log m) time
+# GZIP compression: O(m) time with constant factor for compression
 with tarfile.open('archive.tar.gz', 'w:gz') as tar:
-    tar.add('file.txt')  # O(m log m) with compression
+    tar.add('file.txt')  # O(m) with compression overhead
 ```
 
 ### BZIP2 Compression (tar.bz2)
@@ -204,9 +204,9 @@ with tarfile.open('archive.tar.gz', 'w:gz') as tar:
 ```python
 import tarfile
 
-# BZIP2: Better compression, slower
+# BZIP2: Better compression, slower (block sorting)
 with tarfile.open('archive.tar.bz2', 'w:bz2') as tar:
-    tar.add('file.txt')  # O(m log m), better ratio than gzip
+    tar.add('file.txt')  # O(m) with higher constant factor than gzip
 ```
 
 ### XZ Compression (tar.xz)
@@ -214,9 +214,9 @@ with tarfile.open('archive.tar.bz2', 'w:bz2') as tar:
 ```python
 import tarfile
 
-# XZ: Best compression ratio
+# XZ: Best compression ratio, slowest
 with tarfile.open('archive.tar.xz', 'w:xz') as tar:
-    tar.add('file.txt')  # O(m log m), best compression
+    tar.add('file.txt')  # O(m) with highest constant factor
 ```
 
 ## Common Patterns
@@ -256,7 +256,7 @@ import os
 # Add entire directory: O(sum of all file sizes)
 with tarfile.open('backup.tar.gz', 'w:gz') as tar:
     tar.add('my_dir')  # O(m) for all files in directory
-                       # Plus O(m log m) for compression
+                       # Compression adds constant factor overhead
 ```
 
 ### Streaming Large Archives

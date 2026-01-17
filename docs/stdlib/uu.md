@@ -6,8 +6,8 @@ The `uu` module provides uuencoding/uudecoding for transmitting binary data over
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| `encode()` | O(n) | O(n) | n = input bytes |
-| `decode()` | O(n) | O(n) | n = encoded bytes |
+| `encode()` | O(n) | O(n) | n = input bytes; deprecated, use base64 |
+| `decode()` | O(n) | O(n) | n = encoded bytes; deprecated, use base64 |
 
 ## Encoding and Decoding
 

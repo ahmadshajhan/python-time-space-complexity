@@ -223,14 +223,14 @@ with gzip.open('file.gz', 'rb') as f:
 ```python
 import gzip
 
-# Simple one-shot: O(n log n)
+# Simple one-shot: O(n)
 with gzip.open('output.gz', 'wb') as f:
-    f.write(large_data)  # O(n log n)
+    f.write(large_data)  # O(n) - DEFLATE is linear
 
-# Streaming write: O(n log n), O(k) memory
+# Streaming write: O(n), O(k) memory
 with gzip.open('output.gz', 'wb') as f:
     for chunk in data_chunks:
-        f.write(chunk)  # O(sum log sum) total
+        f.write(chunk)  # O(n) total
 ```
 
 ### Compress String to Bytes
@@ -238,9 +238,9 @@ with gzip.open('output.gz', 'wb') as f:
 ```python
 import gzip
 
-# String → compressed bytes: O(n log n)
+# String → compressed bytes: O(n)
 text = "Hello world" * 100000
-compressed = gzip.compress(text.encode('utf-8'))  # O(n log n)
+compressed = gzip.compress(text.encode('utf-8'))  # O(n) - DEFLATE is linear
 
 # Decompress back: O(m)
 decompressed = gzip.decompress(compressed)  # O(m)

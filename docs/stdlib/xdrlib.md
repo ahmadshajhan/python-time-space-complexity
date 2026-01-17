@@ -6,7 +6,7 @@ The `xdrlib` module provides tools for XDR (External Data Representation) serial
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| `Packer()` | O(1) | O(1) | Create packer |
+| `Packer()` | O(1) | O(1) | Create packer; deprecated in 3.11+ |
 | Pack data | O(n) | O(n) | n = data size |
 | Unpack data | O(n) | O(n) | n = buffer size |
 

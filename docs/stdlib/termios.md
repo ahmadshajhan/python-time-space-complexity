@@ -6,8 +6,8 @@ The `termios` module provides POSIX-style terminal I/O control on Unix systems, 
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| `tcgetattr()` | O(1) | O(1) | Get settings |
-| `tcsetattr()` | O(1) | O(1) | Set settings |
+| `tcgetattr()` | O(1) | O(1) | Get terminal settings; system call |
+| `tcsetattr()` | O(1) | O(1) | Set terminal settings; may block on TCSADRAIN |
 
 ## Terminal Configuration
 

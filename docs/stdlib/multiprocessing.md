@@ -69,17 +69,17 @@ from multiprocessing import Queue
 # Create queue: O(1)
 q = Queue()  # O(1)
 
-# Put item: O(1) amortized
-# Adds to internal buffer
-q.put("item")  # O(1)
+# Put item: O(n) for pickling where n = item size
+# Item is serialized before sending
+q.put("item")  # O(n) for serialization
 
-# Get item: O(1) amortized
-# Removes from internal buffer
-item = q.get()  # O(1)
+# Get item: O(n) for unpickling where n = item size
+# Item is deserialized after receiving
+item = q.get()  # O(n) for deserialization
 
-# Block until available: O(1) operation
+# Block until available: O(n) operation for unpickling
 # Time depends on when item arrives
-item = q.get(timeout=5)  # O(1) operation
+item = q.get(timeout=5)  # O(n) for deserialization
 ```
 
 ### Space Complexity

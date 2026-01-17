@@ -9,7 +9,7 @@ The `selectors` module provides a high-level interface for multiplexed I/O, allo
 | `DefaultSelector()` | O(1) | O(1) | Create selector |
 | `selector.register(fileobj)` | O(1) | O(1) | Register socket/file |
 | `selector.unregister(fileobj)` | O(1) | O(1) | Unregister |
-| `selector.select(timeout)` | O(n) or O(k) | O(k) | O(n) for select, O(k) for epoll/kqueue; k = ready |
+| `selector.select(timeout)` | O(n) or O(k) | O(k) | select: O(n), epoll/kqueue: O(k); k = ready fds |
 | `selector.modify(fileobj)` | O(1) | O(1) | Change registration |
 | `selector.get_map()` | O(1) | O(n) | Get all registrations |
 
@@ -74,9 +74,9 @@ sel.register(sock, selectors.EVENT_READ)  # O(1) space
 
 ## Selecting with Timeout
 
-### Time Complexity: O(n) for epoll/kqueue, O(n) for select
+### Time Complexity: O(k) for epoll/kqueue, O(n) for select
 
-Where n = number of registered file objects. Note: epoll/kqueue return only ready events in O(k) where k = ready file objects, but internal kernel operations are O(n) for setup.
+Where n = number of registered file objects, k = number of ready file objects. Note: epoll/kqueue return only ready events in O(k), while select must scan all n registered fds.
 
 ```python
 import selectors
@@ -215,8 +215,8 @@ def main():
     sel.register(server, selectors.EVENT_READ, data=None)  # O(1)
     
     while True:
-        # Wait for I/O: O(n log n) where n = connections
-        events = sel.select()  # O(n log n)
+        # Wait for I/O: O(k) for epoll/kqueue, O(n) for select
+        events = sel.select()  # O(k) ready fds typically
         
         for key, mask in events:  # O(k) where k = ready
             if key.data is None:

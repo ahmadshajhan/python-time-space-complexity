@@ -6,9 +6,9 @@ The `xmlrpc` module provides tools for XML-RPC (Remote Procedure Call) clients a
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| `ServerProxy()` | O(1) | O(1) | Create client |
-| RPC call | O(n) | O(n) | n = request/response size |
-| Server dispatch | O(1) | O(1) | Route to handler |
+| `ServerProxy()` | O(1) | O(1) | Create client connection |
+| RPC call | O(n) | O(n) | n = request/response size; network-bound |
+| Server dispatch | O(1) | O(1) | Route to handler; method lookup |
 
 ## XML-RPC Client and Server
 

@@ -6,7 +6,7 @@ The `poplib` module provides POP3 client functionality for retrieving emails fro
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| `connect()` | O(1) | O(1) | Network connection |
+| Connect | O(1) + network | O(1) | Network latency dominates |
 | List messages | O(n) | O(n) | n = messages |
 | Retrieve | O(n) | O(n) | n = message size |
 
