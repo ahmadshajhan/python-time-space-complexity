@@ -111,6 +111,11 @@ nav:
     - Staticmethod: builtins/staticmethod.md
     - Property: builtins/property.md
     - Super: builtins/super.md
+    - None: builtins/none.md
+    - True: builtins/true.md
+    - False: builtins/false.md
+    - NotImplemented: builtins/notimplemented.md
+    - Ellipsis: builtins/ellipsis.md
   - Standard Library:
     - Overview: stdlib/index.md
     - ABC: stdlib/abc.md
