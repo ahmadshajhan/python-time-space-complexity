@@ -88,9 +88,11 @@ nav:
     - Bisect: stdlib/bisect.md
     - Collections: stdlib/collections.md
     - Codecs: stdlib/codecs.md
+    - Configparser: stdlib/configparser.md
     - Concurrent.futures: stdlib/concurrent_futures.md
     - Contextvars: stdlib/contextvars.md
     - Contextlib: stdlib/contextlib.md
+    - Ctypes: stdlib/ctypes.md
     - Copy: stdlib/copy.md
     - Counter: stdlib/counter.md
     - Calendar: stdlib/calendar.md
@@ -123,6 +125,7 @@ nav:
     - Importlib: stdlib/importlib.md
     - Itertools: stdlib/itertools.md
     - JSON: stdlib/json.md
+    - Locale: stdlib/locale.md
     - Logging: stdlib/logging.md
     - Lzma: stdlib/lzma.md
     - Multiprocessing: stdlib/multiprocessing.md
@@ -157,6 +160,7 @@ nav:
     - Sys: stdlib/sys.md
     - Tarfile: stdlib/tarfile.md
     - Tempfile: stdlib/tempfile.md
+    - Tokenize: stdlib/tokenize.md
     - Traceback: stdlib/traceback.md
     - Textwrap: stdlib/textwrap.md
     - Threading: stdlib/threading.md
