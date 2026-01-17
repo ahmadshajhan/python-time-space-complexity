@@ -256,31 +256,22 @@
   },
   "stdlib": {
     "total": 188,
-    "documented": 187,
-    "coverage_percent": 99.5,
+    "documented": 196,
+    "coverage_percent": 104.3,
     "missing": [
       "audit_documentation",
       "cProfile",
-      "cgi",
-      "cgitb",
       "generate_docs",
-      "imp",
       "pip",
       "pkg_resources",
-      "plistlib",
-      "secrets",
       "setuptools",
-      "sndhdr",
-      "tomllib",
-      "tracemalloc",
       "turtledemo",
-      "validate_data",
-      "warnings"
+      "validate_data"
     ]
   },
   "summary": {
     "total_items": 337,
-    "total_documented": 268,
-    "overall_coverage_percent": 79.5
+    "total_documented": 277,
+    "overall_coverage_percent": 82.2
   }
 }

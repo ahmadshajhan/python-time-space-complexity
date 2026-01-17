@@ -146,6 +146,8 @@ nav:
     - Contextlib: stdlib/contextlib.md
     - Copyreg: stdlib/copyreg.md
     - CProfile: stdlib/cprofile.md
+    - Cgi: stdlib/cgi.md
+    - Cgitb: stdlib/cgitb.md
     - Crypt: stdlib/crypt.md
     - Ctypes: stdlib/ctypes.md
     - Copy: stdlib/copy.md
@@ -180,6 +182,7 @@ nav:
     - Getpass: stdlib/getpass.md
     - Gettext: stdlib/gettext.md
     - Glob: stdlib/glob.md
+    - Imp: stdlib/imp.md
     - Graphlib: stdlib/graphlib.md
     - Html: stdlib/html.md
     - Http: stdlib/http.md
@@ -216,6 +219,7 @@ nav:
     - Pickle: stdlib/pickle.md
     - Pickletools: stdlib/pickletools.md
     - Pipes: stdlib/pipes.md
+    - Plistlib: stdlib/plistlib.md
     - Pkgutil: stdlib/pkgutil.md
     - Poplib: stdlib/poplib.md
     - Profile: stdlib/profile.md
@@ -252,9 +256,11 @@ nav:
     - Site: stdlib/site.md
     - Socket: stdlib/socket.md
     - Socketserver: stdlib/socketserver.md
+    - Secrets: stdlib/secrets.md
     - Shelve: stdlib/shelve.md
     - Smtpd: stdlib/smtpd.md
     - Smtplib: stdlib/smtplib.md
+    - Sndhdr: stdlib/sndhdr.md
     - Sre_compile: stdlib/sre_compile.md
     - Sre_constants: stdlib/sre_constants.md
     - Sre_parse: stdlib/sre_parse.md
@@ -281,6 +287,8 @@ nav:
     - Traceback: stdlib/traceback.md
     - Textwrap: stdlib/textwrap.md
     - Threading: stdlib/threading.md
+    - Tomllib: stdlib/tomllib.md
+    - Tracemalloc: stdlib/tracemalloc.md
     - This: stdlib/this.md
     - Tkinter: stdlib/tkinter.md
     - Turtle: stdlib/turtle.md
@@ -293,6 +301,7 @@ nav:
     - Urllib: stdlib/urllib.md
     - Uu: stdlib/uu.md
     - Venv: stdlib/venv.md
+    - Warnings: stdlib/warnings.md
     - Wave: stdlib/wave.md
     - Weakref: stdlib/weakref.md
     - Webbrowser: stdlib/webbrowser.md
