@@ -125,6 +125,7 @@ nav:
     - Random: stdlib/random.md
     - Regular Expressions: stdlib/re.md
     - Selectors: stdlib/selectors.md
+    - Signal: stdlib/signal.md
     - Socket: stdlib/socket.md
     - Shelve: stdlib/shelve.md
     - Sqlite3: stdlib/sqlite3.md
