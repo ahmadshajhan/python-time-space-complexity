@@ -129,7 +129,7 @@ All core exceptions documented in comprehensive guide:
 - ✅ `MemoryError` - Out of memory
 - ✅ Plus 20+ more in exception hierarchy
 
-### ❌ Remaining Built-ins (83 - 55.7% missing)
+### ❌ Remaining Built-ins (68 - 45.6% missing)
 
 **Type Conversion Functions (0/7 - COMPLETE)**
 - ✅ `bool()` - Convert to boolean
@@ -140,15 +140,15 @@ All core exceptions documented in comprehensive guide:
 - ✅ `list()` - Create/convert to list
 - ✅ `dict()` - Create/convert to dictionary
 
-**Container & Iteration Functions (1/8 - 87.5% COMPLETE)**
+**Container & Iteration Functions (7/7 - COMPLETE)**
 - ✅ `set()` - Create set
 - ✅ `frozenset()` - Create immutable set
 - ✅ `tuple()` - Create/convert to tuple
 - ✅ `memoryview()` - Create memory view
 - ✅ `bytearray()` - Mutable bytes
 - ✅ `complex()` - Create complex number
-- [ ] `range()` - Already documented
 - ✅ `object()` - Base class object
+- (range() - Already documented in Built-in Types)
 
 **Object Introspection (7/7 - COMPLETE)**
 - ✅ `dir()` - List attributes/names
