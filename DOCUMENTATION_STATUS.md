@@ -266,22 +266,20 @@ All file and I/O modules now documented:
 - ✅ `shutil` - High-level file operations
 - ✅ `tempfile` - Temporary files
 
-### ❌ Other Stdlib Modules (118)
+### ❌ Other Stdlib Modules (100)
 
-Remaining standard library modules:
+Remaining standard library modules to document:
 
-**Utilities & System (20)**
+**Utilities & System (18)**
 - [ ] `ast` - Abstract syntax trees
 - [ ] `dis` - Disassembler for bytecode
 - [ ] `doctest` - Testing via docstrings
 - [ ] `getopt` - Command-line option parsing
-- [ ] `getpass` - Secure password input
 - [ ] `gettext` - Internationalization
 - [ ] `keyword` - Python keywords
 - [ ] `linecache` - Cache module source
 - [ ] `optparse` - Option parsing (deprecated)
 - [ ] `pdb` - Python debugger
-- [ ] `platform` - Platform information
 - [ ] `profile` / `cProfile` - Performance profiling
 - [ ] `pstats` - Profile statistics
 - [ ] `pydoc` - Documentation viewer
@@ -290,56 +288,50 @@ Remaining standard library modules:
 - [ ] `stat` - File status constants
 - [ ] `sysconfig` - System configuration
 - [ ] `trace` - Trace execution
+- [ ] `wsgiref` - WSGI utilities
 
-**String & Text Processing (6)**
+**String & Text Processing (4)**
 - [ ] `stringprep` - Unicode preparation
-- [ ] `shlex` - Shell-like syntax analysis
 - [ ] `reprlib` - Alternative repr()
 - [ ] `quopri` - Quoted-printable encoding
 - [ ] `uu` - Uuencoding
-- [ ] `html` - HTML parsing/escaping
 
-**Data Serialization (5)**
-- [ ] `email` - Email message handling
+**Data Serialization (3)**
 - [ ] `mailbox` - Mailbox formats
 - [ ] `mailcap` - Mailcap file handling
-- [ ] `mimetypes` - MIME type mappings
 - [ ] `pickletools` - Pickle disassembler
 
-**Compression & Encoding (2)**
+**Audio & Media (3)**
 - [ ] `aifc` - AIFF/AIFC audio files
 - [ ] `sunau` / `sndhdr` - Audio file handling
 - [ ] `wave` - WAV audio files
 
-**Network & Internet (12)**
-- [ ] `email` - Email handling
+**Network & Internet (11)**
 - [ ] `ftplib` - FTP client
 - [ ] `http` - HTTP protocol
 - [ ] `imaplib` - IMAP4 protocol
 - [ ] `nntplib` - NNTP protocol
 - [ ] `poplib` - POP3 protocol
-- [ ] `smtplib` - SMTP client
 - [ ] `smtpd` - SMTP server
 - [ ] `socketserver` - Socket server
 - [ ] `ssl` - SSL/TLS support
 - [ ] `telnetlib` - Telnet client
 - [ ] `xmlrpc` - XML-RPC protocol
+- [ ] `json.tool` - JSON command-line tool
 
-**File & Path Operations (8)**
+**File & Path Operations (7)**
 - [ ] `chunk` - IFF chunk reading
 - [ ] `imghdr` - Image file type detection
-- [ ] `mailcap` - Mailcap file handling
-- [ ] `mimetypes` - MIME type mapping
 - [ ] `nturl2path` - URL to path conversion
 - [ ] `pipes` - Shell pipeline interface
 - [ ] `pty` - Pseudo-terminal
 - [ ] `tty` - Terminal control
+- [ ] `zipimport` - Zip import support
 
-**Parsing & Compilation (11)**
+**Parsing & Compilation (12)**
 - [ ] `codeop` - Compile Python source
 - [ ] `code` - Code evaluation
-- [ ] `compile` / `py_compile` - Compilation
-- [ ] `importlib` - Import machinery
+- [ ] `py_compile` - Compilation
 - [ ] `lib2to3` - Python 2 to 3 conversion
 - [ ] `modulefinder` - Module dependencies
 - [ ] `opcode` - Python opcodes
@@ -348,12 +340,9 @@ Remaining standard library modules:
 - [ ] `sre_constants` - Regex constants
 - [ ] `sre_parse` - Regex parsing
 - [ ] `symtable` - Symbol table
-- [ ] `token` / `tokenize` - Tokenization
+- [ ] `token` - Token types
 
-**Type & Number Operations (4)**
-- [ ] `colorsys` - Color system conversions
-- [ ] `numbers` - Numeric abstract base classes
-- [ ] `weakref` - Weak references
+**Number Operations (1)**
 - [ ] `zoneinfo` - IANA time zone database
 
 **GUI & Interface (4)**
@@ -362,16 +351,15 @@ Remaining standard library modules:
 - [ ] `tkinter` - Tk GUI toolkit
 - [ ] `turtle` / `turtledemo` - Turtle graphics
 
-**Build & Installation (7)**
+**Build & Installation (6)**
 - [ ] `distutils` - Distribution utilities
 - [ ] `ensurepip` - Pip installation
 - [ ] `pip` / `setuptools` - Package management
 - [ ] `pkg_resources` - Package resources
-- [ ] `pkgutil` - Package utilities
 - [ ] `venv` - Virtual environments
 - [ ] `zipapp` - ZIP application creation
 
-**Development & Meta (13)**
+**Development & Meta (10)**
 - [ ] `antigravity` - Easter egg
 - [ ] `bdb` - Debugger framework
 - [ ] `cmd` - Interactive command interfaces
@@ -380,33 +368,24 @@ Remaining standard library modules:
 - [ ] `rlcompleter` - Readline completion
 - [ ] `tabnanny` - Python indentation checker
 - [ ] `this` - Zen of Python
-- [ ] `traceback` - Exception formatting
-- [ ] `tracemalloc` - Memory allocation tracking
-- [ ] `webbrowser` - Web browser controller
-- [ ] `wsgiref` - WSGI utilities
-- [ ] `zipimport` - Zip import support
+- [ ] `wsgiref` - WSGI utilities (alternate location)
+- [ ] `pydoc` - Documentation system (partial)
 
 **System & Locale (6)**
-- [ ] `locale` - Localization
 - [ ] `netrc` - Netrc file handling
 - [ ] `site` - Site-specific configuration
 - [ ] `spwd` / `crypt` - User password database (Unix)
 - [ ] `grp` / `pwd` - User/group database (Unix)
 - [ ] `fcntl` - File control (Unix)
+- [ ] `termios` - POSIX terminal I/O control
 
-**Internal & Testing (7)**
-- [ ] `audit_documentation` - Internal script
+**Internal & Testing (6)**
 - [ ] `concurrent` - Concurrency (parent package)
 - [ ] `copyreg` - Copy registration
-- [ ] `ctypes` - C-compatible data types
 - [ ] `encodings` - Built-in encodings
-- [ ] `generate_docs` - Internal script
-- [ ] `validate_data` - Internal script
 - [ ] `xdrlib` - XDR serialization (deprecated)
-- [ ] `xml` / `html` - XML/HTML parsing
-
-**Not in standard path (2)**
-- [ ] `pydoc_data` - Pydoc data files
+- [ ] `xml` - XML parsing base
+- [ ] `pydoc_data` - Pydoc data files (duplicate)
 
 ---
 
