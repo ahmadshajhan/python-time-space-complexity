@@ -74,6 +74,18 @@ nav:
     - Input: builtins/input.md
     - Id: builtins/id.md
     - Globals: builtins/globals.md
+    - Locals: builtins/locals.md
+    - Print: builtins/print.md
+    - Help: builtins/help.md
+    - Repr: builtins/repr.md
+    - Ascii: builtins/ascii.md
+    - Eval: builtins/eval.md
+    - Exec: builtins/exec.md
+    - Compile: builtins/compile.md
+    - Hex: builtins/hex.md
+    - Bin: builtins/bin.md
+    - Oct: builtins/oct.md
+    - Callable: builtins/callable.md
     - Exceptions: builtins/exceptions.md
   - Standard Library:
     - Overview: stdlib/index.md
