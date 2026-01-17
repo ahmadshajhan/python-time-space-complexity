@@ -2,8 +2,8 @@
   "timestamp": null,
   "builtins": {
     "total": 149,
-    "documented": 52,
-    "coverage_percent": 34.9,
+    "documented": 72,
+    "coverage_percent": 48.3,
     "missing": [
       "ArithmeticError",
       "AssertionError",
@@ -87,22 +87,16 @@
       "complex",
       "copyright",
       "credits",
-      "delattr",
-      "dir",
       "exit",
-      "getattr",
-      "hasattr",
       "license",
       "locals",
       "memoryview",
       "object",
       "property",
       "quit",
-      "setattr",
       "staticmethod",
       "super",
-      "type",
-      "vars"
+      "type"
     ],
     "by_category": {
       "exceptions": [
@@ -290,7 +284,7 @@
   },
   "summary": {
     "total_items": 337,
-    "total_documented": 239,
-    "overall_coverage_percent": 70.9
+    "total_documented": 259,
+    "overall_coverage_percent": 76.9
   }
 }

@@ -101,6 +101,12 @@ nav:
     - Memoryview: builtins/memoryview_func.md
     - Object: builtins/object_func.md
     - Exceptions: builtins/exceptions.md
+    - Dir: builtins/dir.md
+    - Getattr: builtins/getattr.md
+    - Hasattr: builtins/hasattr.md
+    - Setattr: builtins/setattr.md
+    - Delattr: builtins/delattr.md
+    - Vars: builtins/vars.md
   - Standard Library:
     - Overview: stdlib/index.md
     - ABC: stdlib/abc.md
