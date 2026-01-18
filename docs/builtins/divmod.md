@@ -281,7 +281,7 @@ for i in range(large_count):
 - **[// operator](int.md)** - Floor division (quotient only)
 - **[% operator](int.md)** - Modulo (remainder only)
 - **[pow(x, y, z)](pow.md)** - Modular exponentiation
-- **[math.fmod()](../stdlib/math.md)** - Floating point remainder
+- **math.fmod()** - Floating point remainder
 
 ## Mathematical Note
 

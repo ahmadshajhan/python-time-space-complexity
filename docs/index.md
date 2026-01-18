@@ -54,7 +54,7 @@ It's also **fully open source**—anyone can review the content, [file issues](h
 
 ## Contributing
 
-Found an inaccuracy or want to add content? See our [Contributing Guidelines](../CONTRIBUTING.md).
+Found an inaccuracy or want to add content? See our [Contributing Guidelines](https://github.com/heikkitoivonen/python-time-space-complexity/blob/main/CONTRIBUTING.md).
 
 ## Sources
 

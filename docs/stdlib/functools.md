@@ -64,7 +64,9 @@ second_time = time.time() - start
 # second_time << first_time (cache hit)
 ```
 
-## Reduce Operation
+## reduce
+
+### Reduce Operation
 
 ```python
 from functools import reduce

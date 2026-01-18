@@ -230,7 +230,7 @@ result = list(itertools.islice(data, 100, 200))  # O(100) when consumed
 ## Related Functions
 
 - **[Indexing and slicing syntax](list.md)** - Direct slicing with `[]`
-- **[itertools.islice()](itertools.md)** - Lazy slicing for iterators
+- **[itertools.islice()](../stdlib/itertools.md)** - Lazy slicing for iterators
 - **[range()](range.md)** - Generate sequences to slice
 
 ## Best Practices

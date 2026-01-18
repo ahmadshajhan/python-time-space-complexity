@@ -2,7 +2,9 @@
 
 The `collections` module provides specialized data structures optimized for specific use cases.
 
-## Deque (Double-Ended Queue)
+## deque
+
+### Deque (Double-Ended Queue)
 
 ```python
 from collections import deque

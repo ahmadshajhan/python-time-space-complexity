@@ -140,6 +140,6 @@ filtered = [x for x in large_list if x not in exclusions_set]
 
 ## Related Types
 
-- **[Frozenset](builtins.md)** - Immutable set
+- **[Frozenset](index.md)** - Immutable set
 - **[Dict](dict.md)** - Mutable mapping
 - **[Deque](../stdlib/collections.md#deque)** - Ordered collection

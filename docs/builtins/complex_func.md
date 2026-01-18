@@ -371,7 +371,7 @@ phase = cmath.phase(c)    # atan2(4, 3)
 
 - **[abs()](abs.md)** - Magnitude of complex number
 - **[cmath](https://docs.python.org/3/library/cmath.html)** - Complex math functions
-- **[complex.conjugate()](builtins/index.md)** - Complex conjugate
+- **[complex.conjugate()](index.md)** - Complex conjugate
 
 ## Version Notes
 

@@ -369,7 +369,7 @@ deep = copy.deepcopy(outer)  # Doesn't affect original
 ## Related Functions
 
 - **[list()](list_func.md)** - Convert to list
-- **[set()](builtins/index.md)** - Convert to set
+- **[set()](index.md)** - Convert to set
 - **[zip()](zip.md)** - Pair up iterables
 - **[dict.fromkeys()](dict.md)** - Create dict with default values
 

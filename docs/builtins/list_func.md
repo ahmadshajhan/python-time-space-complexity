@@ -334,8 +334,8 @@ for item in range(10**9):  # Iterates without storing
 
 ## Related Functions
 
-- **[tuple()](builtins/index.md)** - Convert to tuple
-- **[set()](builtins/index.md)** - Convert to set
+- **[tuple()](index.md)** - Convert to tuple
+- **[set()](index.md)** - Convert to set
 - **[dict()](dict_func.md)** - Convert to dictionary
 - **[range()](range.md)** - Generate numbers (lazy)
 

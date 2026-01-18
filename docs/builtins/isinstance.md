@@ -323,9 +323,9 @@ if isinstance(lst, list):  # O(1)
 
 ## Related Functions
 
-- **[issubclass()](builtins/issubclass.md)** - Check class inheritance (O(1))
-- **[type()](builtins/type.md)** - Get exact type (O(1))
-- **[callable()](builtins/callable.md)** - Check if callable (O(1))
+- **[issubclass()](issubclass.md)** - Check class inheritance (O(1))
+- **[type()](type.md)** - Get exact type (O(1))
+- **[callable()](callable.md)** - Check if callable (O(1))
 
 ## Best Practices
 

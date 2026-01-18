@@ -363,7 +363,7 @@ type(MyClass)   # <class 'type'>
 
 ## Related Functions
 
-- **[type()](type.md)** - Get or create types
+- **type()** - Get or create types
 - **[isinstance()](isinstance.md)** - Check instance type
 - **[id()](id.md)** - Get object identity
 

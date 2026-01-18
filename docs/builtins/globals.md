@@ -379,7 +379,7 @@ def example():
 
 - **[vars()](vars.md)** - Similar to locals() but for objects
 - **[dir()](dir.md)** - List names in namespace
-- **[inspect.signature()](inspect.md)** - Get function signature
+- **inspect.signature()** - Get function signature
 
 ## Best Practices
 

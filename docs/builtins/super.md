@@ -676,7 +676,7 @@ class Child(Parent):
 ## Related Functions
 
 - **[classmethod()](classmethod.md)** - Decorator for class methods
-- **[type()](type.md)** - Get object type
+- **type()** - Get object type
 - **[isinstance()](isinstance.md)** - Check instance type
 - **[issubclass()](issubclass.md)** - Check class hierarchy
 - **[__mro__](https://docs.python.org/3/library/stdtypes.html#class.__mro__)** - Method resolution order

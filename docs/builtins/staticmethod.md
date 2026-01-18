@@ -622,7 +622,7 @@ def mean(data):
 
 - **[classmethod()](classmethod.md)** - Decorator for class methods
 - **[property()](property.md)** - Decorator for properties
-- **[type()](type.md)** - Get object type
+- **type()** - Get object type
 - **[callable()](callable.md)** - Check if callable
 
 ## Version Notes

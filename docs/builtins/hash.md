@@ -379,9 +379,9 @@ s = {frozenset([3, 4])}  # Works
 
 ## Related Functions
 
-- **[id()](builtins/id.md)** - Object identity (different from hash)
-- **[set()](builtins/set.md)** - Uses hash for membership
-- **[dict](builtins/dict.md)** - Uses hash for key lookup
+- **[id()](id.md)** - Object identity (different from hash)
+- **[set()](set.md)** - Uses hash for membership
+- **[dict](dict.md)** - Uses hash for key lookup
 
 ## Best Practices
 

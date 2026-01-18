@@ -357,7 +357,7 @@ print(id(false1) == id(false2))  # Always True
 
 - **[hash()](hash.md)** - Different from ID; used for dict/set
 - **[isinstance()](isinstance.md)** - Check type, not identity
-- **[type()](type.md)** - Get object type
+- **type()** - Get object type
 
 ## Best Practices
 

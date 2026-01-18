@@ -298,7 +298,7 @@ lst = list(range(1000000))  # O(n) memory!
 ## Related Functions
 
 - **[iter()](iter.md)** - Create iterator from iterable
-- **[for loop](control_flow.md)** - Iterate using `next()` internally
+- **for loop** - Iterate using `next()` internally
 - **[zip()](zip.md)** - Combine multiple iterators
 - **[enumerate()](enumerate.md)** - Iterator with index
 

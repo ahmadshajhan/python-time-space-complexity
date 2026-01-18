@@ -312,5 +312,5 @@ sys.exit(0)  # Should print why before exiting
 ## Related Modules
 
 - [sys Module](../stdlib/sys.md) - System exit and status
-- [atexit Module](../stdlib/atexit.md) - Register exit handlers
+- atexit Module - Register exit handlers
 - [signal Module](../stdlib/signal.md) - Signal handling

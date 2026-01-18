@@ -346,7 +346,7 @@ help(func)  # Shows custom docstring
 
 - **[dir()](dir.md)** - List object attributes
 - **[callable()](callable.md)** - Check if object is callable
-- **[type()](type.md)** - Get object type
+- **type()** - Get object type
 - **[inspect](https://docs.python.org/3/library/inspect.html)** - Advanced introspection
 
 ## Version Notes

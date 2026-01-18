@@ -333,7 +333,7 @@ text = b.decode("utf-8")
 ## Related Functions
 
 - **[str()](str_func.md)** - Convert to string
-- **[bytearray()](builtins/index.md)** - Mutable bytes
+- **[bytearray()](index.md)** - Mutable bytes
 - **[encode()](str.md)** - String method to bytes
 - **[decode()](bytes.md)** - Bytes method to string
 

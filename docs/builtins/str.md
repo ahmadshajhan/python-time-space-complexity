@@ -178,6 +178,6 @@ if pattern.match(s):  # Reuse compiled pattern
 
 ## Related Types
 
-- **[Bytes](builtins.md#bytes)** - Immutable byte sequence
-- **[Bytearray](builtins.md#bytearray)** - Mutable byte sequence
+- **[Bytes](bytes_func.md)** - Immutable byte sequence
+- **[Bytearray](index.md#bytearray)** - Mutable byte sequence
 - **[Regex (re)](../stdlib/re.md)** - Pattern matching

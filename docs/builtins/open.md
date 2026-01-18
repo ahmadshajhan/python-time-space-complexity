@@ -377,7 +377,7 @@ except IOError as e:
 ## Related Functions
 
 - **[pathlib.Path.open()](../stdlib/pathlib.md)** - Modern path-based file opening
-- **[with statement](builtins/with.md)** - Context manager for safe resource handling
+- **with statement** - Context manager for safe resource handling
 - **[io module](../stdlib/io.md)** - Low-level I/O operations
 
 ## Best Practices

@@ -361,8 +361,8 @@ formatted = f"{value}"  # "(3.14+2.71j)" - O(12)
 
 - **[str.format()](str.md)** - String format() method
 - **[f-strings](str.md)** - Formatted string literals
-- **[repr()](builtins/repr.md)** - String representation
-- **[str()](builtins/str.md)** - Convert to string
+- **[repr()](repr.md)** - String representation
+- **[str()](str.md)** - Convert to string
 
 ## Best Practices
 

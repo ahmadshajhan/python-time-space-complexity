@@ -190,7 +190,7 @@ for i in range(1000000):
 ## Related Types
 
 - **[Int](int.md)** - Arbitrary precision integers
-- **[Complex](complex.md)** - Complex floating-point numbers
+- **Complex** - Complex floating-point numbers
 - **[Decimal](../stdlib/decimal.md)** - Arbitrary precision decimal
 - **[Fraction](../stdlib/fractions.md)** - Rational numbers
 

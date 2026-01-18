@@ -358,7 +358,7 @@ exec("x = 1", big_scope)  # Must keep scope in memory
 
 - **[eval()](eval.md)** - Evaluate Python expressions
 - **[compile()](compile.md)** - Compile code objects
-- **[__import__()](builtins/index.md)** - Import modules dynamically
+- **[__import__()](index.md)** - Import modules dynamically
 
 ## Version Notes
 

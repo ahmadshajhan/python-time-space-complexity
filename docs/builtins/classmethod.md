@@ -609,7 +609,7 @@ obj1 = Child.from_classmethod()  # Works correctly
 
 - **[staticmethod()](staticmethod.md)** - Decorator for static methods
 - **[property()](property.md)** - Decorator for properties
-- **[type()](type.md)** - Get object type
+- **type()** - Get object type
 - **[super()](super.md)** - Call parent class method
 - **[isinstance()](isinstance.md)** - Check instance type
 
