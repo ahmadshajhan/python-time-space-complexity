@@ -382,7 +382,7 @@ threads = [
 ## Related Modules
 
 - **[secrets](secrets.md)** - Cryptographically secure random numbers
-- **[numpy.random](numpy.md)** - Fast vectorized random number generation
+- **numpy.random** - Fast vectorized random number generation
 - **[statistics](statistics.md)** - Statistical functions
 
 ## Best Practices

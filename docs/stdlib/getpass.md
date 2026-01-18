@@ -228,6 +228,6 @@ def secure_password_entry():
 
 ## Related Documentation
 
-- [Input/Output](builtins/input.md) - Regular input()
+- [Input/Output](../builtins/input.md) - Regular input()
 - [Sys Module](sys.md) - System interactions
 - [Os Module](os.md) - Environment variables

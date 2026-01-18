@@ -205,8 +205,8 @@ cursor.execute('SELECT * FROM users WHERE name = ?', ('Alice',))
 
 ## Related Modules
 
-- **[sqlalchemy](sqlalchemy.md)** - ORM (external)
-- **[pandas](pandas.md)** - Data analysis with SQL support
+- **sqlalchemy** - ORM (external)
+- **pandas** - Data analysis with SQL support
 
 ## Best Practices
 

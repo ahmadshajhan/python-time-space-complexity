@@ -388,7 +388,7 @@ content2 = fetch_cached('https://example.com')
 
 - **[http.client](http.md)** - Lower-level HTTP client
 - **[json](json.md)** - Parse JSON responses
-- **[requests](requests.md)** - Higher-level HTTP library (external)
+- **requests** - Higher-level HTTP library (external)
 
 ## Best Practices
 

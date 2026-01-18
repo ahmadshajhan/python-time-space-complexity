@@ -282,5 +282,5 @@ hsvs = [colorsys.rgb_to_hsv(r, g, b) for r, g, b in normalized]
 
 ## Related Documentation
 
-- [Math Module](math.md) - Mathematical operations
+- Math Module - Mathematical operations
 - [Statistics Module](statistics.md) - Color analysis

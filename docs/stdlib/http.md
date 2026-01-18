@@ -30,6 +30,6 @@ print(status.description)   # Not Found
 
 ## Related Documentation
 
-- [http.client Module](http.client.md)
-- [http.server Module](http.server.md)
+- http.client Module
+- http.server Module
 - [urllib Module](urllib.md)

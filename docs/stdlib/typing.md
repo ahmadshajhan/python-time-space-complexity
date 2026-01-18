@@ -408,9 +408,9 @@ def process_data(items, processor, config=None):
 
 ## Related Modules
 
-- **[pydantic](pydantic.md)** - Runtime type validation (external)
+- **pydantic** - Runtime type validation (external)
 - **[dataclasses](dataclasses.md)** - Type hints for data classes
-- **[collections.abc](collections.abc.md)** - Abstract base classes
+- **collections.abc** - Abstract base classes
 
 ## Best Practices
 

@@ -243,9 +243,9 @@ new_dt = dt + relativedelta(months=1)  # 2024-02-29
 
 ## Related Modules
 
-- **[time](time.md)** - Lower-level time functions
+- **time** - Lower-level time functions
 - **[zoneinfo](zoneinfo.md)** - IANA timezone database (Python 3.9+)
-- **[dateutil](dateutil.md)** - Extended datetime utilities (external)
+- **dateutil** - Extended datetime utilities (external)
 - **[calendar](calendar.md)** - Calendar functions
 
 ## Best Practices

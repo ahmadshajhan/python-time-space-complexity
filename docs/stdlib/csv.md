@@ -426,7 +426,7 @@ import pickle
 
 ## Related Modules
 
-- **[pandas](pandas.md)** - High-level CSV operations and data manipulation
+- **pandas** - High-level CSV operations and data manipulation
 - **[json](json.md)** - Alternative structured data format
 - **[io](io.md)** - Low-level I/O operations
 

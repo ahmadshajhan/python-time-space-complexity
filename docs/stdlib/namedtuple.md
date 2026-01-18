@@ -266,7 +266,7 @@ total = sum(t.amount for t in transactions)  # O(n)
 
 - **[typing.NamedTuple](typing.md)** - Type-hinted version
 - **[dataclasses.dataclass](dataclasses.md)** - Modern alternative
-- **[tuple](tuple.md)** - Regular tuples
+- **[tuple](../builtins/tuple.md)** - Regular tuples
 
 ## Best Practices
 

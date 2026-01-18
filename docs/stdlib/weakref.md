@@ -315,5 +315,5 @@ exists = cache.query_exists("key")  # O(1) - won't prevent GC
 
 ## Related Documentation
 
-- [Gc Module](gc.md) - Garbage collection control
+- Gc Module - Garbage collection control
 - [Collections Module](collections.md) - OrderedDict alternatives

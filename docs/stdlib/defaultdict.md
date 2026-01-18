@@ -233,7 +233,7 @@ dd_time = time.time() - start
 
 ## Related Modules
 
-- **[dict](dict.md)** - Regular dictionary
+- **[dict](../builtins/dict.md)** - Regular dictionary
 - **[Counter](counter.md)** - Specialized counter
 - **[OrderedDict](ordereddict.md)** - Insertion-order dict
 

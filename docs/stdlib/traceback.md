@@ -161,6 +161,6 @@ except:
 
 ## Related Documentation
 
-- [Exceptions Guide](builtins/exceptions.md) - Exception types
+- Exceptions Guide - Exception types
 - [Sys Module](sys.md) - sys.exc_info()
 - [Logging Module](logging.md) - Logging tracebacks

@@ -345,7 +345,7 @@ for algo in secure_algos:
 
 - **[hmac](hmac.md)** - Keyed hash for authentication
 - **[secrets](secrets.md)** - Secure random generation
-- **[cryptography](cryptography.md)** - Full crypto library (external)
+- **cryptography** - Full crypto library (external)
 
 ## Best Practices
 

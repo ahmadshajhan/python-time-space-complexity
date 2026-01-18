@@ -244,7 +244,7 @@ def bfs(graph, start):
 
 ## Related Modules
 
-- **[list](list.md)** - Dynamic array
+- **[list](../builtins/list.md)** - Dynamic array
 - **[queue.Queue](queue.md)** - Thread-safe queue
 - **[heapq](heapq.md)** - Priority queue
 
