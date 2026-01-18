@@ -403,7 +403,7 @@ except TypeError:
 ## Related Functions
 
 - **[isinstance()](isinstance.md)** - Check instance type (O(k))
-- **[type()](type.md)** - Get exact type (O(1))
+- **type()** - Get exact type (O(1))
 - **[super()](super.md)** - Call parent class methods
 
 ## Best Practices
