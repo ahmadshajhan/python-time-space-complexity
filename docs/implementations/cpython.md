@@ -99,7 +99,7 @@ gc.collect()  # O(n) where n = tracked objects
 | `insert(0)` | O(n) - no special optimization |
 | `pop()` | O(1) |
 | `pop(0)` | O(n) |
-| `sort()` | O(n log n) using Timsort |
+| `sort()` | O(n log n) using Timsort (≤3.10) or Powersort (3.11+) |
 
 ### Dict Operations
 

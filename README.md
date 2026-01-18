@@ -175,7 +175,7 @@ Example: Add: List complexity documentation
 | `pop()` | O(1) | Last element |
 | `pop(0)` | O(n) | First element |
 | `in` | O(n) | Linear search |
-| `sort()` | O(n log n) | Timsort |
+| `sort()` | O(n log n) | Timsort/Powersort |
 
 **Pro tip:** Use `deque.appendleft()` for O(1) prepend instead of `list.insert(0)`.
 

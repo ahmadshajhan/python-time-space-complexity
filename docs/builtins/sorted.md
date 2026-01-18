@@ -6,17 +6,17 @@ The `sorted()` function returns a new sorted list from the items in an iterable.
 
 | Case | Time | Space | Notes |
 |------|------|-------|-------|
-| Basic sorting | O(n log n) | O(n) | Timsort algorithm |
+| Basic sorting | O(n log n) | O(n) | Timsort/Powersort |
 | With key function | O(n log n + n*k) | O(n) | k = key function time; key computed once per element |
 | Reverse sorting | O(n log n) | O(n) | No extra overhead |
-| Already sorted | O(n) | O(n) | Best case for Timsort |
+| Already sorted | O(n) | O(n) | Best case |
 
 ## Basic Usage
 
 ### Simple Sorting
 
 ```python
-# O(n log n) - uses Timsort algorithm
+# O(n log n) - Timsort (≤3.10) or Powersort (3.11+)
 numbers = [3, 1, 4, 1, 5, 9, 2, 6]
 result = sorted(numbers)
 # [1, 1, 2, 3, 4, 5, 6, 9]
@@ -102,16 +102,19 @@ result = sorted(coords, key=lambda c: c[1])
 # [(3, 2), (1, 5), (2, 8)]
 ```
 
-## Timsort Algorithm
+## Sorting Algorithm
 
 ### How It Works
 
 ```
-Timsort is a hybrid algorithm combining merge sort and insertion sort:
+Python uses Timsort (Python 2.3-3.10) or Powersort (Python 3.11+).
+Both are hybrid algorithms combining merge sort and insertion sort:
 1. Divide array into small chunks (runs) - ~32-64 elements
 2. Sort each run with insertion sort - O(k²) per run
 3. Merge runs together - O(n log n) overall
 4. Already sorted data: O(n) - detects and uses it
+
+Powersort uses an improved merge policy but has the same complexity.
 ```
 
 ### Performance Characteristics
@@ -147,7 +150,7 @@ original = [3, 1, 4, 1, 5]
 original.sort()  # [1, 1, 3, 4, 5]
 # original modified
 
-# Both use Timsort, same complexity but sorted() makes copy
+# Both use same algorithm, same complexity but sorted() makes copy
 ```
 
 ### Expensive Key Functions
@@ -325,6 +328,5 @@ result = sorted(numbers)  # Nearly O(n)
 
 ## Version Notes
 
-- **Python 2.x**: Uses Timsort since 2.3
-- **Python 3.x**: Same Timsort implementation
-- **Python 3.8+**: No changes to complexity, consistent performance
+- **Python 2.3-3.10**: Uses Timsort algorithm
+- **Python 3.11+**: Uses Powersort (improved merge policy, same complexity)

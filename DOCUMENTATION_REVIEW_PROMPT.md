@@ -31,8 +31,8 @@ For each operation listed:
 # ❌ WRONG: "list.append() is O(1)" without context
 # ✅ CORRECT: "list.append() is O(1) amortized (dynamic array resizing)"
 
-# ❌ WRONG: "sorted() is O(n log n)" without mentioning Timsort
-# ✅ CORRECT: "sorted() is O(n log n) (Timsort), O(n) best case (already sorted)"
+# ❌ WRONG: "sorted() is O(n log n)" without algorithm details
+# ✅ CORRECT: "sorted() is O(n log n) (Timsort/Powersort), O(n) best case (already sorted)"
 ```
 
 ### ✅ Code Examples (FOCUSED)
@@ -177,7 +177,7 @@ if 5 in items:  # O(n)
 "sorted() uses Timsort algorithm"
 
 # AFTER
-"sorted() uses Timsort, O(n log n) average and worst case, O(n) best case (already sorted), O(n) space"
+"sorted() uses Timsort (≤3.10) or Powersort (3.11+), O(n log n) average and worst case, O(n) best case (already sorted), O(n) space"
 
 # BEFORE (too generic)
 ```python
