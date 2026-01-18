@@ -61,8 +61,8 @@ Found an inaccuracy or want to add content? See our [Contributing Guidelines](ht
 
 - [Python Official Documentation](https://docs.python.org/3/)
 - [TimeComplexity Wiki](https://wiki.python.org/moin/TimeComplexity)
-- CPython source code and implementation details
-- Performance testing and benchmarking
+- [CPython source code](https://github.com/python/cpython) and implementation details
+- [Performance testing](https://github.com/heikkitoivonen/python-time-space-complexity/tree/main/tests) and benchmarking
 
 ---
 
