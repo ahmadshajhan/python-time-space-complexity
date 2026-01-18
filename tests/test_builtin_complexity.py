@@ -297,3 +297,148 @@ class TestListComplexity:
             f"Slicing doesn't scale linearly with slice size: "
             f"{small_slice_time:.2e}s vs {large_slice_time:.2e}s"
         )
+
+
+class TestTupleComplexity:
+    """Test tuple operation complexities as documented in docs/builtins/tuple.md."""
+
+    SMALL_SIZE = 1_000
+    LARGE_SIZE = 100_000
+    SIZE_RATIO = LARGE_SIZE / SMALL_SIZE
+
+    def test_len_is_o1(self) -> None:
+        """len() should be O(1) - direct lookup."""
+        small_tuple = tuple(range(self.SMALL_SIZE))
+        large_tuple = tuple(range(self.LARGE_SIZE))
+
+        small_time = measure_time(lambda: len(small_tuple))
+        large_time = measure_time(lambda: len(large_tuple))
+
+        assert is_constant_time(small_time, large_time), (
+            f"len() appears non-constant: {small_time:.2e}s vs {large_time:.2e}s"
+        )
+
+    def test_index_access_is_o1(self) -> None:
+        """tuple[i] should be O(1) - direct indexing."""
+        small_tuple = tuple(range(self.SMALL_SIZE))
+        large_tuple = tuple(range(self.LARGE_SIZE))
+
+        small_time = measure_time(lambda: small_tuple[self.SMALL_SIZE // 2])
+        large_time = measure_time(lambda: large_tuple[self.LARGE_SIZE // 2])
+
+        assert is_constant_time(small_time, large_time), (
+            f"Index access appears non-constant: {small_time:.2e}s vs {large_time:.2e}s"
+        )
+
+    def test_in_membership_is_on(self) -> None:
+        """'in' membership should be O(n) - linear search."""
+        small_tuple = tuple(range(self.SMALL_SIZE))
+        large_tuple = tuple(range(self.LARGE_SIZE))
+
+        nonexistent = -1
+
+        small_time = measure_time(lambda: nonexistent in small_tuple, iterations=50)
+        large_time = measure_time(lambda: nonexistent in large_tuple, iterations=50)
+
+        assert is_linear_time(small_time, large_time, self.SIZE_RATIO), (
+            f"'in' doesn't appear linear: {small_time:.2e}s vs {large_time:.2e}s"
+        )
+        assert large_time > small_time * 2, (
+            f"'in' should be slower for larger tuple: "
+            f"{small_time:.2e}s vs {large_time:.2e}s"
+        )
+
+    def test_index_search_is_on(self) -> None:
+        """tuple.index(x) should be O(n) - linear search."""
+        small_tuple = tuple(range(self.SMALL_SIZE))
+        large_tuple = tuple(range(self.LARGE_SIZE))
+
+        last_small = self.SMALL_SIZE - 1
+        last_large = self.LARGE_SIZE - 1
+
+        small_time = measure_time(lambda: small_tuple.index(last_small), iterations=50)
+        large_time = measure_time(lambda: large_tuple.index(last_large), iterations=50)
+
+        assert is_linear_time(small_time, large_time, self.SIZE_RATIO), (
+            f"index() doesn't appear linear: {small_time:.2e}s vs {large_time:.2e}s"
+        )
+        assert large_time > small_time * 2, (
+            f"index() should be slower for larger tuple: "
+            f"{small_time:.2e}s vs {large_time:.2e}s"
+        )
+
+    def test_count_is_on(self) -> None:
+        """tuple.count(x) should be O(n) - linear scan."""
+        small_tuple = tuple(range(self.SMALL_SIZE))
+        large_tuple = tuple(range(self.LARGE_SIZE))
+
+        small_time = measure_time(lambda: small_tuple.count(0), iterations=50)
+        large_time = measure_time(lambda: large_tuple.count(0), iterations=50)
+
+        assert is_linear_time(small_time, large_time, self.SIZE_RATIO), (
+            f"count() doesn't appear linear: {small_time:.2e}s vs {large_time:.2e}s"
+        )
+
+    def test_hash_is_on(self) -> None:
+        """hash() should be O(n) - iterates all elements."""
+        small_tuple = tuple(range(self.SMALL_SIZE))
+        large_tuple = tuple(range(self.LARGE_SIZE))
+
+        small_time = measure_time(lambda: hash(small_tuple), iterations=50)
+        large_time = measure_time(lambda: hash(large_tuple), iterations=50)
+
+        assert is_linear_time(small_time, large_time, self.SIZE_RATIO), (
+            f"hash() doesn't appear linear: {small_time:.2e}s vs {large_time:.2e}s"
+        )
+
+    def test_concatenation_is_omn(self) -> None:
+        """Concatenation should be O(m+n)."""
+        small_tuple = tuple(range(self.SMALL_SIZE))
+        large_tuple = tuple(range(self.LARGE_SIZE))
+
+        small_time = measure_time(lambda: small_tuple + small_tuple, iterations=50)
+        large_time = measure_time(lambda: large_tuple + large_tuple, iterations=50)
+
+        assert is_linear_time(small_time, large_time, self.SIZE_RATIO), (
+            f"Concatenation doesn't appear linear: {small_time:.2e}s vs {large_time:.2e}s"
+        )
+
+    def test_slice_is_ok(self) -> None:
+        """Slicing should be O(k) where k = slice length."""
+        large_tuple = tuple(range(self.LARGE_SIZE))
+
+        small_slice_time = measure_time(
+            lambda: large_tuple[: self.SMALL_SIZE], iterations=50
+        )
+        large_slice_time = measure_time(
+            lambda: large_tuple[: self.LARGE_SIZE], iterations=50
+        )
+
+        assert is_linear_time(small_slice_time, large_slice_time, self.SIZE_RATIO), (
+            f"Slicing doesn't scale linearly with slice size: "
+            f"{small_slice_time:.2e}s vs {large_slice_time:.2e}s"
+        )
+
+    def test_constructor_is_on(self) -> None:
+        """tuple() constructor should be O(n)."""
+        small_list = list(range(self.SMALL_SIZE))
+        large_list = list(range(self.LARGE_SIZE))
+
+        small_time = measure_time(lambda: tuple(small_list), iterations=50)
+        large_time = measure_time(lambda: tuple(large_list), iterations=50)
+
+        assert is_linear_time(small_time, large_time, self.SIZE_RATIO), (
+            f"tuple() constructor doesn't appear linear: "
+            f"{small_time:.2e}s vs {large_time:.2e}s"
+        )
+
+    def test_repetition_is_on(self) -> None:
+        """Repetition (t * n) should be O(n * len(t))."""
+        base_tuple = tuple(range(100))
+
+        small_time = measure_time(lambda: base_tuple * 10, iterations=50)
+        large_time = measure_time(lambda: base_tuple * 1000, iterations=50)
+
+        assert is_linear_time(small_time, large_time, 100), (
+            f"Repetition doesn't appear linear: {small_time:.2e}s vs {large_time:.2e}s"
+        )
