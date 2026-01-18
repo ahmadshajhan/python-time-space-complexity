@@ -228,21 +228,22 @@ Python 3.13 → Python 3.14  Better GC pauses, new heapq functions
 
 ```bash
 # Test with newer version
-pyenv install 3.12.0
-pyenv shell 3.12.0
-python -m pytest  # Run tests
+uv python install 3.12
+uv run --python 3.12 pytest  # Run tests
 
 # Check for deprecations
-python -W all your_script.py
+uv run --python 3.12 python -W all your_script.py
 ```
 
 ### Gradual Adoption
 
 ```bash
-# Keep older version
-pyenv install 3.11.0
-pyenv local 3.11.0  # Use 3.11 for this project
-pyenv global 3.12.0  # Use 3.12 everywhere else
+# Pin version for this project
+echo "3.11" > .python-version
+uv sync  # Installs Python 3.11 and dependencies
+
+# Use different version for one-off commands
+uv run --python 3.12 python script.py
 ```
 
 ## Related Documentation
