@@ -90,23 +90,22 @@ uv lock --upgrade          # Update dependencies
 ## Project Structure
 
 ```
-├── docs/                      # MkDocs documentation source
-│   ├── index.md              # Landing page
-│   ├── builtins/             # Built-in types (list, dict, set, tuple, str)
-│   ├── stdlib/               # Standard library modules
-│   ├── implementations/       # CPython, PyPy, Jython, IronPython
-│   └── versions/             # Python version guides (3.9–3.14)
-├── data/                      # JSON data files
-│   ├── builtins.json
-│   └── stdlib.json
-├── scripts/                   # Utility scripts
+├── docs/                       # MkDocs documentation source
+│   ├── index.md                # Landing page
+│   ├── builtins/               # Built-in types (list, dict, set, tuple, str)
+│   ├── stdlib/                 # Standard library modules
+│   ├── implementations/        # CPython, PyPy, Jython, IronPython
+│   └── versions/               # Python version guides (3.9–3.14)
+├── data/                       # JSON data files
+│   └── documentation_audit.json
+├── scripts/                    # Utility scripts
 │   └── audit_documentation.py
-├── tests/                     # Test files
-├── .github/workflows/         # GitHub Actions CI/CD
+├── tests/                      # Test files
+├── .github/workflows/          # GitHub Actions CI/CD
 │   └── deploy.yml
-├── pyproject.toml            # Project metadata and dependencies
-├── mkdocs.yml                # MkDocs configuration
-└── Makefile                  # Development commands
+├── pyproject.toml              # Project metadata and dependencies
+├── mkdocs.yml                  # MkDocs configuration
+└── Makefile                    # Development commands
 ```
 
 ---
