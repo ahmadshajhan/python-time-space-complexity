@@ -15,7 +15,6 @@ The `range` type is an immutable sequence of numbers used for iteration. It gene
 | `index(value)` | O(1) | Solve equation |
 | `count(value)` | O(1) | Single check |
 | `iteration` | O(n) | n = number of items |
-| `copy()` | O(1) | Shallow copy |
 | `reversed()` | O(1) | Iterator, not materialized |
 | `list(range(...))` | O(n) | Convert to list |
 

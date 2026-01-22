@@ -17,7 +17,7 @@ The `warnings` module provides a framework for issuing and filtering warning mes
 ```python
 import warnings
 
-# Issue a warning - O(1)
+# Issue a warning - O(n) for filter scan + stack inspection
 warnings.warn("This is deprecated", DeprecationWarning)
 
 # With stack level
