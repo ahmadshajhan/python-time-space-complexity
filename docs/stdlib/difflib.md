@@ -7,7 +7,8 @@ The `difflib` module provides tools for comparing sequences (lists, strings) and
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
 | `SequenceMatcher()` init | O(1) | O(n) | Create matcher, n = combined length |
-| `get_matching_blocks()` | O(n*m) worst | O(n+m) | Heuristic reduces typical case |
+| `find_longest_match()` | O(n*m) worst | O(min(n,m)) | Nested loop over both sequences |
+| `get_matching_blocks()` | O(n*m) worst | O(n+m) | Calls find_longest_match recursively |
 | `get_opcodes()` | O(n*m) worst | O(n+m) | Uses get_matching_blocks |
 | `ratio()` | O(n*m) worst | O(1) | Uses cached matching blocks |
 | `unified_diff()` | O(n+m) | O(n+m) | Generate unified diff |
