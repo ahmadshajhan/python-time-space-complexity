@@ -75,6 +75,9 @@ The `bytes` type is an immutable sequence of bytes, while `bytearray` is the mut
 | `pop(0)` | O(n) | Shift remaining |
 | `remove(x)` | O(n) | Search and remove |
 | `clear()` | O(n) | Deallocate |
+| `copy()` | O(n) | Shallow copy |
+| `reverse()` | O(n) | Reverse in-place |
+| `resize(n)` | O(n) | Resize to n bytes; may truncate or zero-fill |
 
 ## Space Complexity
 
