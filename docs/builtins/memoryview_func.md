@@ -12,6 +12,36 @@ The `memoryview()` function creates memory views of bytes-like objects without c
 | `bytes(mv)` conversion | O(n) | O(n) | n = view size; copies data |
 | Modification | O(1) | O(1) | Only if underlying buffer is mutable (e.g., bytearray) |
 
+## Methods
+
+| Method | Time | Space | Notes |
+|--------|------|-------|-------|
+| `tobytes()` | O(n) | O(n) | Convert to bytes object |
+| `tolist()` | O(n) | O(n) | Convert to list of elements |
+| `toreadonly()` | O(1) | O(1) | Return read-only version of view |
+| `release()` | O(1) | O(1) | Release underlying buffer |
+| `cast(format)` | O(1) | O(1) | Reinterpret as different type; must be same byte size |
+| `hex()` | O(n) | O(n) | Return hex string representation |
+| `count(value)` | O(n) | O(1) | Count occurrences of value |
+| `index(value)` | O(n) | O(1) | Find first index of value; raises ValueError if not found |
+
+## Attributes
+
+| Attribute | Time | Notes |
+|-----------|------|-------|
+| `obj` | O(1) | Underlying object the memoryview refers to |
+| `nbytes` | O(1) | Total bytes in the view |
+| `readonly` | O(1) | Bool indicating if memory is read-only |
+| `format` | O(1) | Struct format string (e.g., 'B' for unsigned byte) |
+| `itemsize` | O(1) | Size in bytes of each element |
+| `ndim` | O(1) | Number of dimensions |
+| `shape` | O(1) | Tuple of dimension sizes |
+| `strides` | O(1) | Tuple of bytes to step in each dimension |
+| `suboffsets` | O(1) | Tuple for PIL-style arrays; None for simple buffers |
+| `contiguous` | O(1) | Bool; True if C or Fortran contiguous |
+| `c_contiguous` | O(1) | Bool; True if C-order contiguous |
+| `f_contiguous` | O(1) | Bool; True if Fortran-order contiguous |
+
 ## Basic Usage
 
 ### From Bytes
