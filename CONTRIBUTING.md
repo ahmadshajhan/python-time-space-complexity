@@ -48,9 +48,9 @@ docs/
 ### Complexity Table Format
 
 ```markdown
-| Operation | Time | Notes |
-|-----------|------|-------|
-| `method()` | O(n) | Brief description |
+| Operation | Time | Space | Notes |
+|-----------|------|-------|-------|
+| `method()` | O(n) | O(1) | Brief description |
 ```
 
 ### Code Examples
@@ -103,11 +103,14 @@ For important notes:
 ## Building Locally
 
 ```bash
+# Install uv (if not already installed)
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
 # Install dependencies
-pip install -r requirements.txt
+uv sync
 
 # Serve documentation
-mkdocs serve
+make serve
 
 # Visit http://localhost:8000
 ```
