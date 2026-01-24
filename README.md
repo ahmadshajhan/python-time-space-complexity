@@ -11,10 +11,8 @@ This project provides detailed documentation of algorithmic complexity for:
 - **Alternative Implementations**: CPython, PyPy, Jython, IronPython
 
 ### Key Statistics
-- **373 documented items** with 118% coverage
 - **4 Python implementations** documented (CPython, PyPy, Jython, IronPython)
 - **6 Python versions** documented (3.9–3.14)
-- 199 stdlib modules documented
 
 ## Features
 
