@@ -2,30 +2,21 @@
 
 The `range` type is an immutable sequence of numbers used for iteration. It generates values lazily without storing all numbers in memory.
 
-## Time Complexity
+## Complexity Reference
 
-| Operation | Time | Notes |
-|-----------|------|-------|
-| `range(stop)` | O(1) | Create range object |
-| `range(start, stop)` | O(1) | Create range object |
-| `range(start, stop, step)` | O(1) | Create range object |
-| `len()` | O(1) | Calculated, not stored |
-| `access[i]` | O(1) | Direct calculation |
-| `in` (membership) | O(1) | Math check, not scan |
-| `index(value)` | O(1) | Solve equation |
-| `count(value)` | O(1) | Single check |
-| `iteration` | O(n) | n = number of items |
-| `reversed()` | O(1) | Iterator, not materialized |
-| `list(range(...))` | O(n) | Convert to list |
-
-## Space Complexity
-
-| Operation | Space | Notes |
-|-----------|-------|-------|
-| Range object | O(1) | Fixed overhead (stores start, stop, step) |
-| Iteration | O(1) | No buffering, yields values on demand |
-| `list()` conversion | O(n) | Creates list |
-| `reversed()` iterator | O(1) | No materialization |
+| Operation | Time | Space | Notes |
+|-----------|------|-------|-------|
+| `range(stop)` | O(1) | O(1) | Create range object |
+| `range(start, stop)` | O(1) | O(1) | Create range object |
+| `range(start, stop, step)` | O(1) | O(1) | Create range object |
+| `len()` | O(1) | O(1) | Calculated, not stored |
+| `access[i]` | O(1) | O(1) | Direct calculation |
+| `in` (membership) | O(1) | O(1) | Math check, not scan |
+| `index(value)` | O(1) | O(1) | Solve equation |
+| `count(value)` | O(1) | O(1) | Single check |
+| `iteration` | O(n) | O(1) | n = number of items; yields on demand |
+| `reversed()` | O(1) | O(1) | Iterator, not materialized |
+| `list(range(...))` | O(n) | O(n) | Convert to list |
 
 ## Implementation Details
 

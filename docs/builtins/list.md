@@ -2,39 +2,29 @@
 
 The `list` type is a mutable, ordered sequence. It's implemented as a dynamic array in CPython.
 
-## Time Complexity
+## Complexity Reference
 
-| Operation | Time | Notes |
-|-----------|------|-------|
-| `len()` | O(1) | Direct lookup |
-| `access[i]` | O(1) | Direct indexing |
-| `append(x)` | O(1) amortized | May resize; worst case O(n) when reallocation needed |
-| `insert(0, x)` | O(n) | Must shift all elements |
-| `insert(i, x)` | O(n-i) | Shift elements from index i |
-| `remove(x)` | O(n) | Must search and shift |
-| `pop()` | O(1) | Remove last element |
-| `pop(0)` | O(n) | Shift remaining elements |
-| `pop(i)` | O(n-i) | Shift elements after i |
-| `clear()` | O(n) | Deallocate memory |
-| `index(x)` | O(n) | Linear search |
-| `count(x)` | O(n) | Linear scan |
-| `sort()` | O(n log n) avg/worst, O(n) best | Timsort/Powersort; adaptive for partially sorted data |
-| `reverse()` | O(n) | In-place reversal |
-| `copy()` | O(n) | Shallow copy |
-| `extend(iterable)` | O(k) | k = length of iterable |
-| `in` (membership) | O(n) | Linear search |
-| `x + y` (concatenation) | O(m+n) | m, n are lengths |
-| `[::2]` (slicing) | O(k) | k = slice length |
-
-## Space Complexity
-
-| Operation | Space |
-|-----------|-------|
-| `append()` | O(1) amortized; O(n) worst case on resize |
-| `extend()` | O(k); may trigger O(n) resize |
-| `sort()` | O(n) auxiliary |
-| `copy()` | O(n) |
-| `slice` | O(k) for new list |
+| Operation | Time | Space | Notes |
+|-----------|------|-------|-------|
+| `len()` | O(1) | O(1) | Direct lookup |
+| `access[i]` | O(1) | O(1) | Direct indexing |
+| `append(x)` | O(1) amortized | O(1) amortized | May resize; worst case O(n) when reallocation needed |
+| `insert(0, x)` | O(n) | O(1) | Must shift all elements |
+| `insert(i, x)` | O(n-i) | O(1) | Shift elements from index i |
+| `remove(x)` | O(n) | O(1) | Must search and shift |
+| `pop()` | O(1) | O(1) | Remove last element |
+| `pop(0)` | O(n) | O(1) | Shift remaining elements |
+| `pop(i)` | O(n-i) | O(1) | Shift elements after i |
+| `clear()` | O(n) | O(1) | Deallocate memory |
+| `index(x)` | O(n) | O(1) | Linear search |
+| `count(x)` | O(n) | O(1) | Linear scan |
+| `sort()` | O(n log n) avg/worst, O(n) best | O(n) | Timsort/Powersort; adaptive for partially sorted data |
+| `reverse()` | O(n) | O(1) | In-place reversal |
+| `copy()` | O(n) | O(n) | Shallow copy |
+| `extend(iterable)` | O(k) | O(k) | k = length of iterable; may trigger O(n) resize |
+| `in` (membership) | O(n) | O(1) | Linear search |
+| `x + y` (concatenation) | O(m+n) | O(m+n) | m, n are lengths |
+| `[::2]` (slicing) | O(k) | O(k) | k = slice length |
 
 ## Implementation Details
 

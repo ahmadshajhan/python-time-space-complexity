@@ -2,39 +2,29 @@
 
 The `set` type is an unordered collection of unique items. It's implemented as a hash table similar to dictionaries in CPython.
 
-## Time Complexity
+## Complexity Reference
 
-| Operation | Time | Notes |
-|-----------|------|-------|
-| `len()` | O(1) | Direct count |
-| `add(x)` | O(1) avg, O(n) worst | Amortized; hash collisions cause O(n) |
-| `remove(x)` | O(1) avg, O(n) worst | Hash lookup + delete |
-| `discard(x)` | O(1) avg, O(n) worst | Hash lookup + delete |
-| `pop()` | O(1) avg | Remove arbitrary element |
-| `clear()` | O(n) | Deallocate all |
-| `x in set` | O(1) avg, O(n) worst | Hash lookup; collisions cause O(n) |
-| `copy()` | O(n) | Shallow copy |
-| `union(other)` | O(n+m) | n, m = set lengths |
-| `intersection(other)` | O(min(n,m)) | Iterate smaller set |
-| `difference(other)` | O(n) | n = set length |
-| `symmetric_difference(other)` | O(n+m) | Combined set ops |
-| `issubset()` | O(n) | Check all elements |
-| `issuperset()` | O(m) | m = other length |
-| `isdisjoint()` | O(min(n,m)) | Early termination |
-| `update(other)` | O(m) | In-place union; m = len(other) |
-| `difference_update(other)` | O(m) | In-place difference |
-| `intersection_update(other)` | O(n) | In-place intersection; rebuilds set |
-| `symmetric_difference_update(other)` | O(m) | In-place symmetric difference |
-
-## Space Complexity
-
-| Operation | Space |
-|-----------|-------|
-| `add()` | O(1) amortized, O(n) worst |
-| `copy()` | O(n) |
-| `union()` | O(n+m) for result |
-| `intersection()` | O(min(n,m)) for result |
-| `difference()` | O(n) for result |
+| Operation | Time | Space | Notes |
+|-----------|------|-------|-------|
+| `len()` | O(1) | O(1) | Direct count |
+| `add(x)` | O(1) avg, O(n) worst | O(1) amortized | Hash collisions cause O(n) |
+| `remove(x)` | O(1) avg, O(n) worst | O(1) | Hash lookup + delete |
+| `discard(x)` | O(1) avg, O(n) worst | O(1) | Hash lookup + delete |
+| `pop()` | O(1) avg | O(1) | Remove arbitrary element |
+| `clear()` | O(n) | O(1) | Deallocate all |
+| `x in set` | O(1) avg, O(n) worst | O(1) | Hash lookup; collisions cause O(n) |
+| `copy()` | O(n) | O(n) | Shallow copy |
+| `union(other)` | O(n+m) | O(n+m) | n, m = set lengths |
+| `intersection(other)` | O(min(n,m)) | O(min(n,m)) | Iterate smaller set |
+| `difference(other)` | O(n) | O(n) | n = set length |
+| `symmetric_difference(other)` | O(n+m) | O(n+m) | Combined set ops |
+| `issubset()` | O(n) | O(1) | Check all elements |
+| `issuperset()` | O(m) | O(1) | m = other length |
+| `isdisjoint()` | O(min(n,m)) | O(1) | Early termination |
+| `update(other)` | O(m) | O(1) | In-place union; m = len(other) |
+| `difference_update(other)` | O(m) | O(1) | In-place difference |
+| `intersection_update(other)` | O(n) | O(1) | In-place intersection; rebuilds set |
+| `symmetric_difference_update(other)` | O(m) | O(1) | In-place symmetric difference |
 
 ## Implementation Details
 

@@ -2,32 +2,22 @@
 
 The `tuple` type is an immutable, ordered sequence. Being immutable allows various optimizations in CPython.
 
-## Time Complexity
+## Complexity Reference
 
-| Operation | Time | Notes |
-|-----------|------|-------|
-| `len()` | O(1) | Direct lookup |
-| `access[i]` | O(1) | Direct indexing |
-| `index(x)` | O(n) | Linear search |
-| `count(x)` | O(n) | Linear scan |
-| `in` (membership) | O(n) | Linear search |
-| `copy()` | O(1) | Just increments reference count |
-| `x + y` (concatenation) | O(m+n) | m, n are lengths |
-| `t * n` (repetition) | O(n*len(t)) | Creates new tuple |
-| `hash()` | O(n) | Computes hash by iterating all elements |
-| `reversed()` | O(1) | Iterator, not materialized |
-| `tuple()` constructor | O(n) | n = iterable length |
-| `slice [::2]` | O(k) | k = slice length |
-
-## Space Complexity
-
-| Operation | Space |
-|-----------|-------|
-| Creation | O(1) reference |
-| Copy | O(1) (same object) |
-| Concatenation | O(m+n) new tuple |
-| Repetition | O(n*len(t)) |
-| Reversed iterator | O(1) |
+| Operation | Time | Space | Notes |
+|-----------|------|-------|-------|
+| `len()` | O(1) | O(1) | Direct lookup |
+| `access[i]` | O(1) | O(1) | Direct indexing |
+| `index(x)` | O(n) | O(1) | Linear search |
+| `count(x)` | O(n) | O(1) | Linear scan |
+| `in` (membership) | O(n) | O(1) | Linear search |
+| `copy()` | O(1) | O(1) | Just increments reference count |
+| `x + y` (concatenation) | O(m+n) | O(m+n) | m, n are lengths |
+| `t * n` (repetition) | O(n*len(t)) | O(n*len(t)) | Creates new tuple |
+| `hash()` | O(n) | O(1) | Computes hash by iterating all elements |
+| `reversed()` | O(1) | O(1) | Iterator, not materialized |
+| `tuple()` constructor | O(n) | O(n) | n = iterable length |
+| `slice [::2]` | O(k) | O(k) | k = slice length |
 
 ## Implementation Details
 

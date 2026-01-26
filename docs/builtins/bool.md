@@ -19,11 +19,11 @@ The `bool` type is a subclass of `int` representing truth values: `True` and `Fa
 
 ## Logical Operations
 
-| Operation | Time | Notes |
-|-----------|------|-------|
-| `x and y` | O(1) | Short-circuit: returns first falsy or last value |
-| `x or y` | O(1) | Short-circuit: returns first truthy or last value |
-| `not x` | O(1) | Logical negation |
+| Operation | Time | Space | Notes |
+|-----------|------|-------|-------|
+| `x and y` | O(1) | O(1) | Short-circuit: returns first falsy or last value |
+| `x or y` | O(1) | O(1) | Short-circuit: returns first truthy or last value |
+| `not x` | O(1) | O(1) | Logical negation |
 
 ### Short-circuit Evaluation
 

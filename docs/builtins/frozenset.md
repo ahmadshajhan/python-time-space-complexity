@@ -2,32 +2,23 @@
 
 The `frozenset` type is an immutable set that can be hashed and used as a dictionary key or set member.
 
-## Time Complexity
+## Complexity Reference
 
-| Operation | Time | Notes |
-|-----------|------|-------|
-| `frozenset(iterable)` | O(n) | Create from iterable |
-| `len()` | O(1) | Direct count |
-| `in` (membership) | O(1) avg, O(n) worst | Hash lookup; worst case with hash collisions |
-| `union(\|)` | O(n+m) | Combine sets |
-| `intersection(&)` | O(min(n,m)) | Common elements |
-| `difference(-)` | O(n) | Elements in first |
-| `symmetric_diff(^)` | O(n+m) | Exclusive elements |
-| `issubset()` | O(n) | Check containment |
-| `issuperset()` | O(m) | Check containment |
-| `isdisjoint()` | O(min(n,m)) | Check overlap |
-| `copy()` | O(1) | Shallow copy |
-| `hash()` | O(n) first call, O(1) cached | Hash value computed once, then cached |
-| `frozenset(set)` | O(n) | Convert from set |
-
-## Space Complexity
-
-| Operation | Space |
-|-----------|-------|
-| Creation | O(n) for n elements |
-| Copy | O(1) (same object) |
-| Union | O(n+m) for result |
-| Intersection | O(min(n,m)) for result |
+| Operation | Time | Space | Notes |
+|-----------|------|-------|-------|
+| `frozenset(iterable)` | O(n) | O(n) | Create from iterable |
+| `len()` | O(1) | O(1) | Direct count |
+| `in` (membership) | O(1) avg, O(n) worst | O(1) | Hash lookup; worst case with hash collisions |
+| `union(\|)` | O(n+m) | O(n+m) | Combine sets |
+| `intersection(&)` | O(min(n,m)) | O(min(n,m)) | Common elements |
+| `difference(-)` | O(n) | O(n) | Elements in first |
+| `symmetric_difference(^)` | O(n+m) | O(n+m) | Exclusive elements |
+| `issubset()` | O(n) | O(1) | Check containment |
+| `issuperset()` | O(m) | O(1) | Check containment |
+| `isdisjoint()` | O(min(n,m)) | O(1) | Check overlap |
+| `copy()` | O(1) | O(1) | Returns same object (immutable) |
+| `hash()` | O(n) first call, O(1) cached | O(1) | Hash value computed once, then cached |
+| `frozenset(set)` | O(n) | O(n) | Convert from set |
 
 ## Implementation Details
 

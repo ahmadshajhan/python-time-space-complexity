@@ -12,24 +12,24 @@ from collections import deque
 
 ### Time Complexity
 
-| Operation | Time | Notes |
-|-----------|------|-------|
-| `append(x)` | O(1) | Add to right end |
-| `appendleft(x)` | O(1) | Add to left end |
-| `pop()` | O(1) | Remove from right end |
-| `popleft()` | O(1) | Remove from left end |
-| `access[i]` | O(1) ends, O(n) middle | Ends (d[0], d[-1]) are O(1); middle elements O(n) due to block structure |
-| `extend(iterable)` | O(k) | k = iterable length |
-| `extendleft(iterable)` | O(k) | k = iterable length; note: reverses order |
-| `rotate(n)` | O(k) | k = min(n, len(d) - n) |
-| `clear()` | O(n) | Remove all elements |
-| `copy()` | O(n) | Shallow copy |
-| `count(x)` | O(n) | Count occurrences of x |
-| `index(x)` | O(n) | Find first occurrence of x |
-| `insert(i, x)` | O(n) | Insert x at position i |
-| `remove(x)` | O(n) | Remove first occurrence of x |
-| `reverse()` | O(n) | Reverse in place |
-| `in` (membership) | O(n) | Linear search |
+| Operation | Time | Space | Notes |
+|-----------|------|-------|-------|
+| `append(x)` | O(1) | O(1) | Add to right end |
+| `appendleft(x)` | O(1) | O(1) | Add to left end |
+| `pop()` | O(1) | O(1) | Remove from right end |
+| `popleft()` | O(1) | O(1) | Remove from left end |
+| `access[i]` | O(1) ends, O(n) middle | O(1) | Ends (d[0], d[-1]) are O(1); middle elements O(n) due to block structure |
+| `extend(iterable)` | O(k) | O(k) | k = iterable length |
+| `extendleft(iterable)` | O(k) | O(k) | k = iterable length; note: reverses order |
+| `rotate(n)` | O(k) | O(1) | k = min(n, len(d) - n) |
+| `clear()` | O(n) | O(1) | Remove all elements |
+| `copy()` | O(n) | O(n) | Shallow copy |
+| `count(x)` | O(n) | O(1) | Count occurrences of x |
+| `index(x)` | O(n) | O(1) | Find first occurrence of x |
+| `insert(i, x)` | O(n) | O(1) | Insert x at position i |
+| `remove(x)` | O(n) | O(1) | Remove first occurrence of x |
+| `reverse()` | O(n) | O(1) | Reverse in place |
+| `in` (membership) | O(n) | O(1) | Linear search |
 
 ### Attributes
 
@@ -65,13 +65,13 @@ from collections import defaultdict
 
 Same as `dict`:
 
-| Operation | Time | Notes |
-|-----------|------|-------|
-| `d[key]` | O(1) avg | Returns default if missing; O(n) worst case due to hash collisions |
-| `d[key] = value` | O(1) avg | O(n) worst case due to hash collisions |
-| `del d[key]` | O(1) avg | O(n) worst case due to hash collisions |
-| `copy()` | O(n) | Shallow copy |
-| Other dict ops | Same as dict | |
+| Operation | Time | Space | Notes |
+|-----------|------|-------|-------|
+| `d[key]` | O(1) avg | O(1) | Returns default if missing; O(n) worst case due to hash collisions |
+| `d[key] = value` | O(1) avg | O(1) | O(n) worst case due to hash collisions |
+| `del d[key]` | O(1) avg | O(1) | O(n) worst case due to hash collisions |
+| `copy()` | O(n) | O(n) | Shallow copy |
+| Other dict ops | Same as dict | - | |
 
 ### Attributes
 
@@ -111,19 +111,19 @@ from collections import Counter
 
 ### Time Complexity
 
-| Operation | Time | Notes |
-|-----------|------|-------|
-| `Counter(iterable)` | O(n) | n = iterable length |
-| `c[item]` | O(1) avg | Returns 0 if missing; O(n) worst case due to hash collisions |
-| `c.most_common(k)` | O(n log k) | Heap-based; O(n log n) if k is None |
-| `c.update(iterable)` | O(n) | n = iterable length |
-| `c.subtract(iterable)` | O(n) | Subtract counts; keeps negative values |
-| `c.total()` | O(n) | Sum of all counts (Python 3.10+) |
-| `c.elements()` | O(1) init, O(total) iter | Iterator over elements repeating each count times |
-| `c.copy()` | O(n) | Shallow copy |
-| `c.fromkeys(iterable)` | N/A | Not useful for Counter; inherited from dict |
-| `c + c2` | O(n) | Combines counters; keeps positive counts |
-| `c - c2` | O(n) | Subtracts; keeps positive counts |
+| Operation | Time | Space | Notes |
+|-----------|------|-------|-------|
+| `Counter(iterable)` | O(n) | O(k) | n = iterable length, k = unique items |
+| `c[item]` | O(1) avg | O(1) | Returns 0 if missing; O(n) worst case due to hash collisions |
+| `c.most_common(k)` | O(n log k) | O(k) | Heap-based; O(n log n) if k is None |
+| `c.update(iterable)` | O(n) | O(k) | n = iterable length |
+| `c.subtract(iterable)` | O(n) | O(1) | Subtract counts; keeps negative values |
+| `c.total()` | O(n) | O(1) | Sum of all counts (Python 3.10+) |
+| `c.elements()` | O(1) init, O(total) iter | O(1) | Iterator over elements repeating each count times |
+| `c.copy()` | O(n) | O(n) | Shallow copy |
+| `c.fromkeys(iterable)` | N/A | - | Not useful for Counter; inherited from dict |
+| `c + c2` | O(n) | O(n) | Combines counters; keeps positive counts |
+| `c - c2` | O(n) | O(n) | Subtracts; keeps positive counts |
 
 ### Use Cases
 
@@ -154,12 +154,12 @@ from collections import namedtuple
 
 Same as tuple for all operations:
 
-| Operation | Time |
-|-----------|------|
-| Creation | O(1) |
-| Access by index | O(1) |
-| Access by name | O(1) |
-| Iteration | O(n) |
+| Operation | Time | Space | Notes |
+|-----------|------|-------|-------|
+| Creation | O(1) | O(1) | Fixed number of fields |
+| Access by index | O(1) | O(1) | Same as tuple |
+| Access by name | O(1) | O(1) | Same as tuple |
+| Iteration | O(n) | O(1) | n = number of fields |
 
 ### Use Cases
 
@@ -188,10 +188,10 @@ from collections import OrderedDict
 
 ### Time Complexity
 
-| Operation | Time |
-|-----------|------|
-| Same as dict | O(1) |
-| Order preservation | Guaranteed |
+| Operation | Time | Space | Notes |
+|-----------|------|-------|-------|
+| Same as dict | O(1) | O(1) | All dict operations |
+| `move_to_end(key)` | O(1) | O(1) | Move key to end |
 
 ### Notes
 
@@ -217,13 +217,13 @@ from collections import ChainMap
 
 ### Time Complexity
 
-| Operation | Time | Notes |
-|-----------|------|-------|
-| `access[key]` | O(n) | n = number of maps; searches until found |
-| `set[key]` | O(1) avg | Sets in first map; O(m) worst case where m = first map size |
-| `del[key]` | O(1) avg | Deletes from first map; O(m) worst case where m = first map size |
-| `len()` | O(n) | Must check all maps |
-| `in` | O(n) | Checks all maps |
+| Operation | Time | Space | Notes |
+|-----------|------|-------|-------|
+| `access[key]` | O(n) | O(1) | n = number of maps; searches until found |
+| `set[key]` | O(1) avg | O(1) | Sets in first map; O(m) worst case where m = first map size |
+| `del[key]` | O(1) avg | O(1) | Deletes from first map; O(m) worst case where m = first map size |
+| `len()` | O(n) | O(1) | Must check all maps |
+| `in` | O(n) | O(1) | Checks all maps |
 
 ### Use Cases
 

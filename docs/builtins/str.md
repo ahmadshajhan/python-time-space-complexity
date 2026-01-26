@@ -2,82 +2,72 @@
 
 The `str` type is an immutable sequence of Unicode characters. Python strings have been optimized significantly, especially in Python 3.
 
-## Time Complexity
+## Complexity Reference
 
-| Operation | Time | Notes |
-|-----------|------|-------|
-| `len()` | O(1) | Direct lookup |
-| `access[i]` | O(1) | Direct indexing |
-| `in` (substring) | O(n + m) worst for long strings, O(n*m) worst for pathological cases | Uses Two-Way / fastsearch algorithm in CPython (linear worst-case) |
-| `s + s` (concatenation) | O(n+m) | Creates new string |
-| `s * n` (repetition) | O(n\*len(s)) | Creates new string |
-| `slice [::2]` | O(k) | k = slice length |
-| **Search** |||
-| `find(sub)` | O(n + m) worst for long strings, O(n*m) worst for pathological cases | Uses Two-Way / fastsearch algorithm in CPython (linear worst-case) |
-| `rfind(sub)` | O(n*m) worst case | Does not use Two-Way algorithm; uses backward Boyer-Moore-Horspool |
-| `index(sub)` | O(n + m) | Like find() but raises ValueError if not found |
-| `rindex(sub)` | O(n*m) worst case | Like rfind() but raises ValueError if not found |
-| `count(sub)` | O(n + m) worst for long strings, O(n*m) worst for pathological cases | n = string, m = substring; uses Two-Way/fastsearch (linear worst-case) |
-| `startswith(prefix)` | O(m) | m = prefix length |
-| `endswith(suffix)` | O(m) | m = suffix length |
-| **Replace/Translate** |||
-| `replace(old, new)` | O(n) | Single pass |
-| `translate(table)` | O(n) | Single pass with table lookup |
-| `maketrans()` | O(k) | k = number of mappings; static method |
-| `expandtabs(tabsize)` | O(n) | Replace tabs with spaces |
-| `removeprefix(prefix)` | O(n) | Returns slice if prefix matches (Python 3.9+) |
-| `removesuffix(suffix)` | O(n) | Returns slice if suffix matches (Python 3.9+) |
-| **Split/Join** |||
-| `split(sep)` | O(n) | Single pass |
-| `rsplit(sep)` | O(n) | Split from right |
-| `splitlines()` | O(n) | Split on line boundaries |
-| `partition(sep)` | O(n) | Split into 3-tuple at first sep |
-| `rpartition(sep)` | O(n) | Split into 3-tuple at last sep |
-| `join(iterable)` | O(n) | n = total output chars |
-| **Case Conversion** |||
-| `upper()` | O(n) | Must process each char |
-| `lower()` | O(n) | Must process each char |
-| `capitalize()` | O(n) | Uppercase first, lowercase rest |
-| `title()` | O(n) | Titlecase words |
-| `swapcase()` | O(n) | Swap upper/lower |
-| `casefold()` | O(n) | Aggressive lowercase for caseless matching |
-| **Stripping** |||
-| `strip(chars)` | O(n) | Remove from both ends |
-| `lstrip(chars)` | O(n) | Remove from left |
-| `rstrip(chars)` | O(n) | Remove from right |
-| **Padding/Alignment** |||
-| `center(width)` | O(n) | Pad both sides |
-| `ljust(width)` | O(n) | Pad right side |
-| `rjust(width)` | O(n) | Pad left side |
-| `zfill(width)` | O(n) | Pad with zeros |
-| **Predicates** |||
-| `isalnum()` | O(n) | Check alphanumeric |
-| `isalpha()` | O(n) | Check alphabetic |
-| `isascii()` | O(n) | Check ASCII (Python 3.7+) |
-| `isdecimal()` | O(n) | Check decimal chars |
-| `isdigit()` | O(n) | Check digit chars |
-| `isidentifier()` | O(n) | Check valid identifier |
-| `islower()` | O(n) | Check lowercase |
-| `isnumeric()` | O(n) | Check numeric chars |
-| `isprintable()` | O(n) | Check printable |
-| `isspace()` | O(n) | Check whitespace |
-| `istitle()` | O(n) | Check titlecase |
-| `isupper()` | O(n) | Check uppercase |
-| **Formatting** |||
-| `format(*args)` | O(n) | n = template length |
-| `format_map(mapping)` | O(n) | Like format() with mapping |
-| **Encoding** |||
-| `encode(encoding)` | O(n) | Convert to bytes |
-
-## Space Complexity
-
-| Operation | Space |
-|-----------|-------|
-| Slicing | O(k) for k characters |
-| Concatenation | O(n+m) new string |
-| Repetition | O(n*len(s)) |
-| Split | O(n) for result list |
-| Join | O(n) total output |
+| Operation | Time | Space | Notes |
+|-----------|------|-------|-------|
+| `len()` | O(1) | O(1) | Direct lookup |
+| `access[i]` | O(1) | O(1) | Direct indexing |
+| `in` (substring) | O(n + m) avg | O(1) | Uses Two-Way / fastsearch algorithm in CPython |
+| `s + s` (concatenation) | O(n+m) | O(n+m) | Creates new string |
+| `s * n` (repetition) | O(n\*len(s)) | O(n\*len(s)) | Creates new string |
+| `slice [::2]` | O(k) | O(k) | k = slice length |
+| **Search** ||||
+| `find(sub)` | O(n + m) avg | O(1) | Uses Two-Way / fastsearch algorithm in CPython |
+| `rfind(sub)` | O(n*m) worst | O(1) | Uses backward Boyer-Moore-Horspool |
+| `index(sub)` | O(n + m) | O(1) | Like find() but raises ValueError if not found |
+| `rindex(sub)` | O(n*m) worst | O(1) | Like rfind() but raises ValueError if not found |
+| `count(sub)` | O(n + m) avg | O(1) | n = string, m = substring |
+| `startswith(prefix)` | O(m) | O(1) | m = prefix length |
+| `endswith(suffix)` | O(m) | O(1) | m = suffix length |
+| **Replace/Translate** ||||
+| `replace(old, new)` | O(n) | O(n) | Single pass |
+| `translate(table)` | O(n) | O(n) | Single pass with table lookup |
+| `maketrans()` | O(k) | O(k) | k = number of mappings; static method |
+| `expandtabs(tabsize)` | O(n) | O(n) | Replace tabs with spaces |
+| `removeprefix(prefix)` | O(n) | O(n) | Returns slice if prefix matches (Python 3.9+) |
+| `removesuffix(suffix)` | O(n) | O(n) | Returns slice if suffix matches (Python 3.9+) |
+| **Split/Join** ||||
+| `split(sep)` | O(n) | O(n) | Single pass |
+| `rsplit(sep)` | O(n) | O(n) | Split from right |
+| `splitlines()` | O(n) | O(n) | Split on line boundaries |
+| `partition(sep)` | O(n) | O(n) | Split into 3-tuple at first sep |
+| `rpartition(sep)` | O(n) | O(n) | Split into 3-tuple at last sep |
+| `join(iterable)` | O(n) | O(n) | n = total output chars |
+| **Case Conversion** ||||
+| `upper()` | O(n) | O(n) | Must process each char |
+| `lower()` | O(n) | O(n) | Must process each char |
+| `capitalize()` | O(n) | O(n) | Uppercase first, lowercase rest |
+| `title()` | O(n) | O(n) | Titlecase words |
+| `swapcase()` | O(n) | O(n) | Swap upper/lower |
+| `casefold()` | O(n) | O(n) | Aggressive lowercase for caseless matching |
+| **Stripping** ||||
+| `strip(chars)` | O(n) | O(n) | Remove from both ends |
+| `lstrip(chars)` | O(n) | O(n) | Remove from left |
+| `rstrip(chars)` | O(n) | O(n) | Remove from right |
+| **Padding/Alignment** ||||
+| `center(width)` | O(n) | O(n) | Pad both sides |
+| `ljust(width)` | O(n) | O(n) | Pad right side |
+| `rjust(width)` | O(n) | O(n) | Pad left side |
+| `zfill(width)` | O(n) | O(n) | Pad with zeros |
+| **Predicates** ||||
+| `isalnum()` | O(n) | O(1) | Check alphanumeric |
+| `isalpha()` | O(n) | O(1) | Check alphabetic |
+| `isascii()` | O(n) | O(1) | Check ASCII (Python 3.7+) |
+| `isdecimal()` | O(n) | O(1) | Check decimal chars |
+| `isdigit()` | O(n) | O(1) | Check digit chars |
+| `isidentifier()` | O(n) | O(1) | Check valid identifier |
+| `islower()` | O(n) | O(1) | Check lowercase |
+| `isnumeric()` | O(n) | O(1) | Check numeric chars |
+| `isprintable()` | O(n) | O(1) | Check printable |
+| `isspace()` | O(n) | O(1) | Check whitespace |
+| `istitle()` | O(n) | O(1) | Check titlecase |
+| `isupper()` | O(n) | O(1) | Check uppercase |
+| **Formatting** ||||
+| `format(*args)` | O(n) | O(n) | n = template length |
+| `format_map(mapping)` | O(n) | O(n) | Like format() with mapping |
+| **Encoding** ||||
+| `encode(encoding)` | O(n) | O(n) | Convert to bytes |
 
 ## Implementation Details
 
