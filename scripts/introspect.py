@@ -111,9 +111,12 @@ def build_item_list() -> list[tuple[str, object]]:
         items.append(item)
         seen_names.add(item[0])
 
+    # Modules to skip (antigravity opens browser, etc.)
+    skip_modules = {"antigravity"}
+
     # Add stdlib modules and their members
     for module_name in get_stdlib_modules():
-        if module_name == "builtins":
+        if module_name == "builtins" or module_name in skip_modules:
             continue
         try:
             with suppress_stdout():
