@@ -9,8 +9,9 @@ The `itertools` module provides efficient looping tools for creating iterators a
 | Function | Time | Space | Notes |
 |----------|------|-------|-------|
 | `count(start, step)` | O(1) per item | O(1) | Infinite counter |
-| `cycle(iterable)` | O(1) per item | O(n) | Repeated n items |
+| `cycle(iterable)` | O(1) per item | O(n) | Stores copy of iterable |
 | `repeat(obj, times)` | O(1) per item | O(1) | Repeat same item |
+| `accumulate(iter, func)` | O(n) total | O(1) | Running totals/reductions |
 
 ### Filtering Iterators
 
@@ -30,6 +31,10 @@ The `itertools` module provides efficient looping tools for creating iterators a
 | `chain(iter1, iter2, ...)` | O(n+m) total | O(1) | Combine iterators |
 | `chain.from_iterable(iterable)` | O(n) total | O(1) | Chain nested iterables |
 | `zip_longest(iter1, iter2, ...)` | O(n) total | O(1) | Zip with fill value |
+| `starmap(func, iter)` | O(n) total | O(1) | Apply func(*args) for each args tuple |
+| `tee(iterable, n)` | O(1) init | O(n×k) | Create n independent iterators; k = items consumed |
+| `batched(iterable, n)` | O(n) total | O(n) per batch | Group into n-sized tuples (Python 3.12+) |
+| `pairwise(iterable)` | O(n) total | O(1) | Successive overlapping pairs (Python 3.10+) |
 
 ### Grouping & Windowing
 
@@ -37,6 +42,7 @@ The `itertools` module provides efficient looping tools for creating iterators a
 |----------|------|-------|-------|
 | `groupby(iterable, key)` | O(n) total | O(1) | Group consecutive |
 | `combinations(iterable, r)` | O(C(n,r)) total | O(r) per item | All r-combinations |
+| `combinations_with_replacement(iter, r)` | O(C(n+r-1,r)) total | O(r) per item | Combinations allowing repeats |
 | `permutations(iterable, r)` | O(P(n,r)) total | O(r) per item | All permutations |
 | `product(iter1, iter2, ...)` | O(n₁×n₂×...×nₖ) | O(n) init + O(k) per item | Cartesian product; stores all inputs in memory first |
 
@@ -186,7 +192,8 @@ for w in window(range(10), 3):
 
 - **Python 2.6+**: Most functions available
 - **Python 3.x**: All modern functions available
-- **Python 3.10+**: Some optimization improvements
+- **Python 3.10+**: `pairwise()` added
+- **Python 3.12+**: `batched()` added
 
 ## Related Documentation
 

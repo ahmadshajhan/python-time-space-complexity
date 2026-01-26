@@ -17,7 +17,7 @@ The `set` type is an unordered collection of unique items. It's implemented as a
 | `union(other)` | O(n+m) | n, m = set lengths |
 | `intersection(other)` | O(min(n,m)) | Iterate smaller set |
 | `difference(other)` | O(n) | n = set length |
-| `symmetric_diff(other)` | O(n+m) | Combined set ops |
+| `symmetric_difference(other)` | O(n+m) | Combined set ops |
 | `issubset()` | O(n) | Check all elements |
 | `issuperset()` | O(m) | m = other length |
 | `isdisjoint()` | O(min(n,m)) | Early termination |

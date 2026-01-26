@@ -12,17 +12,30 @@ from collections import deque
 
 ### Time Complexity
 
-| Operation | Time |
-|-----------|------|
-| `append(x)` | O(1) |
-| `appendleft(x)` | O(1) |
-| `pop()` | O(1) |
-| `popleft()` | O(1) |
+| Operation | Time | Notes |
+|-----------|------|-------|
+| `append(x)` | O(1) | Add to right end |
+| `appendleft(x)` | O(1) | Add to left end |
+| `pop()` | O(1) | Remove from right end |
+| `popleft()` | O(1) | Remove from left end |
 | `access[i]` | O(1) ends, O(n) middle | Ends (d[0], d[-1]) are O(1); middle elements O(n) due to block structure |
-| `extend(iterable)` | O(k) for k items |
-| `rotate(n)` | O(n) or O(k) for small rotations |
-| `clear()` | O(n) |
-| `in` (membership) | O(n) |
+| `extend(iterable)` | O(k) | k = iterable length |
+| `extendleft(iterable)` | O(k) | k = iterable length; note: reverses order |
+| `rotate(n)` | O(k) | k = min(n, len(d) - n) |
+| `clear()` | O(n) | Remove all elements |
+| `copy()` | O(n) | Shallow copy |
+| `count(x)` | O(n) | Count occurrences of x |
+| `index(x)` | O(n) | Find first occurrence of x |
+| `insert(i, x)` | O(n) | Insert x at position i |
+| `remove(x)` | O(n) | Remove first occurrence of x |
+| `reverse()` | O(n) | Reverse in place |
+| `in` (membership) | O(n) | Linear search |
+
+### Attributes
+
+| Attribute | Notes |
+|-----------|-------|
+| `maxlen` | Maximum size (None if unbounded); read-only |
 
 ### Space Complexity
 
@@ -52,12 +65,19 @@ from collections import defaultdict
 
 Same as `dict`:
 
-| Operation | Time |
-|-----------|------|
+| Operation | Time | Notes |
+|-----------|------|-------|
 | `d[key]` | O(1) avg | Returns default if missing; O(n) worst case due to hash collisions |
 | `d[key] = value` | O(1) avg | O(n) worst case due to hash collisions |
 | `del d[key]` | O(1) avg | O(n) worst case due to hash collisions |
-| Other dict ops | Same as dict |
+| `copy()` | O(n) | Shallow copy |
+| Other dict ops | Same as dict | |
+
+### Attributes
+
+| Attribute | Notes |
+|-----------|-------|
+| `default_factory` | Callable that provides default values; can be None |
 
 ### Space Complexity
 
@@ -95,10 +115,15 @@ from collections import Counter
 |-----------|------|-------|
 | `Counter(iterable)` | O(n) | n = iterable length |
 | `c[item]` | O(1) avg | Returns 0 if missing; O(n) worst case due to hash collisions |
-| `c.most_common(k)` | O(n log k) | Heap-based, k = count |
+| `c.most_common(k)` | O(n log k) | Heap-based; O(n log n) if k is None |
 | `c.update(iterable)` | O(n) | n = iterable length |
-| `c + c2` | O(n) | Combines counters |
-| `c - c2` | O(n) | Keeps positive counts |
+| `c.subtract(iterable)` | O(n) | Subtract counts; keeps negative values |
+| `c.total()` | O(n) | Sum of all counts (Python 3.10+) |
+| `c.elements()` | O(1) init, O(total) iter | Iterator over elements repeating each count times |
+| `c.copy()` | O(n) | Shallow copy |
+| `c.fromkeys(iterable)` | N/A | Not useful for Counter; inherited from dict |
+| `c + c2` | O(n) | Combines counters; keeps positive counts |
+| `c - c2` | O(n) | Subtracts; keeps positive counts |
 
 ### Use Cases
 
