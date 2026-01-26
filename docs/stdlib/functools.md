@@ -17,8 +17,24 @@ The `functools` module provides higher-order functions and operations on callabl
 | Function | Time | Space | Notes |
 |----------|------|-------|-------|
 | `reduce(func, iterable)` | O(n) | O(1) | Fold/aggregate |
-| `partial(func, args)` | O(1) | O(k) for k args | Create partial function |
-| `wraps(wrapped)` | O(1) | O(1) | Copy function metadata |
+| `partial(func, *args)` | O(1) | O(k) for k args | Create partial function |
+| `partialmethod(func, *args)` | O(1) | O(k) for k args | Partial for use as method descriptor |
+| `wraps(wrapped)` | O(1) | O(1) | Decorator to copy function metadata |
+| `update_wrapper(wrapper, wrapped)` | O(1) | O(1) | Copy function metadata (used by wraps) |
+
+### Comparison Helpers
+
+| Function | Time | Space | Notes |
+|----------|------|-------|-------|
+| `cmp_to_key(func)` | O(1) | O(1) | Convert cmp function to key function |
+| `total_ordering` | O(1) | O(1) | Class decorator; fills in missing comparison methods |
+
+### Single Dispatch
+
+| Function | Time | Space | Notes |
+|----------|------|-------|-------|
+| `singledispatch` | O(1) dispatch | O(k) for k types | Generic function decorator |
+| `singledispatchmethod` | O(1) dispatch | O(k) for k types | Generic method decorator (Python 3.8+) |
 
 ## Caching Complexity
 
@@ -247,11 +263,69 @@ def expensive(x):
     return sum(range(x))
 ```
 
+## Additional Examples
+
+### cmp_to_key
+
+```python
+from functools import cmp_to_key
+
+# Old-style comparison function
+def compare(a, b):
+    return (a > b) - (a < b)
+
+# Convert to key function for sorted()
+sorted_data = sorted([3, 1, 4, 1, 5], key=cmp_to_key(compare))
+```
+
+### total_ordering
+
+```python
+from functools import total_ordering
+
+@total_ordering
+class Student:
+    def __init__(self, name, grade):
+        self.name = name
+        self.grade = grade
+
+    def __eq__(self, other):
+        return self.grade == other.grade
+
+    def __lt__(self, other):
+        return self.grade < other.grade
+
+    # total_ordering fills in __le__, __gt__, __ge__
+```
+
+### singledispatch
+
+```python
+from functools import singledispatch
+
+@singledispatch
+def process(arg):
+    return f"Default: {arg}"
+
+@process.register(int)
+def _(arg):
+    return f"Integer: {arg * 2}"
+
+@process.register(list)
+def _(arg):
+    return f"List of {len(arg)} items"
+
+process("hello")  # "Default: hello"
+process(5)        # "Integer: 10"
+process([1,2,3])  # "List of 3 items"
+```
+
 ## Version Notes
 
 - **Python 2.5+**: `reduce`, `partial`
-- **Python 3.2+**: `lru_cache`
-- **Python 3.8+**: `cached_property`
+- **Python 3.2+**: `lru_cache`, `cmp_to_key`, `total_ordering`
+- **Python 3.4+**: `singledispatch`, `partialmethod`
+- **Python 3.8+**: `cached_property`, `singledispatchmethod`
 - **Python 3.9+**: `cache` (unbounded `lru_cache`)
 
 ## Related Documentation

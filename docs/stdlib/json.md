@@ -12,6 +12,7 @@ The `json` module provides JSON serialization and deserialization.
 | `json.load(fp)` | O(n) | O(n) | Read from file |
 | `JSONEncoder.encode()` | O(n) | O(n) | Custom encoder |
 | `JSONDecoder.decode()` | O(n) | O(n) | Custom decoder |
+| `JSONDecodeError` | - | - | Exception for parse errors (subclass of ValueError) |
 
 ## Serialization (dumps/dump)
 

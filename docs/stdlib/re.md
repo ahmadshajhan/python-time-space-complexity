@@ -8,13 +8,18 @@ The `re` module provides regular expression matching operations.
 |-----------|------|-------|-------|
 | `re.compile(pattern)` | O(n) | O(n) | n = pattern length |
 | `pattern.match(string)` | O(m) typical, O(n*m) worst | O(m) | Worst case with backtracking |
+| `pattern.fullmatch(string)` | O(m) typical, O(n*m) worst | O(m) | Match entire string |
 | `pattern.search(string)` | O(m) typical, O(n*m) worst | O(m) | Searches full string |
 | `pattern.findall(string)` | O(n*m) | O(k) | k = number of matches |
 | `pattern.finditer(string)` | O(n) per match | O(1) per match | Lazy iteration |
 | `pattern.sub(repl, string)` | O(n*m) | O(m) | n = pattern, m = string |
+| `pattern.subn(repl, string)` | O(n*m) | O(m) | Like sub, returns (newstr, count) |
 | `pattern.split(string)` | O(n*m) | O(m) | n = pattern, m = string |
 | `re.match(pattern, string)` | O(n + m) typical | O(m) | Compiles + matches; cached up to ~512; O(n*m) worst with backtracking |
 | `re.search(pattern, string)` | O(n + m) typical | O(m) | Compiles + matches; cached up to ~512; O(n*m) worst with backtracking |
+| `re.escape(string)` | O(n) | O(n) | Escape special regex characters |
+| `re.purge()` | O(1) | O(1) | Clear compiled pattern cache |
+| `re.error` | - | - | Exception for invalid patterns (alias: PatternError in 3.13+) |
 
 *Note: Worst case for catastrophic backtracking; typical cases are much better.
 
