@@ -12,6 +12,9 @@ The `enum` module provides a way to define a set of symbolic names (members) bou
 | Iteration `for e in EnumClass` | O(n) | O(1) | n = number of members |
 | `len(EnumClass)` | O(1) | O(1) | Cached member count |
 | `name` / `value` access | O(1) | O(1) | Direct attribute |
+| `auto()` | O(1) | O(1) | Auto-value sentinel |
+| `unique()` | O(n) | O(1) | Validate aliases in class |
+| `verify()` | O(n) | O(1) | Validate member constraints |
 
 ## Enum Basics
 

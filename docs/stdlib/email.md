@@ -6,6 +6,8 @@ The `email` module provides utilities for constructing and parsing email message
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
+| `message_from_bytes()` | O(n) | O(n) | n = byte length |
+| `message_from_binary_file()` | O(n) | O(n) | n = file size |
 | `message_from_string()` | O(n) | O(n) | n = email size |
 | `message_from_file()` | O(n) | O(n) | n = file size |
 | `email.parser.Parser()` | O(n) | O(n) | Parse email |

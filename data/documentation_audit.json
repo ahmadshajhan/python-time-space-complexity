@@ -168,8 +168,8 @@
   },
   "stdlib": {
     "total": 167,
-    "documented": 201,
-    "coverage_percent": 120.4,
+    "documented": 202,
+    "coverage_percent": 121.0,
     "missing": [
       "audit_documentation",
       "cProfile",
@@ -179,7 +179,7 @@
   },
   "summary": {
     "total_items": 317,
-    "total_documented": 375,
-    "overall_coverage_percent": 118.3
+    "total_documented": 376,
+    "overall_coverage_percent": 118.6
   }
 }

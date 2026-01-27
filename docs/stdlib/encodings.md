@@ -8,6 +8,9 @@ The `encodings` module provides Python's standard character encoding implementat
 |-----------|------|-------|-------|
 | Get encoding | O(1) | O(1) | Cache lookup |
 | Encode/decode | O(n) | O(n) | n = string length |
+| `normalize_encoding()` | O(n) | O(n) | n = name length |
+| `search_function()` | O(n) | O(1) | Normalizes then looks up |
+| `aliases` lookup | O(1) | O(1) | Dict access |
 
 ## Character Encodings
 

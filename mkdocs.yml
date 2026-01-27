@@ -180,6 +180,7 @@ nav:
     - Deque: stdlib/deque.md
     - Defaultdict: stdlib/defaultdict.md
     - Enum: stdlib/enum.md
+    - Errno: stdlib/errno.md
     - Fcntl: stdlib/fcntl.md
     - Filecmp: stdlib/filecmp.md
     - Fileinput: stdlib/fileinput.md

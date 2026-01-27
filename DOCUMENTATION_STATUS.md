@@ -5,12 +5,12 @@ This document tracks the coverage of built-in functions, types, and standard lib
 ## Overview
 
 - **Total Items**: 317 (150 builtins + 167 stdlib modules)
-- **Documented**: 375 (174 builtins + 201 stdlib)
-- **Coverage**: 118.3%
+- **Documented**: 376 (174 builtins + 202 stdlib)
+- **Coverage**: 118.6%
 
 **Note**: Coverage exceeds 100% because comprehensive documentation files (like `exceptions.md`) cover multiple individual items, and we document deprecated/removed modules for historical reference.
 
-Last updated: January 2026 (Python 3.14 audit)
+Last updated: January 27, 2026 (Python 3.14 audit)
 
 ## Built-in Types & Functions
 
@@ -203,7 +203,7 @@ Complete coverage of all built-in functions, types, exceptions, and constants:
 
 ## Standard Library Modules
 
-**Coverage: 120.4% (201/167)**
+**Coverage: 121.0% (202/167)**
 
 All standard library modules are fully documented, including new Python 3.14 modules. Coverage exceeds 100% due to documentation of deprecated/removed modules for historical reference.
 
@@ -305,14 +305,15 @@ All file and I/O modules now documented:
 - ✅ `shutil` - High-level file operations
 - ✅ `tempfile` - Temporary files
 
-### ✅ ALL MODULES COMPLETE (188/188)
+### ✅ ALL MODULES COMPLETE (202/202)
 
 All 100 previously undocumented stdlib modules have been added:
 
-**Utilities & System (18)**
+**Utilities & System (19)**
 - ✅ `ast` - Abstract syntax trees
 - ✅ `dis` - Disassembler for bytecode
 - ✅ `doctest` - Testing via docstrings
+- ✅ `errno` - Error number constants
 - ✅ `getopt` - Command-line option parsing
 - ✅ `gettext` - Internationalization
 - ✅ `keyword` - Python keywords
