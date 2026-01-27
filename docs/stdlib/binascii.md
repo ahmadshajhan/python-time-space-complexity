@@ -9,6 +9,13 @@ The `binascii` module contains functions for converting between binary and ASCII
 | `hexlify()` | O(n) | O(n) | n = input length |
 | `unhexlify()` | O(n) | O(n) | n = hex length |
 | `b2a_base64()` | O(n) | O(n) | Encode to base64 |
+| `a2b_base64()` | O(n) | O(n) | Decode base64 |
+| `b2a_hex()` / `a2b_hex()` | O(n) | O(n) | Hex encode/decode aliases |
+| `b2a_qp()` / `a2b_qp()` | O(n) | O(n) | Quoted-printable encode/decode |
+| `b2a_uu()` / `a2b_uu()` | O(n) | O(n) | UUencode/decode |
+| `crc32()` | O(n) | O(1) | n = input length |
+| `crc_hqx()` | O(n) | O(1) | n = input length |
+| `Error` / `Incomplete` | O(1) | O(1) | Exception types |
 
 ## Binary-ASCII Conversions
 

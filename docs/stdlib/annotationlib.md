@@ -11,8 +11,11 @@ The `annotationlib` module provides tools for introspecting annotations. Added i
 | `get_annotations(obj, format=FORWARDREF)` | O(n) | O(n) | Partial evaluation |
 | `get_annotations(obj, format=VALUE)` | O(n) | O(n) | Slowest: full evaluation, may import |
 | `call_annotate_function()` | O(n) | O(n) | Calls __annotate__ with format |
+| `call_evaluate_function()` | O(n) | O(n) | Calls __evaluate__ with format |
+| `get_annotate_from_class_namespace()` | O(n) | O(n) | Collects class __annotations__ |
 | `annotations_to_string()` | O(n) | O(n) | Convert dict values to strings |
 | `ForwardRef.evaluate()` | O(1) | O(1) | Resolve single forward reference |
+| `type_repr()` | O(1) | O(1) | String repr for types |
 
 ## Performance Characteristics
 

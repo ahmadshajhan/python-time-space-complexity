@@ -8,10 +8,27 @@ The `base64` module provides encoding and decoding for base64, base32, base16, a
 |-----------|------|-------|-------|
 | `base64.b64encode(data)` | O(n) | O(n) | n = data size |
 | `base64.b64decode(data)` | O(n) | O(n) | n = encoded size |
+| `base64.standard_b64encode(data)` | O(n) | O(n) | Standard alphabet |
+| `base64.standard_b64decode(data)` | O(n) | O(n) | Standard alphabet |
+| `base64.urlsafe_b64encode(data)` | O(n) | O(n) | URL-safe alphabet |
+| `base64.urlsafe_b64decode(data)` | O(n) | O(n) | URL-safe alphabet |
 | `base64.b32encode(data)` | O(n) | O(n) | n = data size |
 | `base64.b32decode(data)` | O(n) | O(n) | n = encoded size |
+| `base64.b32hexencode(data)` | O(n) | O(n) | Base32hex alphabet |
+| `base64.b32hexdecode(data)` | O(n) | O(n) | Base32hex alphabet |
 | `base64.b16encode(data)` | O(n) | O(n) | n = data size |
 | `base64.b16decode(data)` | O(n) | O(n) | n = encoded size |
+| `base64.a85encode(data)` | O(n) | O(n) | ASCII85 encoding |
+| `base64.a85decode(data)` | O(n) | O(n) | ASCII85 decoding |
+| `base64.b85encode(data)` | O(n) | O(n) | Base85 encoding |
+| `base64.b85decode(data)` | O(n) | O(n) | Base85 decoding |
+| `base64.z85encode(data)` | O(n) | O(n) | Z85 encoding |
+| `base64.z85decode(data)` | O(n) | O(n) | Z85 decoding |
+| `base64.encode()` | O(n) | O(n) | File-like to file-like |
+| `base64.decode()` | O(n) | O(n) | File-like to file-like |
+| `base64.encodebytes()` | O(n) | O(n) | Adds newlines every 76 chars |
+| `base64.decodebytes()` | O(n) | O(n) | Accepts newlines/whitespace |
+| `base64.main()` | O(n) | O(n) | CLI encode/decode over files |
 
 ## Base64 Encoding/Decoding
 
@@ -222,6 +239,7 @@ def decode_large_file(input_path, output_path):
 # Usage - O(n)
 decode_large_file('large.b64', 'large.bin')
 ```
+
 
 ## Performance Considerations
 

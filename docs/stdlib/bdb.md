@@ -8,7 +8,16 @@ The `bdb` module provides a generic debugger framework that higher-level debugge
 |-----------|------|-------|-------|
 | `Bdb()` setup | O(1) | O(1) | Initialize debugger |
 | Set breakpoint | O(1) | O(1) | Register break |
-| Continue | O(n) | O(n) | n = instructions |
+| Continue | O(n) | O(n) | n = traced instructions |
+| `Breakpoint` creation | O(1) | O(1) | Track location/condition |
+| `BdbQuit` | O(1) | O(1) | Exception used to quit debugger |
+| `set_trace()` | O(1) | O(1) | Install tracer at current frame |
+| `effective()` | O(k) | O(1) | k = breakpoints at location |
+| `checkfuncname()` | O(1) | O(1) | Match function name to frame |
+| `Tdb()` setup | O(1) | O(1) | Traceback debugger |
+| `foo()` / `bar()` | O(1) | O(1) | Demo functions (constant work) |
+| `test()` | O(1) | O(1) | Demo entrypoint; runs debugger |
+| `E` | O(1) | O(1) | Event flag namespace |
 
 ## Debugger Framework
 
@@ -30,6 +39,13 @@ class MyDebugger(bdb.Bdb):
 debugger = MyDebugger()
 debugger.run('function_to_debug()')
 ```
+
+## Breakpoint Resolution Cost
+
+`effective()` scans the breakpoint list for a location and returns the
+first enabled match. The runtime cost is linear in the number of
+breakpoints registered for that line (O(k)).
+
 
 ## Related Documentation
 

@@ -7,11 +7,54 @@ The `calendar` module provides calendar-related functions and classes for workin
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
 | `calendar()` | O(n) | O(n) | n = days in period |
+| `month()` | O(n) | O(n) | n = days in month |
 | `monthcalendar()` | O(1) | O(1) | Returns fixed structure |
 | `weekday()` | O(1) | O(1) | Day of week |
 | `monthrange()` | O(1) | O(1) | Month info |
 | `itermonthdays()` | O(n) | O(1) | n = days in month |
 | `isleap()` | O(1) | O(1) | Check leap year |
+| `leapdays()` | O(1) | O(1) | Count leap years in range |
+| `setfirstweekday()` | O(1) | O(1) | Set global first weekday |
+| `firstweekday()` | O(1) | O(1) | Get global first weekday |
+| `week()` | O(1) | O(1) | Week number + line formatting |
+| `weekheader()` | O(1) | O(1) | Format header string |
+| `prcal()` | O(n) | O(n) | Print calendar for year |
+| `prmonth()` | O(n) | O(n) | Print calendar for month |
+| `prweek()` | O(1) | O(1) | Print week string |
+| `timegm()` | O(1) | O(1) | Convert time tuple to timestamp |
+| `main()` | O(n) | O(n) | CLI entrypoint |
+| `format()` | O(n) | O(n) | Format calendar with c.format |
+| `formatstring()` | O(n) | O(n) | Format calendar with string |
+| `different_locale` | O(1) | O(1) | Context manager for locale switching |
+| `global_enum` | O(k) | O(k) | k = enum members exported |
+| `Calendar.iterweekdays()` | O(1) | O(1) | Iterator over 7 weekdays |
+| `Calendar.itermonthdays()` | O(n) | O(1) | n = days in month |
+| `Calendar.itermonthdays2/3/4()` | O(n) | O(1) | n = days in month |
+| `Calendar.itermonthdates()` | O(n) | O(1) | n = days including padding |
+| `Calendar.monthdayscalendar()` | O(n) | O(n) | n = days in month |
+| `Calendar.monthdays2calendar()` | O(n) | O(n) | n = days in month |
+| `Calendar.monthdatescalendar()` | O(n) | O(n) | n = days in month |
+| `Calendar.yeardayscalendar()` | O(n) | O(n) | n = days in year |
+| `Calendar.yeardays2calendar()` | O(n) | O(n) | n = days in year |
+| `Calendar.yeardatescalendar()` | O(n) | O(n) | n = days in year |
+| `TextCalendar.formatday()` | O(k) | O(k) | k = output width |
+| `TextCalendar.formatweek()` | O(k) | O(k) | k = output width |
+| `TextCalendar.formatweekday()` | O(k) | O(k) | k = output width |
+| `TextCalendar.formatweekheader()` | O(k) | O(k) | k = output width |
+| `TextCalendar.formatmonth()` | O(n) | O(n) | n = output size |
+| `TextCalendar.formatmonthname()` | O(k) | O(k) | k = output width |
+| `TextCalendar.formatyear()` | O(n) | O(n) | n = output size |
+| `HTMLCalendar.formatday()` | O(k) | O(k) | k = output width |
+| `HTMLCalendar.formatweek()` | O(k) | O(k) | k = output width |
+| `HTMLCalendar.formatweekday()` | O(k) | O(k) | k = output width |
+| `HTMLCalendar.formatweekheader()` | O(k) | O(k) | k = output width |
+| `HTMLCalendar.formatmonth()` | O(n) | O(n) | n = output size |
+| `HTMLCalendar.formatmonthname()` | O(k) | O(k) | k = output width |
+| `HTMLCalendar.formatyear()` | O(n) | O(n) | n = output size |
+| `HTMLCalendar.formatyearpage()` | O(n) | O(n) | n = output size |
+| `TextCalendar.prweek()` | O(n) | O(n) | n = output size |
+| `TextCalendar.prmonth()` | O(n) | O(n) | n = output size |
+| `TextCalendar.pryear()` | O(n) | O(n) | n = output size |
 
 ## Common Operations
 

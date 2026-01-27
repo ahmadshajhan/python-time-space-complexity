@@ -8,11 +8,17 @@ The `concurrent.futures` module provides high-level interfaces for asynchronousl
 |-----------|------|-------|-------|
 | `ThreadPoolExecutor(max_workers)` | O(w) | O(w) | Create pool, w = worker count |
 | `ProcessPoolExecutor(max_workers)` | O(w) | O(w) | Create process pool |
+| `InterpreterPoolExecutor(max_workers)` | O(w) | O(w) | Create interpreter pool |
 | `executor.submit(fn, *args)` | O(1) | O(1) | Submit task to queue |
 | `executor.map(fn, iterable)` | O(n) | O(n) | Submit all tasks, n = item count |
 | `Future.result()` | O(1) | O(r) | Get result, r = result size |
 | `as_completed(futures)` | O(n log n) | O(n) | Heap-based iteration; yields as each completes |
 | `wait(futures)` | O(n) | O(n) | Wait for futures |
+| `Executor` creation | O(1) | O(1) | Base class init |
+| `Future` creation | O(1) | O(1) | Pending future |
+| `CancelledError` / `TimeoutError` | O(1) | O(1) | Exception types |
+| `InvalidStateError` / `BrokenExecutor` | O(1) | O(1) | Exception types |
+| `FIRST_COMPLETED` / `FIRST_EXCEPTION` / `ALL_COMPLETED` | O(1) | O(1) | Sentinel constants |
 
 ## ThreadPoolExecutor
 

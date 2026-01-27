@@ -8,8 +8,20 @@ The `ast` module provides classes for working with abstract syntax trees of Pyth
 |-----------|------|-------|-------|
 | `ast.parse()` | O(n) | O(n) | n = source code length |
 | `ast.literal_eval()` | O(n) | O(n) | Safe evaluation of literals |
+| `ast.compare()` | O(n) | O(h) | n = nodes, h = max recursion depth |
 | Tree traversal | O(n) | O(h) | n = nodes, h = max recursion depth |
 | Node creation | O(1) | O(1) | Create single node |
+| `ast.dump()` | O(n) | O(n) | n = nodes included in output |
+| `ast.unparse()` | O(n) | O(n) | n = nodes in tree |
+| `ast.walk()` | O(n) | O(n) | n = nodes returned |
+| `ast.iter_child_nodes()` | O(k) | O(1) | k = direct children |
+| `ast.iter_fields()` | O(k) | O(1) | k = fields on a node |
+| `ast.copy_location()` | O(1) | O(1) | Copies lineno/col offsets |
+| `ast.fix_missing_locations()` | O(n) | O(h) | Walks and fills missing info |
+| `ast.increment_lineno()` | O(n) | O(h) | Adjusts lineno across tree |
+| `ast.get_docstring()` | O(n) | O(1) | Scans first statements |
+| `ast.get_source_segment()` | O(m) | O(1) | m = segment length |
+| `ast.main()` | O(n) | O(n) | Parses input file and dumps AST |
 
 ## Parsing Python Code
 

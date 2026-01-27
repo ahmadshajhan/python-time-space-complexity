@@ -4,9 +4,9 @@ This document tracks the coverage of built-in functions, types, and standard lib
 
 ## Overview
 
-- **Total Items**: 318 (150 builtins + 168 stdlib modules)
-- **Documented**: 373 (174 builtins + 199 stdlib)
-- **Coverage**: 117.3%
+- **Total Items**: 317 (150 builtins + 167 stdlib modules)
+- **Documented**: 375 (174 builtins + 201 stdlib)
+- **Coverage**: 118.3%
 
 **Note**: Coverage exceeds 100% because comprehensive documentation files (like `exceptions.md`) cover multiple individual items, and we document deprecated/removed modules for historical reference.
 
@@ -203,7 +203,7 @@ Complete coverage of all built-in functions, types, exceptions, and constants:
 
 ## Standard Library Modules
 
-**Coverage: 118.5% (199/168)**
+**Coverage: 120.4% (201/167)**
 
 All standard library modules are fully documented, including new Python 3.14 modules. Coverage exceeds 100% due to documentation of deprecated/removed modules for historical reference.
 
@@ -225,12 +225,13 @@ All standard library modules are fully documented, including new Python 3.14 mod
 - ✅ `plistlib` - Property list format
 - ✅ `sndhdr` - Sound file format detection
 
-### ⊘ Excluded Items (3 - intentionally out of scope)
+### ⊘ Excluded Items (4 - intentionally out of scope)
 
 These items appear in audit but are **intentionally not documented** as they are not part of Python's standard library:
 
 **Project Scripts** (not stdlib):
 - `audit_documentation` - Project's own audit script
+- `introspect` - Project's introspection script
 
 **Third-party Packages** (external, not stdlib):
 - `pip` - External package manager
@@ -536,4 +537,3 @@ A: Tests will fail (`test_minimum_builtin_coverage`, `test_minimum_stdlib_covera
 
 **Q: How do I update the audit?**
 A: Run `python scripts/audit_documentation.py` before committing. It regenerates `data/documentation_audit.json`.
-

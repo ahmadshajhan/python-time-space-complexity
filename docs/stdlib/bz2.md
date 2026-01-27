@@ -356,6 +356,7 @@ with bz2.open('huge.bz2', 'rt') as f:
 - **Python 3.1+**: BZ2Compressor/BZ2Decompressor
 - **Python 3.10+**: Better compression options
 
+
 ## Related Documentation
 
 - [gzip Module](gzip.md) - GZIP compression

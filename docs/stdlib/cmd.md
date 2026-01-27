@@ -9,6 +9,8 @@ The `cmd` module provides a framework for building line-oriented interactive com
 | `Cmd()` init | O(1) | O(1) | Create interpreter |
 | Parse command | O(n) | O(n) | n = input length |
 | Command dispatch | O(1) | O(1) | Call handler |
+| `IDENTCHARS` | O(1) | O(1) | Identifier character set |
+| `PROMPT` | O(1) | O(1) | Default prompt string |
 
 ## Building Interactive Shells
 

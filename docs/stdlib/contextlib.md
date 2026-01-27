@@ -12,6 +12,20 @@ The `contextlib` module provides utilities for working with context managers and
 | `ExitStack` add | O(1) | O(1) | Register callback |
 | `ExitStack` exit all | O(n) | O(1) | LIFO order; n = registered callbacks |
 | `contextmanager` yield | O(1) | O(1) | Generator yield point |
+| `@asynccontextmanager` | O(1) | O(1) | Decorator application |
+| `AsyncExitStack` add | O(1) | O(1) | Register async callback |
+| `AsyncExitStack` exit all | O(n) | O(1) | LIFO order; n = registered callbacks |
+| `closing()` | O(1) | O(1) | Wrap object with close() |
+| `aclosing()` | O(1) | O(1) | Wrap async object with aclose() |
+| `nullcontext()` | O(1) | O(1) | No-op context manager |
+| `redirect_stdout()` | O(1) | O(1) | Replace sys.stdout |
+| `redirect_stderr()` | O(1) | O(1) | Replace sys.stderr |
+| `suppress()` | O(1) | O(1) | Suppress exceptions |
+| `chdir()` | O(1) | O(1) | Temporarily change working dir |
+| `ContextDecorator` | O(1) | O(1) | Base for context/decorator |
+| `AsyncContextDecorator` | O(1) | O(1) | Async base for context/decorator |
+| `AbstractContextManager` | O(1) | O(1) | ABC for contexts |
+| `AbstractAsyncContextManager` | O(1) | O(1) | ABC for async contexts |
 
 ## Context Managers Basics
 

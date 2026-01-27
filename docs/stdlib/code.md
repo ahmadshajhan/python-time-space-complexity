@@ -8,6 +8,11 @@ The `code` module provides utilities for evaluating Python code and creating int
 |-----------|------|-------|-------|
 | `InteractiveInterpreter()` | O(1) | O(n) | n = namespace vars |
 | Execute code | O(n) | O(n) | n = code complexity |
+| `InteractiveConsole()` | O(1) | O(n) | n = namespace vars |
+| `CommandCompiler()` | O(1) | O(1) | Compiler helper |
+| `compile_command()` | O(n) | O(n) | n = input length |
+| `interact()` | O(m) | O(n) | m = input lines |
+| `Quitter` | O(1) | O(1) | Exit helper |
 
 ## Interactive Code Execution
 

@@ -10,6 +10,8 @@ The `argparse` module provides a framework for creating command-line argument pa
 | `add_argument()` | O(1) | O(1) | Add single argument |
 | `parse_args()` | O(n) | O(n) | n = number of CLI args |
 | Help generation | O(m) | O(m) | m = total help text |
+| `FileType()` | O(1) | O(1) | Create file-opening callable |
+| `Namespace()` | O(1) | O(1) | Simple attribute container |
 
 ## Basic Usage
 

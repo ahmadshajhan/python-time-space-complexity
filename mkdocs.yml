@@ -132,6 +132,7 @@ nav:
     - Array: stdlib/array.md
     - Ast: stdlib/ast.md
     - Asyncio: stdlib/asyncio.md
+    - Atexit: stdlib/atexit.md
     - Asynchat: stdlib/asynchat.md
     - Asyncore: stdlib/asyncore.md
     - Base64: stdlib/base64.md
@@ -153,6 +154,7 @@ nav:
     - Contextlib: stdlib/contextlib.md
     - Copyreg: stdlib/copyreg.md
     - CProfile: stdlib/cprofile.md
+    - Cmath: stdlib/cmath.md
     - Cgi: stdlib/cgi.md
     - Cgitb: stdlib/cgitb.md
     - Crypt: stdlib/crypt.md

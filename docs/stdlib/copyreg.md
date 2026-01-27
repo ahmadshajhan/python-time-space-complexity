@@ -8,6 +8,13 @@ The `copyreg` module provides a way to define pickle support for custom types, h
 |-----------|------|-------|-------|
 | `pickle()` | O(1) | O(1) | Register pickler |
 | `constructor()` | O(1) | O(1) | Register unpickler |
+| `add_extension()` | O(1) | O(1) | Register extension code |
+| `remove_extension()` | O(1) | O(1) | Remove extension code |
+| `clear_extension_cache()` | O(n) | O(1) | n = cached entries |
+| `dispatch_table` | O(1) | O(1) | Pickle dispatch registry |
+| `pickle_complex()` | O(1) | O(1) | Built-in complex pickler |
+| `pickle_super()` | O(1) | O(1) | Built-in super pickler |
+| `pickle_union()` | O(1) | O(1) | Built-in union pickler |
 
 ## Custom Pickle Support
 

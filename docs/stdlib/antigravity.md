@@ -7,6 +7,7 @@ The `antigravity` module is an Easter egg in Python that opens a web browser to 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
 | Import module | O(1) | O(1) | Open browser |
+| `geohash()` | O(n) | O(1) | n = input length, hashes and encodes |
 
 ## The Easter Egg
 

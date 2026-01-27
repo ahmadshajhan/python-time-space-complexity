@@ -11,7 +11,43 @@ The `asyncio` module provides infrastructure for writing single-threaded concurr
 | Task creation | O(1) | O(1) | Wrap coroutine |
 | `asyncio.gather()` | O(1) | O(n) | n = number of tasks |
 | `asyncio.wait()` | O(n) | O(n) | n = tasks waiting |
+| `asyncio.sleep()` | O(1) | O(1) | Schedules timer handle |
+| `asyncio.iscoroutine()` | O(1) | O(1) | Type check |
+| `asyncio.iscoroutinefunction()` | O(1) | O(1) | Type check |
+| `asyncio.isfuture()` | O(1) | O(1) | Type check |
+| `asyncio.to_thread()` | O(1) | O(1) | Offload to thread; work cost external |
+| `asyncio.run_coroutine_threadsafe()` | O(1) | O(1) | Submit coroutine to loop thread |
+| `asyncio.create_task()` | O(1) | O(1) | Schedule coroutine in loop |
+| `asyncio.ensure_future()` | O(1) | O(1) | Wrap coroutine/future |
+| `asyncio.all_tasks()` | O(n) | O(1) | n = tasks tracked by loop |
+| `asyncio.current_task()` | O(1) | O(1) | Lookup current task |
+| `asyncio.as_completed()` | O(n) | O(n) | n = awaitables, yields as done |
+| `asyncio.wait()` | O(n) | O(n) | n = tasks waiting |
+| `asyncio.wait_for()` | O(1) | O(1) | Timeout wrapper around awaitable |
+| `asyncio.timeout()` | O(1) | O(1) | Async context manager wrapper |
+| `asyncio.timeout_at()` | O(1) | O(1) | Absolute-time timeout wrapper |
 | Event queue operation | O(log n) | O(1) | Heap-based scheduling; n = pending events |
+| `asyncio.open_connection()` | O(1) | O(1) | Connection setup; I/O dominates |
+| `asyncio.open_unix_connection()` | O(1) | O(1) | Unix socket setup |
+| `asyncio.start_server()` | O(1) | O(1) | Create server and start listening |
+| `asyncio.start_unix_server()` | O(1) | O(1) | Unix socket server |
+| `asyncio.create_subprocess_exec()` | O(1) | O(1) | Spawn subprocess; external cost |
+| `asyncio.create_subprocess_shell()` | O(1) | O(1) | Spawn shell; external cost |
+| `asyncio.wrap_future()` | O(1) | O(1) | Convert concurrent future |
+| `asyncio.shield()` | O(1) | O(1) | Prevent cancellation propagation |
+| `asyncio.get_event_loop()` | O(1) | O(1) | Returns or creates loop |
+| `asyncio.get_running_loop()` | O(1) | O(1) | Lookup running loop |
+| `asyncio.new_event_loop()` | O(1) | O(1) | Create loop |
+| `asyncio.set_event_loop()` | O(1) | O(1) | Set loop in policy |
+| `asyncio.get_event_loop_policy()` | O(1) | O(1) | Get global policy |
+| `asyncio.set_event_loop_policy()` | O(1) | O(1) | Set global policy |
+| `asyncio.create_eager_task_factory()` | O(1) | O(1) | Build task factory callable |
+| `asyncio.eager_task_factory()` | O(1) | O(1) | Prebuilt eager task factory |
+| `asyncio.capture_call_graph()` | O(n) | O(n) | n = frames and awaited tasks |
+| `asyncio.format_call_graph()` | O(n) | O(n) | Formats captured call graph |
+| `asyncio.print_call_graph()` | O(n) | O(n) | Prints captured call graph |
+| `asyncio.future_add_to_awaited_by()` | O(1) | O(1) | Register awaiter |
+| `asyncio.future_discard_from_awaited_by()` | O(1) | O(1) | Unregister awaiter |
 
 ## Async Basics
 
@@ -506,6 +542,7 @@ asyncio.run(main())
 - **Event loop**: O(n) for n tasks
 - **Task state**: O(m) for m coroutine frames
 - **Queues**: O(n) for n items
+
 
 ## Related Documentation
 

@@ -13,6 +13,7 @@ The `array` module provides an efficient array type for storing homogeneous data
 | Search | O(n) | O(1) | Linear search |
 | Insert | O(n) | O(1) | Insert at position |
 | Remove | O(n) | O(1) | Remove element |
+| `typecodes` | O(1) | O(1) | String of supported type codes |
 
 ## Basic Usage
 

@@ -250,6 +250,47 @@ print(config['retries'])  # 3 (from defaults)
 | Special methods | - | `__missing__` | `most_common()` | `move_to_end()` |
 | Memory | Baseline | +small | +counter storage | +order tracking |
 
+## UserDict
+
+`UserDict` wraps a standard dict with a user-customizable class.
+
+### Time Complexity
+
+Same as `dict` for most operations:
+
+| Operation | Time | Space | Notes |
+|-----------|------|-------|-------|
+| `d[key]` | O(1) avg | O(1) | O(n) worst case due to hash collisions |
+| `d[key] = value` | O(1) avg | O(1) | O(n) worst case |
+| `del d[key]` | O(1) avg | O(1) | O(n) worst case |
+| Iteration | O(n) | O(1) | n = number of items |
+
+## UserList
+
+`UserList` wraps a standard list with a user-customizable class.
+
+### Time Complexity
+
+| Operation | Time | Space | Notes |
+|-----------|------|-------|-------|
+| Indexing | O(1) | O(1) | Access by index |
+| Append | O(1) amortized | O(1) | O(n) worst case on resize |
+| Insert/Delete | O(n) | O(1) | Shift elements |
+| Iteration | O(n) | O(1) | n = list length |
+
+## UserString
+
+`UserString` wraps a standard string with a user-customizable class.
+
+### Time Complexity
+
+| Operation | Time | Space | Notes |
+|-----------|------|-------|-------|
+| Indexing | O(1) | O(1) | Access by index |
+| Concatenation | O(n) | O(n) | n = total length |
+| Slicing | O(k) | O(k) | k = slice length |
+| Iteration | O(n) | O(1) | n = length |
+
 ## Related Documentation
 
 - [Built-in Dict](../builtins/dict.md)

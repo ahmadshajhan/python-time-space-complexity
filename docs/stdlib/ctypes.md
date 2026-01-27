@@ -10,6 +10,23 @@ The `ctypes` module provides C-compatible data types and allows calling function
 | `c_int/c_float/c_char` | O(1) | O(1) | Create type |
 | `function_call()` | O(n) | O(n) | n = arg count |
 | `Structure/Union` | O(1) | O(1) | Define class |
+| `sizeof(obj)` | O(1) | O(1) | Size of ctypes type/instance |
+| `addressof(obj)` | O(1) | O(1) | Address of ctypes instance |
+| `byref(obj)` | O(1) | O(1) | Pass by reference helper |
+| `pointer(obj)` | O(1) | O(1) | Create pointer to instance |
+| `cast(obj, type)` | O(1) | O(1) | Pointer cast |
+| `create_string_buffer(n)` | O(n) | O(n) | Allocate byte buffer |
+| `create_unicode_buffer(n)` | O(n) | O(n) | Allocate wchar buffer |
+| `memmove` / `memset` | O(n) | O(1) | n = bytes moved/filled |
+| `string_at` / `wstring_at` | O(n) | O(n) | n = bytes/characters read |
+| `get_errno` / `set_errno` | O(1) | O(1) | Thread-local errno |
+| Scalar types (e.g., `c_int`, `c_double`) | O(1) | O(1) | Type constructors |
+| Fixed-width ints (e.g., `c_int32`, `c_uint64`) | O(1) | O(1) | Type constructors |
+| Pointers/arrays (`POINTER`, `ARRAY`) | O(1) | O(1) | Type constructors |
+| Structs/unions (`Structure`, `Union`) | O(1) | O(1) | Type constructors |
+| Endian variants (`LittleEndian*`, `BigEndian*`) | O(1) | O(1) | Type constructors |
+| Callables (`CFUNCTYPE`, `PYFUNCTYPE`) | O(1) | O(1) | Function type factories |
+| Library loaders (`cdll`, `pydll`, `pythonapi`) | O(1) | O(1) | Loader singletons |
 
 ## Common Operations
 

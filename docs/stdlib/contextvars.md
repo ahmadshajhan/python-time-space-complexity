@@ -11,6 +11,7 @@ The `contextvars` module provides context variables for managing state in concur
 | `ContextVar.get()` | O(1) | O(1) | Returns default if not set |
 | `copy_context()` | O(n) | O(n) | Copy context, n = variable count |
 | `Context.run(fn, *args)` | O(1) | O(1) | Run function in context |
+| `Token` creation | O(1) | O(1) | Token returned by set() |
 
 ## Creating Context Variables
 

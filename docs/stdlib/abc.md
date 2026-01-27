@@ -7,11 +7,16 @@ The `abc` module provides infrastructure for defining abstract base classes (ABC
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
 | `@abstractmethod` decorator | O(1) | O(1) | Mark method abstract |
+| `@abstractclassmethod` decorator | O(1) | O(1) | Mark classmethod abstract (legacy helper) |
+| `@abstractstaticmethod` decorator | O(1) | O(1) | Mark staticmethod abstract (legacy helper) |
+| `@abstractproperty` decorator | O(1) | O(1) | Mark property abstract (legacy helper) |
 | Class instantiation attempt | O(n) | O(n) | n = abstract methods |
 | `isinstance(obj, ABC)` | O(n) | O(1) | n = MRO length; may also check virtual subclasses |
 | `issubclass(cls, ABC)` | O(n) | O(1) | n = MRO length; may also check virtual subclasses |
 | Method resolution (MRO) | O(n) | O(n) | n = class hierarchy depth |
 | Register virtual subclass | O(1) | O(n) | n = registered classes |
+| `get_cache_token()` | O(1) | O(1) | Monotonic token for ABC cache invalidation |
+| `update_abstractmethods(cls)` | O(n) | O(n) | n = class hierarchy depth |
 
 ## Abstract Base Classes
 

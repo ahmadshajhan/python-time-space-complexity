@@ -14,6 +14,26 @@ The `configparser` module provides facilities for reading and writing configurat
 | `getint/getfloat/getboolean` | O(1) | O(1) | O(1) lookup + O(1) conversion |
 | `sections()` | O(n) | O(n) | n = section count |
 | `options(section)` | O(n) | O(n) | n = option count |
+| `RawConfigParser()` | O(1) | O(1) | No interpolation |
+| `BasicInterpolation()` | O(1) | O(1) | Strategy instance |
+| `ExtendedInterpolation()` | O(1) | O(1) | Strategy instance |
+| Interpolation resolution | O(k) | O(k) | k = referenced keys |
+| `read_dict()` | O(n) | O(n) | n = total options |
+| `read_file()` | O(n) | O(n) | n = file size |
+| `readfp()` | O(n) | O(n) | Alias for read_file (deprecated) |
+| `read_string()` | O(n) | O(n) | Parse string |
+| `read()` | O(n) | O(n) | Parse file(s) |
+| `set()` | O(1) | O(1) | Set option |
+| `add_section()` | O(1) | O(1) | Add section |
+| `remove_option()` | O(1) | O(1) | Remove option |
+| `remove_section()` | O(1) | O(1) | Remove section |
+| `has_option()` | O(1) | O(1) | Option lookup |
+| `has_section()` | O(1) | O(1) | Section lookup |
+| `items()` | O(n) | O(n) | n = options returned |
+| `write()` | O(n) | O(n) | n = config size |
+| `default_section` access | O(1) | O(1) | `DEFAULTSECT` constant |
+| `MAX_INTERPOLATION_DEPTH` | O(1) | O(1) | Constant limit |
+| `UNNAMED_SECTION` | O(1) | O(1) | Constant name for unnamed section |
 
 ## Common Operations
 

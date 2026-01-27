@@ -10,6 +10,9 @@ The `copy` module provides shallow and deep copy operations for creating copies 
 | `copy.deepcopy(x)` | O(n) | O(n) | Deep copy, n = total objects; uses memo dict for cycles |
 | Shallow copy (list/dict) | O(n) | O(n) | Copies references only |
 | Deep copy (list/dict) | O(n*m) | O(n*m) | Recursively copies nested structures |
+| `copy.replace(obj, **changes)` | O(1) | O(1) | Dataclass/namedtuple style replacement |
+| `dispatch_table` | O(1) | O(1) | Copy dispatch registry |
+| `Error` / `error` | O(1) | O(1) | Exception types |
 
 ## Shallow vs Deep Copy
 

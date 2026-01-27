@@ -13,6 +13,43 @@ The `codecs` module provides codec registry and base classes for codec implement
 | `StreamReader.read()` | O(n) | O(n) | Read and decode |
 | `getencoder(encoding)` | O(1) | O(1) | Get encoder function |
 | `getdecoder(encoding)` | O(1) | O(1) | Get decoder function |
+| `lookup(name)` | O(1) | O(1) | Registry lookup (amortized) |
+| `register(search_fn)` | O(1) | O(1) | Register codec search function |
+| `unregister(search_fn)` | O(n) | O(1) | n = registry entries |
+| `lookup_error(name)` | O(1) | O(1) | Error handler lookup |
+| `register_error(name, handler)` | O(1) | O(1) | Register error handler |
+| `iterencode(iterable, encoding)` | O(n) | O(1) | Streaming encode |
+| `iterdecode(iterable, encoding)` | O(n) | O(1) | Streaming decode |
+| `getincrementalencoder()` | O(1) | O(1) | Get incremental encoder class |
+| `getincrementaldecoder()` | O(1) | O(1) | Get incremental decoder class |
+| `EncodedFile()` | O(1) | O(1) | Wrap file with recoding |
+| `StreamReaderWriter()` | O(1) | O(1) | Reader/writer wrapper |
+| `StreamRecoder()` | O(1) | O(1) | Transcoding wrapper |
+| `make_encoding_map()` | O(n) | O(n) | n = mapping size |
+| `make_identity_dict()` | O(n) | O(n) | n = mapping size |
+| `charmap_build()` | O(n) | O(n) | Build charmap |
+| `charmap_encode()` | O(n) | O(n) | Encode via charmap |
+| `charmap_decode()` | O(n) | O(n) | Decode via charmap |
+| `ascii_encode/decode` | O(n) | O(n) | Built-in codec helper |
+| `latin_1_encode/decode` | O(n) | O(n) | Built-in codec helper |
+| `utf_7_encode/decode` | O(n) | O(n) | Built-in codec helper |
+| `utf_8_encode/decode` | O(n) | O(n) | Built-in codec helper |
+| `utf_16_encode/decode` | O(n) | O(n) | Built-in codec helper |
+| `utf_16_ex_decode` | O(n) | O(n) | Built-in codec helper |
+| `utf_16_le_encode/decode` | O(n) | O(n) | Built-in codec helper |
+| `utf_16_be_encode/decode` | O(n) | O(n) | Built-in codec helper |
+| `utf_32_encode/decode` | O(n) | O(n) | Built-in codec helper |
+| `utf_32_ex_decode` | O(n) | O(n) | Built-in codec helper |
+| `utf_32_le_encode/decode` | O(n) | O(n) | Built-in codec helper |
+| `utf_32_be_encode/decode` | O(n) | O(n) | Built-in codec helper |
+| `unicode_escape_encode/decode` | O(n) | O(n) | Built-in codec helper |
+| `raw_unicode_escape_encode/decode` | O(n) | O(n) | Built-in codec helper |
+| `escape_encode/decode` | O(n) | O(n) | Built-in codec helper |
+| `readbuffer_encode` | O(n) | O(n) | Built-in codec helper |
+| `strict/ignore/replace_errors` | O(n) | O(n) | Error handler helpers |
+| `backslashreplace_errors` | O(n) | O(n) | Error handler helper |
+| `namereplace_errors` | O(n) | O(n) | Error handler helper |
+| `xmlcharrefreplace_errors` | O(n) | O(n) | Error handler helper |
 
 ## Encoding Operations
 
@@ -398,6 +435,7 @@ for chunk in iter(lambda: reader.read(65536), ''):
 
 # Avoid: Load entire large file
 text = reader.read()  # O(n) memory
+
 ```
 
 ### Encoding Selection

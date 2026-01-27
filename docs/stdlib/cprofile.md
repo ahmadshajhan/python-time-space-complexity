@@ -7,6 +7,9 @@ The `cProfile` module provides deterministic profiling of Python programs, measu
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
 | `cProfile.run()` | O(n) | O(n) | n = function calls |
+| `cProfile.runctx()` | O(n) | O(n) | n = function calls; with globals/locals |
+| `cProfile.main()` | O(n) | O(n) | CLI entrypoint |
+| `Profile()` | O(1) | O(1) | Profiler instance |
 | Profile collection | O(1) | O(1) | Per call overhead |
 | Report generation | O(n log n) | O(n) | n = unique functions |
 

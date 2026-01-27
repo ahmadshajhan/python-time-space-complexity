@@ -21,6 +21,11 @@ The `csv` module provides functionality for reading and writing CSV (Comma-Separ
 | `csv.list_dialects()` | O(d) | O(d) | List registered dialect names |
 | `Sniffer.sniff(sample)` | O(n) | O(1) | Detect CSV format from sample |
 | `Sniffer.has_header(sample)` | O(n) | O(1) | Detect if sample has header row |
+| `Dialect` | O(1) | O(1) | Base class for dialects |
+| `Error` | O(1) | O(1) | Exception type |
+| `StringIO()` | O(1) | O(1) | In-memory text buffer |
+| `QUOTE_*` constants | O(1) | O(1) | Quoting strategy flags |
+| `excel` / `excel_tab` / `unix_dialect` | O(1) | O(1) | Built-in dialects |
 
 ## Reading CSV Files
 

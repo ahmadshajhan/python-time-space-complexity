@@ -8,6 +8,9 @@ The `compileall` module compiles all Python source files in a directory tree to 
 |-----------|------|-------|-------|
 | `compile_dir()` | O(n) | O(n) | n = .py files |
 | Compile file | O(m) | O(m) | m = file size |
+| `compile_file()` | O(m) | O(m) | Compile one file |
+| `compile_path()` | O(n) | O(n) | n = files on sys.path |
+| `main()` | O(n) | O(n) | CLI entrypoint |
 
 ## Batch Compiling Python Files
 
