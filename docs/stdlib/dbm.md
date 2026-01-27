@@ -13,6 +13,8 @@ The `dbm` module provides interfaces to various Unix database implementations, a
 | `key in db` | O(1) to O(log n) | O(1) | Backend-dependent |
 | `db.keys()` | O(n) | O(n) | Get all keys (slow) |
 | `db.close()` | O(n) | O(1) | Flush and close |
+| `whichdb()` | O(1) | O(1) | Detect backend type |
+| `error` | O(1) | O(1) | Exception type |
 
 ## DBM Variants
 

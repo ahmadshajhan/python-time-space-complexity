@@ -14,6 +14,13 @@ The `difflib` module provides tools for comparing sequences (lists, strings) and
 | `unified_diff()` | O(n+m) | O(n+m) | Generate unified diff |
 | `context_diff()` | O(n+m) | O(n+m) | Generate context diff |
 | `ndiff()` | O(n+m) | O(n+m) | Generate detailed diff |
+| `diff_bytes()` | O(n+m) | O(n+m) | Generate diff over bytes |
+| `get_close_matches()` | O(n*m) | O(n) | n = possibilities, m = word length |
+| `restore()` | O(n) | O(n) | Reconstruct sequence from diff |
+| `Differ()` | O(1) | O(1) | Create differ |
+| `HtmlDiff()` | O(1) | O(1) | Create HTML differ |
+| `Match` | O(1) | O(1) | Named tuple for match blocks |
+| `IS_CHARACTER_JUNK` / `IS_LINE_JUNK` | O(1) | O(1) | Default junk filters |
 
 ## Sequence Matching
 

@@ -9,6 +9,19 @@ The `dis` module provides tools to disassemble Python bytecode. It shows the low
 | `dis.dis()` | O(n) | O(n) | n = bytecode instructions |
 | `dis.get_instructions()` | O(n) | O(n) | Iterate bytecode |
 | Bytecode analysis | O(n) | O(1) | Single pass |
+| `dis.Bytecode()` | O(1) | O(1) | Create Bytecode wrapper |
+| `dis.code_info()` | O(n) | O(n) | Format code object metadata |
+| `dis.show_code()` | O(n) | O(n) | Print code metadata |
+| `dis.stack_effect()` | O(1) | O(1) | Stack effect for opcode |
+| `dis.findlinestarts()` | O(n) | O(n) | Map bytecode to lines |
+| `dis.findlabels()` | O(n) | O(n) | Find jump targets |
+| `dis.pretty_flags()` | O(n) | O(n) | Format compiler flags |
+| `dis.get_executor()` | O(1) | O(1) | Return current executor |
+| `dis.print_instructions()` | O(n) | O(n) | Print Instruction list |
+| `dis.disassemble()` | O(n) | O(n) | Disassemble code object |
+| `dis.disco()` / `dis.distb()` | O(n) | O(n) | Disassemble object/traceback |
+| `dis.main()` | O(n) | O(n) | CLI entrypoint |
+| `Instruction` / `Positions` | O(1) | O(1) | Named tuple types |
 
 ## Disassembling Functions
 

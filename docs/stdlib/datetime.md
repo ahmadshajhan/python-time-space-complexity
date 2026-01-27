@@ -35,6 +35,7 @@ The `datetime` module provides classes for manipulating dates and times.
 | `date.timetuple()` | O(1) | O(1) | time.struct_time |
 | `date.toordinal()` | O(1) | O(1) | Proleptic Gregorian ordinal |
 | `date.replace(year=...)` | O(1) | O(1) | Return new date |
+| `date.__format__(fmt)` | O(n) | O(n) | Format string length n |
 
 ## Datetime Operations
 
@@ -50,6 +51,16 @@ The `datetime` module provides classes for manipulating dates and times.
 | `datetime.dst()` | O(1) | O(1) | Daylight saving offset |
 | `datetime.tzname()` | O(1) | O(1) | Timezone name string |
 | `datetime.utcoffset()` | O(1) | O(1) | UTC offset as timedelta |
+| `datetime.astimezone()` | O(1) | O(1) | Convert between timezones |
+| `datetime.now(tz)` | O(1) | O(1) | Current datetime in tz |
+| `datetime.utcnow()` | O(1) | O(1) | Current UTC datetime |
+| `datetime.utcfromtimestamp(ts)` | O(1) | O(1) | From timestamp (UTC) |
+| `datetime.fromtimestamp(ts, tz)` | O(1) | O(1) | From timestamp with tz |
+| `datetime.replace(...)` | O(1) | O(1) | New datetime with fields replaced |
+| `datetime.timetuple()` | O(1) | O(1) | time.struct_time |
+| `datetime.ctime()` | O(1) | O(1) | C-style string |
+| `datetime.isoformat()` | O(1) | O(1) | ISO 8601 string |
+| `datetime.__format__()` | O(n) | O(n) | Format string length n |
 
 ## Time Operations
 
@@ -63,6 +74,7 @@ The `datetime` module provides classes for manipulating dates and times.
 | `time.dst()` | O(1) | O(1) | Daylight saving offset |
 | `time.tzname()` | O(1) | O(1) | Timezone name string |
 | `time.utcoffset()` | O(1) | O(1) | UTC offset as timedelta |
+| `time.fold` | O(1) | O(1) | Attribute access |
 
 ## Timedelta Operations
 
@@ -73,6 +85,26 @@ The `datetime` module provides classes for manipulating dates and times.
 | `td1 + td2` | O(1) | O(1) | Add durations |
 | `td1 - td2` | O(1) | O(1) | Subtract durations |
 | `td * n` | O(1) | O(1) | Multiply duration |
+| `td / n` | O(1) | O(1) | Divide duration |
+| `td // n` | O(1) | O(1) | Floor divide duration |
+| `abs(td)` | O(1) | O(1) | Absolute duration |
+| `-td` | O(1) | O(1) | Negate duration |
+
+## Timezone Utilities
+
+| Operation | Time | Space | Notes |
+|-----------|------|-------|-------|
+| `timezone(offset)` | O(1) | O(1) | Fixed offset tzinfo |
+| `timezone.utc` | O(1) | O(1) | UTC tzinfo singleton |
+| `UTC` | O(1) | O(1) | UTC tzinfo alias |
+| `tzinfo` | O(1) | O(1) | Abstract base for tzinfo |
+
+## Constants
+
+| Name | Time | Space | Notes |
+|------|------|-------|-------|
+| `MINYEAR` / `MAXYEAR` | O(1) | O(1) | Supported year bounds |
+| `datetime_CAPI` | O(1) | O(1) | C API capsule |
 
 ## Common Operations
 

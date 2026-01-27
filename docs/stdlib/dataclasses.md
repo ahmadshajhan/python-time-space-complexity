@@ -14,6 +14,15 @@ The `dataclasses` module provides a decorator to automatically generate special 
 | `replace()` | O(n) | O(n) | Creates new instance |
 | `asdict()` | O(n*m) | O(n*m) | n = fields, m = nesting depth; recursive |
 | `astuple()` | O(n*m) | O(n*m) | n = fields, m = nesting depth; recursive |
+| `fields()` | O(n) | O(n) | n = number of fields |
+| `field()` | O(1) | O(1) | Field factory |
+| `make_dataclass()` | O(n) | O(n) | n = number of fields |
+| `is_dataclass()` | O(1) | O(1) | Type check |
+| `Field` | O(1) | O(1) | Field descriptor |
+| `InitVar` | O(1) | O(1) | Init-only variable wrapper |
+| `KW_ONLY` | O(1) | O(1) | Keyword-only marker |
+| `MISSING` | O(1) | O(1) | Sentinel for no default |
+| `FrozenInstanceError` | O(1) | O(1) | Exception type |
 
 ## Basic Dataclass
 

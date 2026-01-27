@@ -40,6 +40,17 @@ The `decimal` module provides support for decimal floating point arithmetic with
 | `next_plus()` / `next_minus()` | O(n) | O(n) | Next representable value |
 | `next_toward(other)` | O(n) | O(n) | Next value toward other |
 | `remainder_near(other)` | O(n²) | O(n) | IEEE remainder |
+| `getcontext()` | O(1) | O(1) | Get current context |
+| `setcontext(ctx)` | O(1) | O(1) | Set current context |
+| `localcontext([ctx])` | O(1) | O(1) | Context manager |
+| `Context()` | O(1) | O(1) | Create context |
+| `DecimalTuple` | O(1) | O(1) | Tuple of sign/digits/exponent |
+| `DefaultContext` / `BasicContext` / `ExtendedContext` | O(1) | O(1) | Predefined contexts |
+| `IEEEContext()` | O(1) | O(1) | IEEE 754 context |
+| Signals/flags | O(1) | O(1) | `Inexact`, `Rounded`, `Underflow`, `Overflow`, `Subnormal`, `Clamped` |
+| Exceptions | O(1) | O(1) | `DecimalException`, `InvalidOperation`, `DivisionByZero`, etc. |
+| Rounding modes | O(1) | O(1) | `ROUND_HALF_EVEN`, `ROUND_UP`, etc. |
+| Limits | O(1) | O(1) | `MAX_PREC`, `MAX_EMAX`, `MIN_EMIN`, `MIN_ETINY` |
 
 ## Creating Decimal Objects
 
