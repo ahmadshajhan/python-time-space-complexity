@@ -7,6 +7,7 @@ The `getopt` module provides command-line argument parsing using the GNU getopt(
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
 | `getopt.getopt()` | O(n) | O(n) | n = command-line args |
+| `getopt.gnu_getopt()` | O(n) | O(n) | GNU-style parsing |
 | Argument parsing | O(n) | O(n) | Parse and store |
 
 ## Parsing Command-Line Arguments
@@ -34,6 +35,7 @@ for opt, arg in opts:
     elif opt in ("-v", "--version"):
         print(f"Version: {arg}")
 ```
+
 
 ## Related Documentation
 

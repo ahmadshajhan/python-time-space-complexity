@@ -7,6 +7,10 @@ The `gettext` module provides internationalization (i18n) support for Python app
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
 | `gettext.install()` | O(n) | O(n) | Load translations |
+| `translation()` | O(n) | O(n) | Load translation catalog |
+| `find()` | O(n) | O(1) | Locate translation file |
+| `bindtextdomain()` | O(1) | O(1) | Set global locale dir |
+| `textdomain()` | O(1) | O(1) | Set default domain |
 | Message lookup | O(1) | O(1) | Hash-based dict |
 | `ngettext()` | O(1) | O(1) | Plural form selection |
 

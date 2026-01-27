@@ -10,6 +10,11 @@ The `glob` module provides Unix shell-style pathname expansion using wildcard pa
 | `iglob()` function | O(1) init | O(1) per item | Iterator, lazy evaluation |
 | Pattern matching | O(n) | O(1) | n = files in directory |
 | Recursive search `**` | O(d) | O(1) per file | d = depth of directory tree |
+| `escape()` | O(n) | O(n) | Escape metacharacters |
+| `has_magic()` | O(n) | O(1) | Detect pattern magic |
+| `glob0()` | O(1) | O(1) | Single-directory literal/implicit match |
+| `glob1()` | O(n) | O(n) | One-level pattern match |
+| `translate()` | O(n) | O(n) | Convert glob to regex |
 
 ## Basic Globbing
 
@@ -233,6 +238,7 @@ filename = "data[backup].csv"
 pattern = glob.escape(filename)
 result = glob.glob(pattern)
 ```
+
 
 ## Common Use Cases
 

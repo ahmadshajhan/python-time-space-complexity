@@ -12,6 +12,7 @@ The `graphlib` module provides a topological sort implementation for resolving d
 | `get_ready()` | O(1) amortized | O(k) | Get all ready nodes as tuple, k = ready count |
 | `done(node)` | O(d) | O(1) | Mark done, d = node degree |
 | `static_order()` | O(v + e) | O(v + e) | Complete topological sort |
+| `CycleError` | O(1) | O(1) | Exception raised on cycles |
 
 ## Basic Topological Sort
 

@@ -11,6 +11,8 @@ The `gzip` module provides GZIP compression and decompression functionality.
 | `GzipFile.write(data)` | O(n) | O(k) | Compress and write, n = input size, k = buffer |
 | `compress(data)` | O(n) | O(n) | Compress bytes (DEFLATE is linear in practice) |
 | `decompress(data)` | O(m) | O(m) | Decompress bytes |
+| `GzipFile()` | O(1) | O(1) | Create file object |
+| `BadGzipFile` | O(1) | O(1) | Exception for invalid gzip data |
 
 ## Opening Files
 

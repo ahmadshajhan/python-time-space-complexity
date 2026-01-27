@@ -8,6 +8,9 @@ The `getpass` module provides utilities for prompting the user for passwords wit
 |-----------|------|-------|-------|
 | `getpass()` | O(n) | O(n) | n = password length |
 | `getuser()` | O(1) | O(1) | Get current user |
+| `fallback_getpass()` | O(n) | O(n) | Fallback prompt (echoed) |
+| `unix_getpass()` | O(n) | O(n) | Unix-specific prompt |
+| `win_getpass()` | O(n) | O(n) | Windows-specific prompt |
 
 ## Common Operations
 
@@ -26,6 +29,9 @@ password = getpass.getpass(prompt="Enter secret: ")
 # Returns: user-entered password as string
 # Input is not echoed to screen
 ```
+
+If terminal control isn't available, `getpass()` may fall back to `fallback_getpass()` and raise
+`GetPassWarning`. Platform-specific helpers `unix_getpass()` and `win_getpass()` are also exposed.
 
 ### Getting Current User
 

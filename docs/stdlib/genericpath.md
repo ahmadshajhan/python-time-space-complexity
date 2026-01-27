@@ -6,51 +6,23 @@ The `genericpath` module provides generic pathname utilities shared by `posixpat
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| `commonpath(list)` | O(n*m) | O(n) | Find common path prefix |
 | `commonprefix(list)` | O(n*m) | O(n) | Find common string prefix |
 | `exists(path)` | O(1) | O(1) | Check if path exists |
+| `lexists(path)` | O(1) | O(1) | Check if path exists (even if broken symlink) |
 | `isfile(path)` | O(1) | O(1) | Check if file |
 | `isdir(path)` | O(1) | O(1) | Check if directory |
 | `islink(path)` | O(1) | O(1) | Check if symlink |
+| `isjunction(path)` | O(1) | O(1) | Check Windows junction |
+| `isdevdrive(path)` | O(1) | O(1) | Check Windows Dev Drive |
 | `getsize(path)` | O(1) | O(1) | Get file size |
 | `getmtime(path)` | O(1) | O(1) | Get modification time |
 | `getatime(path)` | O(1) | O(1) | Get access time |
 | `getctime(path)` | O(1) | O(1) | Get creation time |
+| `samefile(a, b)` | O(1) | O(1) | Compare underlying file identity |
+| `samestat(stat1, stat2)` | O(1) | O(1) | Compare stat results |
+| `sameopenfile(fd1, fd2)` | O(1) | O(1) | Compare open file descriptors |
 
 ## Path Comparison
-
-### commonpath()
-
-#### Time Complexity: O(n*m)
-
-Where n = number of paths, m = length of shortest path.
-
-```python
-import genericpath
-
-# Find common path: O(n*m)
-paths = ['/home/user/docs', '/home/user/downloads', '/home/user/desktop']
-common = genericpath.commonpath(paths)  # O(n*m)
-# Result: '/home/user'
-
-# Single path
-common = genericpath.commonpath(['/home/user/file'])  # O(1)
-# Result: '/home/user/file'
-
-# No common path
-common = genericpath.commonpath(['/home', '/var', '/usr'])  # O(n*m)
-# Result: '/'
-```
-
-#### Space Complexity: O(n)
-
-```python
-import genericpath
-
-# Result and temporary storage
-paths = ['/path1', '/path2', '/path3']
-common = genericpath.commonpath(paths)  # O(n) space for result
-```
 
 ### commonprefix()
 
@@ -82,9 +54,23 @@ paths = ['a' * 1000, 'a' * 1000, 'b' * 1000]
 prefix = genericpath.commonprefix(paths)  # O(m) space for result
 ```
 
+File identity helpers can compare paths or stat results:
+
+```python
+import genericpath
+import os
+
+same = genericpath.samefile("a.txt", "b.txt")  # O(1)
+same = genericpath.sameopenfile(os.open("a.txt", os.O_RDONLY),
+                                os.open("a.txt", os.O_RDONLY))  # O(1)
+stat1 = os.stat("a.txt")
+stat2 = os.stat("b.txt")
+same = genericpath.samestat(stat1, stat2)  # O(1)
+```
+
 ## Path Existence and Type Checks
 
-### exists(), isfile(), isdir()
+### exists(), lexists(), isfile(), isdir()
 
 #### Time Complexity: O(1)
 
@@ -94,6 +80,9 @@ import genericpath
 # Single stat call: O(1)
 if genericpath.exists('/path/to/file'):  # O(1) stat
     print('exists')
+
+if genericpath.lexists('/path/to/maybe-link'):  # O(1) lstat
+    print('exists (even if broken symlink)')
 
 if genericpath.isfile('/path/to/file'):  # O(1) stat
     print('is file')
@@ -134,6 +123,18 @@ if genericpath.islink('/path/to/link'):  # O(1)
 import genericpath
 
 is_link = genericpath.islink('/path')  # O(1) space
+```
+
+Windows-only checks also include junctions and Dev Drives:
+
+```python
+import genericpath
+
+if genericpath.isjunction('C:\\\\path\\\\to\\\\junction'):  # O(1)
+    print('is junction')
+
+if genericpath.isdevdrive('C:\\\\path'):  # O(1)
+    print('is dev drive')
 ```
 
 ## File Statistics
@@ -328,6 +329,8 @@ size = stat_info.st_size
 # Both O(1), os.stat more flexible
 ```
 
+`ALLOW_MISSING` is a public sentinel used by `os.path.realpath()` to allow missing path components.
+
 ## Platform Independence
 
 ```python
@@ -339,6 +342,7 @@ path = '/home/user/file.txt'  # or 'C:\\Users\\user\\file.txt'
 exists = genericpath.exists(path)  # O(1) on any platform
 size = genericpath.getsize(path)   # O(1) on any platform
 ```
+
 
 ## Version Notes
 

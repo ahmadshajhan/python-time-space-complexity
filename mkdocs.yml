@@ -188,6 +188,7 @@ nav:
     - Fractions: stdlib/fractions.md
     - Ftplib: stdlib/ftplib.md
     - Genericpath: stdlib/genericpath.md
+    - GC: stdlib/gc.md
     - Functools: stdlib/functools.md
     - Getopt: stdlib/getopt.md
     - Getpass: stdlib/getpass.md
