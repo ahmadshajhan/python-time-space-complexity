@@ -134,10 +134,13 @@ def build_item_list() -> list[tuple[str, object]]:
     return items
 
 
-def format_module(module: ModuleType) -> list[str]:
+def format_module(module: ModuleType, brief: bool) -> list[str]:
     """Format a module's contents."""
-    lines = ["Type: module"]
     contents = get_module_contents(module)
+    if brief:
+        return [f"  {c}" for c in contents]
+
+    lines = ["Type: module"]
     if contents:
         lines.append("")
         lines.append("Contents:")
@@ -145,10 +148,14 @@ def format_module(module: ModuleType) -> list[str]:
     return lines
 
 
-def format_class(cls: type) -> list[str]:
+def format_class(cls: type, brief: bool) -> list[str]:
     """Format a class's methods and attributes."""
-    lines = ["Type: class"]
     methods, attributes = get_direct_members(cls)
+
+    if brief:
+        return [f"  {name}" for name in (methods + attributes)]
+
+    lines = ["Type: class"]
 
     if methods:
         lines.append("")
@@ -167,21 +174,31 @@ def format_class(cls: type) -> list[str]:
     return lines
 
 
-def format_item(name: str, obj: object, next_name: str | None) -> str:
+def format_item(
+    name: str,
+    obj: object,
+    next_name: str | None,
+    *,
+    brief: bool,
+    include_next: bool,
+) -> str:
     """Format an item for output."""
-    lines = [f"=== {name} ==="]
+    lines = [name] if brief else [f"=== {name} ==="]
 
     if isinstance(obj, ModuleType):
-        lines.extend(format_module(obj))
+        lines.extend(format_module(obj, brief))
     elif isinstance(obj, type):
-        lines.extend(format_class(obj))
+        lines.extend(format_class(obj, brief))
     elif callable(obj):
-        lines.append("Type: function")
+        if not brief:
+            lines.append("Type: function")
     else:
-        lines.append(f"Type: {type(obj).__name__}")
+        if not brief:
+            lines.append(f"Type: {type(obj).__name__}")
 
-    lines.append("")
-    lines.append(f"Next: {next_name}" if next_name else "This is the last item.")
+    if include_next and not brief:
+        lines.append("")
+        lines.append(f"Next: {next_name}" if next_name else "This is the last item.")
 
     return "\n".join(lines)
 
@@ -194,7 +211,7 @@ def find_item_index(items: list[tuple[str, object]], target: str) -> int | None:
     return None
 
 
-def handle_next(items: list[tuple[str, object]], target: str) -> None:
+def handle_next(items: list[tuple[str, object]], target: str, *, brief: bool) -> None:
     """Handle --next command."""
     found_idx = find_item_index(items, target)
 
@@ -211,7 +228,7 @@ def handle_next(items: list[tuple[str, object]], target: str) -> None:
     next_idx = found_idx + 1
     name, obj = items[next_idx]
     next_name = items[next_idx + 1][0] if next_idx + 1 < len(items) else None
-    print(format_item(name, obj, next_name))
+    print(format_item(name, obj, next_name, brief=brief, include_next=True))
 
 
 def main() -> None:
@@ -222,6 +239,12 @@ def main() -> None:
     group.add_argument("--start", action="store_true", help="Output the first item")
     group.add_argument("--next", metavar="NAME", help="Output the item after NAME")
     group.add_argument("--count", action="store_true", help="Output total item count")
+    group.add_argument("--all", action="store_true", help="Output all items")
+    parser.add_argument(
+        "--brief",
+        action="store_true",
+        help="Output only names (no descriptive text)",
+    )
 
     args = parser.parse_args()
 
@@ -229,12 +252,25 @@ def main() -> None:
 
     if args.count:
         print(f"Total items: {len(items)}")
+    elif args.all:
+        formatted = [
+            format_item(
+                name,
+                obj,
+                None,
+                brief=args.brief,
+                include_next=False,
+            )
+            for name, obj in items
+        ]
+        separator = "\n" if args.brief else "\n\n"
+        print(separator.join(formatted))
     elif args.start:
         name, obj = items[0]
         next_name = items[1][0] if len(items) > 1 else None
-        print(format_item(name, obj, next_name))
+        print(format_item(name, obj, next_name, brief=args.brief, include_next=True))
     else:
-        handle_next(items, args.next)
+        handle_next(items, args.next, brief=args.brief)
 
 
 if __name__ == "__main__":

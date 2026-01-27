@@ -1,5 +1,6 @@
 """Unit tests for the introspection script."""
 
+import sys
 from unittest.mock import MagicMock
 
 from scripts.introspect import (
@@ -13,6 +14,7 @@ from scripts.introspect import (
     get_module_contents,
     get_stdlib_modules,
     is_public,
+    main,
     should_include_member,
 )
 
@@ -253,37 +255,46 @@ class TestFormatModule:
     def test_includes_type_line(self) -> None:
         import collections
 
-        lines = format_module(collections)
+        lines = format_module(collections, False)
         assert "Type: module" in lines
 
     def test_includes_contents_header(self) -> None:
         import collections
 
-        lines = format_module(collections)
+        lines = format_module(collections, False)
         assert "Contents:" in lines
 
     def test_includes_module_contents(self) -> None:
         import collections
 
-        lines = format_module(collections)
+        lines = format_module(collections, False)
         output = "\n".join(lines)
         assert "Counter" in output
         assert "deque" in output
+
+    def test_brief_outputs_names_only(self) -> None:
+        import collections
+
+        lines = format_module(collections, True)
+        output = "\n".join(lines)
+        assert "Type: module" not in output
+        assert "Contents:" not in output
+        assert "Counter" in output
 
 
 class TestFormatClass:
     """Tests for format_class function."""
 
     def test_includes_type_line(self) -> None:
-        lines = format_class(list)
+        lines = format_class(list, False)
         assert "Type: class" in lines
 
     def test_includes_methods_header(self) -> None:
-        lines = format_class(list)
+        lines = format_class(list, False)
         assert "Methods:" in lines
 
     def test_includes_class_methods(self) -> None:
-        lines = format_class(list)
+        lines = format_class(list, False)
         output = "\n".join(lines)
         assert "append" in output
         assert "pop" in output
@@ -292,43 +303,109 @@ class TestFormatClass:
         class EmptyClass:
             pass
 
-        lines = format_class(EmptyClass)
+        lines = format_class(EmptyClass, False)
         assert "(no public direct members)" in lines
+
+    def test_brief_outputs_names_only(self) -> None:
+        lines = format_class(list, True)
+        output = "\n".join(lines)
+        assert "Type: class" not in output
+        assert "Methods:" not in output
+        assert "append" in output
 
 
 class TestFormatItem:
     """Tests for format_item function."""
 
     def test_includes_name_header(self) -> None:
-        output = format_item("builtins.list", list, "builtins.locals")
+        output = format_item(
+            "builtins.list",
+            list,
+            "builtins.locals",
+            brief=False,
+            include_next=True,
+        )
         assert "=== builtins.list ===" in output
 
     def test_includes_next_line(self) -> None:
-        output = format_item("builtins.list", list, "builtins.locals")
+        output = format_item(
+            "builtins.list",
+            list,
+            "builtins.locals",
+            brief=False,
+            include_next=True,
+        )
         assert "Next: builtins.locals" in output
 
     def test_last_item_message(self) -> None:
-        output = format_item("builtins.list", list, None)
+        output = format_item("builtins.list", list, None, brief=False, include_next=True)
         assert "This is the last item." in output
 
     def test_formats_module(self) -> None:
         import collections
 
-        output = format_item("collections", collections, "collections.Counter")
+        output = format_item(
+            "collections",
+            collections,
+            "collections.Counter",
+            brief=False,
+            include_next=True,
+        )
         assert "Type: module" in output
 
     def test_formats_class(self) -> None:
-        output = format_item("builtins.list", list, "builtins.locals")
+        output = format_item(
+            "builtins.list",
+            list,
+            "builtins.locals",
+            brief=False,
+            include_next=True,
+        )
         assert "Type: class" in output
         assert "Methods:" in output
 
     def test_formats_function(self) -> None:
-        output = format_item("builtins.len", len, "builtins.license")
+        output = format_item(
+            "builtins.len",
+            len,
+            "builtins.license",
+            brief=False,
+            include_next=True,
+        )
         assert "Type: function" in output
 
     def test_formats_other_types(self) -> None:
-        output = format_item("builtins.True", True, "builtins.tuple")
+        output = format_item(
+            "builtins.True",
+            True,
+            "builtins.tuple",
+            brief=False,
+            include_next=True,
+        )
         assert "Type: bool" in output
+
+    def test_brief_formats_name_only_header(self) -> None:
+        output = format_item(
+            "builtins.list",
+            list,
+            "builtins.locals",
+            brief=True,
+            include_next=True,
+        )
+        assert output.splitlines()[0] == "builtins.list"
+        assert "Type:" not in output
+        assert "Next:" not in output
+
+    def test_brief_formats_function_as_name_only(self) -> None:
+        output = format_item(
+            "builtins.len",
+            len,
+            "builtins.license",
+            brief=True,
+            include_next=True,
+        )
+        assert output.strip() == "builtins.len"
+        assert "Type:" not in output
 
 
 class TestFindItemIndex:
@@ -364,7 +441,13 @@ class TestIntegration:
         # First item should be formattable
         first_name, first_obj = items[0]
         second_name = items[1][0] if len(items) > 1 else None
-        output = format_item(first_name, first_obj, second_name)
+        output = format_item(
+            first_name,
+            first_obj,
+            second_name,
+            brief=False,
+            include_next=True,
+        )
         assert first_name in output
 
         # Should be able to find items
@@ -373,7 +456,13 @@ class TestIntegration:
 
     def test_builtins_list_format(self) -> None:
         """Test that builtins.list formats correctly with expected methods."""
-        output = format_item("builtins.list", list, "builtins.locals")
+        output = format_item(
+            "builtins.list",
+            list,
+            "builtins.locals",
+            brief=False,
+            include_next=True,
+        )
 
         assert "=== builtins.list ===" in output
         assert "Type: class" in output
@@ -390,3 +479,11 @@ class TestIntegration:
         assert "reverse" in output
         assert "sort" in output
         assert "Next: builtins.locals" in output
+
+    def test_all_brief_has_no_blank_lines(self, monkeypatch, capsys) -> None:
+        monkeypatch.setattr(sys, "argv", ["introspect.py", "--all", "--brief"])
+        main()
+        output = capsys.readouterr().out.strip()
+        lines = output.splitlines()
+        assert len(lines) > 1
+        assert "" not in lines
