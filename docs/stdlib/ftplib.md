@@ -9,6 +9,11 @@ The `ftplib` module implements FTP client functionality for transferring files t
 | `connect()` | O(1) | O(1) | TCP connection |
 | List files | O(n) | O(n) | n = files |
 | Transfer | O(n) | O(n) | n = file size |
+| `FTP()` | O(1) | O(1) | Create client (optional connect) |
+| `FTP_TLS()` | O(1) | O(1) | Create FTPS client |
+| `parse227()` | O(1) | O(1) | Parse PASV reply |
+| `parse229()` | O(1) | O(1) | Parse EPSV reply |
+| `parse257()` | O(n) | O(1) | Parse PWD reply |
 
 ## Connecting and Transferring Files
 

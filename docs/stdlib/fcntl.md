@@ -8,6 +8,8 @@ The `fcntl` module provides access to file control operations on Unix, including
 |-----------|------|-------|-------|
 | `flock()` | O(1) | O(1) | Acquire lock; blocks if contended (without LOCK_NB) |
 | `fcntl()` | O(1) | O(1) | File control operation |
+| `ioctl()` | O(1) | O(1) | Device-specific I/O control |
+| `lockf()` | O(1) | O(1) | POSIX record locking |
 
 ## File Locking and Control
 

@@ -12,6 +12,8 @@ The `filecmp` module provides tools for comparing files and directories, with sh
 | `dircmp()` init | O(1) | O(1) | Create directory comparator |
 | `dircmp.report()` | O(k*n) | O(k) | k = files, n = avg size |
 | `dircmp.report_full_closure()` | O(k*d*n) | O(k*d) | Recursive, d = depth |
+| `clear_cache()` | O(1) | O(1) | Clear comparison cache |
+| `demo()` | O(1) | O(1) | Run module demo (I/O bound) |
 
 ## File Comparison
 

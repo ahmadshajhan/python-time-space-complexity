@@ -10,6 +10,7 @@ The `fnmatch` module provides Unix filename pattern matching using shell-style w
 | `fnmatchcase()` | O(n) | O(1) | Case-sensitive version |
 | `filter()` | O(k*n) | O(k) | k = items, n = string length |
 | `translate()` | O(n) | O(n) | Convert pattern to regex |
+| `filterfalse()` | O(k*n) | O(k) | Invert filter results |
 
 ## Pattern Matching
 

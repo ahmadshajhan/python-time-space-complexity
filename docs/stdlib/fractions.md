@@ -11,6 +11,8 @@ The `fractions` module provides support for rational number arithmetic, maintain
 | `Fraction` comparison | O(1) | O(1) | Cross-multiplication (a*d vs b*c) |
 | `Fraction` conversion | O(log n) | O(1) | GCD for reduction |
 | `limit_denominator()` | O(k) | O(1) | k = max denominator |
+| `Fraction.from_float()` | O(log n) | O(1) | Convert float to exact fraction |
+| `Fraction.from_decimal()` | O(log n) | O(1) | Convert Decimal to exact fraction |
 
 ## Basic Usage
 

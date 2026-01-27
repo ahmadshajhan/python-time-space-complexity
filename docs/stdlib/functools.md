@@ -11,6 +11,7 @@ The `functools` module provides higher-order functions and operations on callabl
 | `lru_cache(maxsize)` | O(1) avg hit, O(f(n)) miss | O(min(n, maxsize)) | Hit is O(1) avg (hash-based); miss runs wrapped function |
 | `cache()` | O(1) avg hit, O(f(n)) miss | O(n) unbounded | Hit is O(1) avg (hash-based); miss runs wrapped function |
 | `cached_property` | O(1) after first call | O(1) per property | Descriptor cache |
+| `get_cache_token()` | O(1) | O(1) | Token changes when cache state changes |
 
 ### Function Composition
 
@@ -21,6 +22,7 @@ The `functools` module provides higher-order functions and operations on callabl
 | `partialmethod(func, *args)` | O(1) | O(k) for k args | Partial for use as method descriptor |
 | `wraps(wrapped)` | O(1) | O(1) | Decorator to copy function metadata |
 | `update_wrapper(wrapper, wrapped)` | O(1) | O(1) | Copy function metadata (used by wraps) |
+| `recursive_repr()` | O(1) | O(1) | Prevent recursive __repr__ loops |
 
 ### Comparison Helpers
 
@@ -216,6 +218,7 @@ class MyClass:
         return sum(range(1000000))
 ```
 
+
 ## Performance Characteristics
 
 ### When to Use Cache
@@ -319,6 +322,7 @@ process("hello")  # "Default: hello"
 process(5)        # "Integer: 10"
 process([1,2,3])  # "List of 3 items"
 ```
+
 
 ## Version Notes
 

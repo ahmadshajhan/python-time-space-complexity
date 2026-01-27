@@ -11,7 +11,14 @@ The `fileinput` module provides an iterator for processing lines from multiple i
 | `filename()` | O(1) | O(1) | Get current file name |
 | `filelineno()` | O(1) | O(1) | Get current line in file |
 | `lineno()` | O(1) | O(1) | Get total line count |
+| `fileno()` | O(1) | O(1) | Get current file descriptor |
+| `isfirstline()` | O(1) | O(1) | Check first line of file |
+| `isstdin()` | O(1) | O(1) | Check if current file is stdin |
+| `nextfile()` | O(1) | O(1) | Skip to next file |
 | `close()` | O(1) | O(1) | Close file iterator |
+| `FileInput(...)` | O(1) | O(1) | Create iterator instance |
+| `hook_encoded()` | O(1) | O(1) | Encoding open hook factory |
+| `hook_compressed()` | O(1) | O(1) | Compressed-file open hook factory |
 
 ## Basic Line Iteration
 

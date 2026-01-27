@@ -77,6 +77,7 @@ For each documented module or type:
 
 3. **Update documentation for gaps**
    - Add missing methods to the documentation with their complexity
+   - Do not add new documentation sections to existing files; update existing sections only
    - If a method is intentionally omitted, add a comment explaining why
 
 ## Example Review Process
