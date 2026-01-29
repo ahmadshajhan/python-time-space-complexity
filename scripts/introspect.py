@@ -118,6 +118,9 @@ def build_item_list() -> list[tuple[str, object]]:
     for module_name in get_stdlib_modules():
         if module_name == "builtins" or module_name in skip_modules:
             continue
+        # Skip private modules (single underscore) but keep dunder modules like __future__
+        if module_name.startswith("_") and not module_name.startswith("__"):
+            continue
         try:
             with suppress_stdout():
                 module = importlib.import_module(module_name)
@@ -136,10 +139,10 @@ def build_item_list() -> list[tuple[str, object]]:
 
 def format_module(module: ModuleType, brief: bool) -> list[str]:
     """Format a module's contents."""
-    contents = get_module_contents(module)
     if brief:
-        return [f"  {c}" for c in contents]
+        return []
 
+    contents = get_module_contents(module)
     lines = ["Type: module"]
     if contents:
         lines.append("")
@@ -150,11 +153,10 @@ def format_module(module: ModuleType, brief: bool) -> list[str]:
 
 def format_class(cls: type, brief: bool) -> list[str]:
     """Format a class's methods and attributes."""
-    methods, attributes = get_direct_members(cls)
-
     if brief:
-        return [f"  {name}" for name in (methods + attributes)]
+        return []
 
+    methods, attributes = get_direct_members(cls)
     lines = ["Type: class"]
 
     if methods:

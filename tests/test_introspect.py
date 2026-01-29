@@ -248,6 +248,21 @@ class TestBuildItemList:
         names = [name for name, _ in items]
         assert len(names) == len(set(names))
 
+    def test_excludes_private_stdlib_modules(self) -> None:
+        """Private stdlib modules (single underscore) should be excluded."""
+        items = build_item_list()
+        names = [name for name, _ in items]
+        # These are private stdlib modules that should be filtered out
+        private_modules = ["_thread", "_abc", "_collections", "_io"]
+        for mod in private_modules:
+            assert mod not in names, f"Private module {mod} should be excluded"
+
+    def test_includes_dunder_stdlib_modules(self) -> None:
+        """Dunder modules like __future__ should be included."""
+        items = build_item_list()
+        names = [name for name, _ in items]
+        assert "__future__" in names
+
 
 class TestFormatModule:
     """Tests for format_module function."""
@@ -272,14 +287,12 @@ class TestFormatModule:
         assert "Counter" in output
         assert "deque" in output
 
-    def test_brief_outputs_names_only(self) -> None:
+    def test_brief_returns_empty_list(self) -> None:
+        """In brief mode, format_module returns empty list (members listed separately)."""
         import collections
 
         lines = format_module(collections, True)
-        output = "\n".join(lines)
-        assert "Type: module" not in output
-        assert "Contents:" not in output
-        assert "Counter" in output
+        assert lines == []
 
 
 class TestFormatClass:
@@ -306,12 +319,10 @@ class TestFormatClass:
         lines = format_class(EmptyClass, False)
         assert "(no public direct members)" in lines
 
-    def test_brief_outputs_names_only(self) -> None:
+    def test_brief_returns_empty_list(self) -> None:
+        """In brief mode, format_class returns empty list (members listed separately)."""
         lines = format_class(list, True)
-        output = "\n".join(lines)
-        assert "Type: class" not in output
-        assert "Methods:" not in output
-        assert "append" in output
+        assert lines == []
 
 
 class TestFormatItem:
