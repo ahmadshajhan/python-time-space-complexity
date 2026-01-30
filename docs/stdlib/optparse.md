@@ -6,7 +6,7 @@ The `optparse` module provides option parsing functionality (deprecated in favor
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| `OptionParser.parse_args()` | O(n) | O(n) | n = arguments |
+| `OptionParser.parse_args()` | O(n) avg, O(n·m) worst | O(n) | n = args, m = long options (abbr matching) |
 | Add option | O(1) | O(1) | Register option |
 
 ## Parsing Options
@@ -23,7 +23,7 @@ parser = optparse.OptionParser()
 parser.add_option("-f", "--file", dest="filename")
 parser.add_option("-v", "--verbose", action="store_true")
 
-# Parse arguments - O(n)
+# Parse arguments - O(n) average; O(n·m) worst-case with long option abbreviations
 (options, args) = parser.parse_args()
 
 print(options.filename)

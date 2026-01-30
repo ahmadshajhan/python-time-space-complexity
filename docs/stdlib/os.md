@@ -30,7 +30,7 @@ The `os` module provides a way to use operating system-dependent functionality l
 | `os.replace(src, dst)` | O(1) | O(1) | Rename, overwriting dst if exists |
 | `os.link(src, dst)` | O(1) | O(1) | Create hard link |
 | `os.symlink(src, dst)` | O(1) | O(1) | Create symbolic link |
-| `os.readlink(path)` | O(1) | O(n) | Read symlink target |
+| `os.readlink(path)` | O(n) | O(n) | n = length of symlink target |
 | `os.chmod(path, mode)` | O(1) | O(1) | Change permissions |
 | `os.chown(path, uid, gid)` | O(1) | O(1) | Change owner/group |
 | `os.truncate(path, length)` | O(1) | O(1) | Truncate file to length |
@@ -39,7 +39,7 @@ The `os` module provides a way to use operating system-dependent functionality l
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| `os.getcwd()` | O(1) | O(n) | Get current working directory |
+| `os.getcwd()` | O(n) | O(n) | n = length of current working directory |
 | `os.chdir(path)` | O(1) | O(1) | Change working directory |
 | `os.getenv(key)` | O(1) | O(1) | Get environment variable |
 | `os.putenv(key, value)` | O(1) | O(1) | Set environment variable |
@@ -199,7 +199,7 @@ pid = os.getpid()
 # Parent process ID - O(1)
 ppid = os.getppid()
 
-# Current working directory - O(1)
+# Current working directory - O(n) in path length
 cwd = os.getcwd()
 
 # Change working directory - O(1)

@@ -6,8 +6,8 @@ The `operator` module provides function equivalents for Python's operators, usef
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| `add(a, b)` | O(1) | O(1) | Addition |
-| `mul(a, b)` | O(1) | O(1) | Multiplication |
+| `add(a, b)` | Varies | Varies | Same as `a + b` |
+| `mul(a, b)` | Varies | Varies | Same as `a * b` |
 | `itemgetter(key)` | O(1) | O(1) | Get item function |
 | `attrgetter(name)` | O(1) | O(1) | Get attribute function |
 | `methodcaller(name)` | O(1) | O(1) | Call method function |
@@ -16,12 +16,12 @@ The `operator` module provides function equivalents for Python's operators, usef
 
 ### Basic Operations
 
-#### Time Complexity: O(1)
+#### Time Complexity: Varies by operand type
 
 ```python
 import operator
 
-# Arithmetic: O(1)
+# Arithmetic: same as a + b, etc.
 result = operator.add(5, 3)      # 8
 result = operator.sub(10, 4)     # 6
 result = operator.mul(6, 7)      # 42
@@ -35,22 +35,22 @@ numbers = [1, 2, 3, 4, 5]
 doubled = list(map(operator.mul, numbers, [2] * len(numbers)))  # O(n)
 ```
 
-#### Space Complexity: O(1)
+#### Space Complexity: Varies by operand type
 
 ```python
 import operator
 
-result = operator.add(a, b)  # O(1) space
+result = operator.add(a, b)  # Same as a + b
 ```
 
 ## Comparison Operators
 
-#### Time Complexity: O(1)
+#### Time Complexity: Varies by operand type
 
 ```python
 import operator
 
-# Comparisons: O(1)
+# Comparisons: same as a == b, a < b, etc.
 operator.eq(5, 5)    # True
 operator.ne(5, 3)    # True
 operator.lt(3, 5)    # True
@@ -59,7 +59,7 @@ operator.gt(5, 3)    # True
 operator.ge(5, 3)    # True
 
 # With sorted: O(n log n)
-items = [5, 2, 8, 1, 9]
+items = [(5,), (2,), (8,), (1,), (9,)]
 sorted_items = sorted(items, key=operator.itemgetter(0))  # O(n log n)
 ```
 
@@ -68,14 +68,14 @@ sorted_items = sorted(items, key=operator.itemgetter(0))  # O(n log n)
 ```python
 import operator
 
-result = operator.eq(a, b)  # O(1) space
+result = operator.eq(a, b)  # Same as a == b
 ```
 
 ## Item and Attribute Access
 
 ### itemgetter()
 
-#### Time Complexity: O(1)
+#### Time Complexity: Depends on the called method
 
 ```python
 import operator
@@ -152,7 +152,7 @@ import operator
 caller = operator.methodcaller('upper')
 result = caller('hello')  # 'HELLO' - O(n) for string
 
-# With arguments: O(1)
+# With arguments: still depends on method complexity
 caller = operator.methodcaller('replace', 'a', 'b')
 result = caller('banana')  # 'bbnbnb' - O(n) for string
 
@@ -162,13 +162,13 @@ uppers = list(map(operator.methodcaller('upper'), strings))  # O(n*m)
 # Result: ['HELLO', 'WORLD', 'PYTHON']
 ```
 
-#### Space Complexity: O(m)
+#### Space Complexity: Depends on the called method
 
 ```python
 import operator
 
 caller = operator.methodcaller('upper')  # O(1) space for method ref
-result = caller(string)  # O(m) space for result
+result = caller(string)  # Same as string.upper()
 ```
 
 ## In-Place Operations
@@ -266,9 +266,9 @@ import operator
 items = [5, 2, 8, 1, 9]
 count_gt_5 = sum(map(operator.gt, items, [5] * len(items)))  # O(n)
 
-# Apply to sequences: O(n*m)
+# Apply to sequences: O(n)
 data = {'a': 1, 'b': 2, 'c': 3}
-values = list(map(operator.itemgetter, data.keys(), [data] * len(data)))  # O(n)
+values = list(map(operator.itemgetter(1), data.items()))  # O(n)
 ```
 
 ## Performance Characteristics
