@@ -6,7 +6,7 @@ The `zlib` module provides low-level compression and decompression functions usi
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| `zlib.compress(data)` | O(n) to O(n log n) | O(n) | Compress bytes, n = input size; depends on compression level |
+| `zlib.compress(data)` | O(n) | O(n) | Compress bytes, n = input size |
 | `zlib.decompress(data)` | O(m) | O(m) | Decompress bytes, m = uncompressed size |
 | `zlib.compressobj()` | O(1) | O(1) | Create compressor object |
 | `Compress.compress(data)` | O(n) | O(k) | Add data to compress, k = buffer |
@@ -20,16 +20,16 @@ The `zlib` module provides low-level compression and decompression functions usi
 ```python
 import zlib
 
-# Compress entire data: O(n log n) time, O(n) space
+# Compress entire data: O(n) time, O(n) space
 data = b'Large data...' * 10000
-compressed = zlib.compress(data)  # O(n log n)
+compressed = zlib.compress(data)  # O(n)
 
 # Space: creates entire compressed result
 # O(n) for output (typically 30-50% of input)
 
 # With compression level
-compressed = zlib.compress(data, level=6)  # O(n log n)
-compressed = zlib.compress(data, level=9)  # O(n log^2 n)
+compressed = zlib.compress(data, level=6)  # O(n)
+compressed = zlib.compress(data, level=9)  # O(n)
 ```
 
 ### decompress() - One-shot Decompression
@@ -59,12 +59,12 @@ compressor = zlib.compressobj()  # O(1)
 # Add data to compress: O(n) total for all data
 result = b''
 for chunk in data_chunks:  # O(n) iterations
-    result += compressor.compress(chunk)  # O(n log n) total
+    result += compressor.compress(chunk)  # O(n) total
 
 # Finalize: O(k)
 result += compressor.flush()  # O(k) for remaining
 
-# Total: O(n log n) time, O(k) memory
+# Total: O(n) time, O(k) memory
 ```
 
 ### Space Complexity: O(k)
@@ -134,15 +134,15 @@ data = b'x' * 1000000
 compressed = zlib.compress(data, level=0)  # Fastest, largest
 
 # Level 1-3: Fast compression
-# Time: O(n log n)
+# Time: O(n)
 compressed = zlib.compress(data, level=1)  # Fast
 
 # Level 6: Default, balanced
-# Time: O(n log n)
+# Time: O(n)
 compressed = zlib.compress(data, level=6)  # Balanced
 
 # Level 9: Maximum compression
-# Time: O(n log^2 n), slowest
+# Time: O(n), slowest
 compressed = zlib.compress(data, level=9)  # Slowest, smallest
 ```
 
@@ -170,9 +170,9 @@ compressed = zlib.compress(data, level=9)  # Best ratio
 ```python
 import zlib
 
-# Compress: O(n log n)
+# Compress: O(n)
 data = b'Hello, World!' * 1000
-compressed = zlib.compress(data)  # O(n log n)
+compressed = zlib.compress(data)  # O(n)
 
 # Decompress: O(m)
 decompressed = zlib.decompress(compressed)  # O(m)
@@ -197,7 +197,7 @@ def compress_file(input_path, output_path):
                 if not chunk:
                     break
                 
-                # Compress: O(n log n) total
+                # Compress: O(n) total
                 compressed = compressor.compress(chunk)
                 if compressed:
                     f_out.write(compressed)
@@ -205,7 +205,7 @@ def compress_file(input_path, output_path):
             # Final flush: O(k)
             f_out.write(compressor.flush())
     
-    # Total: O(n log n) time, O(k) memory
+    # Total: O(n) time, O(k) memory
 ```
 
 ### Streaming Large File Decompression
@@ -255,7 +255,7 @@ compressed_parts.append(compressor.flush())
 # Combine results
 final_compressed = b''.join(compressed_parts)
 
-# Time: O(n log n) total
+# Time: O(n) total
 # Space: O(k) during processing
 ```
 
@@ -317,22 +317,19 @@ def safe_decompress(compressed, max_size=10*1024*1024):
     decompressor = zlib.decompressobj()
     
     try:
-        result = b''
-        while True:
-            # Decompress in chunks
-            decompressed = decompressor.decompress(
-                compressed[len(result):],
-                max_size - len(result)  # Limit output
-            )
-            result += decompressed
-            
-            if len(result) > max_size:
+        result = []
+        remaining = compressed
+        total = 0
+        while remaining:
+            decompressed = decompressor.decompress(remaining, max_size - total)
+            total += len(decompressed)
+            result.append(decompressed)
+            if total > max_size:
                 raise ValueError(f"Decompressed size exceeds {max_size}")
-            
-            if not decompressed:
+            remaining = decompressor.unconsumed_tail
+            if not remaining:
                 break
-        
-        return result
+        return b"".join(result)
     except zlib.error as e:
         raise ValueError(f"Decompression error: {e}")
 ```
@@ -390,13 +387,6 @@ compressed = zlib.compress(data)
 # Usually not worth the slowness for zlib
 compressed = zlib.compress(data, level=9)
 ```
-
-## Version Notes
-
-- **Python 2.0+**: Basic zlib support
-- **Python 3.0+**: Enhanced API
-- **Python 3.3+**: Better compression control
-- **Python 3.10+**: Improved performance
 
 ## Differences from gzip
 

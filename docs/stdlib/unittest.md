@@ -17,6 +17,13 @@ The `unittest` module provides a framework for unit testing with test cases, fix
 import unittest
 
 # Define test class - O(1)
+class Calculator:
+    def add(self, a, b):
+        return a + b
+
+    def subtract(self, a, b):
+        return a - b
+
 class TestCalculator(unittest.TestCase):
     
     def setUp(self):  # O(s) - called before each test
@@ -146,12 +153,6 @@ python -m unittest discover  # O(n*t)
 # Verbose output
 python -m unittest -v  # O(n*t)
 ```
-
-## Version Notes
-
-- **Python 2.x**: unittest available (as unittest2 backport)
-- **Python 3.x**: Built-in with enhancements
-- **Python 3.4+**: Subtests added
 
 ## Best Practices
 

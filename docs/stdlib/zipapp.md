@@ -21,7 +21,7 @@ zipapp.create_archive(
     'myapp',
     target='myapp.pyz',
     main='myapp:main',
-    compression='deflated'
+    compressed=True
 )
 
 # Run:

@@ -6,12 +6,12 @@ The `zipfile` module provides tools for working with ZIP archives.
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| `ZipFile(filename, 'r')` | O(n) | O(n) | Open and read central directory; n = file count |
+| `ZipFile(filename, 'r')` | O(n) | O(n) | Read central directory; n = file count |
 | `ZipFile.read(name)` | O(m) | O(m) | Read file, m = uncompressed size |
-| `ZipFile.write(filename)` | O(m) | O(m) | Write file to archive |
+| `ZipFile.write(filename)` | O(m) | O(1) | Write file to archive (streamed) |
 | `ZipFile.namelist()` | O(n) | O(n) | List all files, n = file count |
-| `ZipFile.getinfo(name)` | O(n) | O(1) | Get file info; linear search in central directory |
-| `ZipFile.extractall()` | O(m) | O(m) | Extract all files |
+| `ZipFile.getinfo(name)` | O(1) | O(1) | Dict lookup into NameToInfo |
+| `ZipFile.extractall()` | O(n + m) | O(1) | n = members, m = total size |
 
 ## Opening Archives
 
@@ -101,8 +101,8 @@ from zipfile import ZipFile
 
 # Compression buffer
 with ZipFile('output.zip', 'w', compression=ZIP_DEFLATED) as zf:
-    # Space for compression buffers
-    zf.write('large_file.bin')  # O(m) space for compression
+    # Streamed compression buffers
+    zf.write('large_file.bin')  # O(1) extra memory
 ```
 
 ## Listing Contents
@@ -121,9 +121,8 @@ with ZipFile('archive.zip', 'r') as zf:
     # Get all info: O(n)
     info_list = zf.infolist()  # O(n)
     
-    # Individual lookup: O(n) in worst case
-    # (linear search through central directory)
-    info = zf.getinfo('specific.txt')  # O(n)
+    # Individual lookup: O(1)
+    info = zf.getinfo('specific.txt')  # O(1)
 ```
 
 ### Space Complexity: O(n)
@@ -138,7 +137,7 @@ with ZipFile('archive.zip', 'r') as zf:
 
 ## Extracting Archives
 
-### Time Complexity: O(m)
+### Time Complexity: O(n + m)
 
 Where m = total uncompressed size of all files.
 
@@ -150,14 +149,14 @@ with ZipFile('archive.zip', 'r') as zf:
     # m = uncompressed size
     zf.extract('file.txt')  # O(m)
     
-    # Extract all: O(sum of all sizes)
-    zf.extractall()  # O(m) total
+    # Extract all: O(n + sum of all sizes)
+    zf.extractall()  # O(n + m) total
     
     # Extract with path: O(m) + file I/O
     zf.extractall(path='output_dir')  # O(m)
 ```
 
-### Space Complexity: O(m)
+### Space Complexity: O(1) extra
 
 ```python
 from zipfile import ZipFile
@@ -165,8 +164,7 @@ from zipfile import ZipFile
 # Memory usage for extraction
 with ZipFile('archive.zip', 'r') as zf:
     # Temporary buffers for decompression
-    zf.extractall()  # O(k) space per file being extracted
-                     # k = max file size in archive
+    zf.extractall()  # O(1) extra memory; streamed to disk
 ```
 
 ## Compression Methods
@@ -187,9 +185,8 @@ with ZipFile('archive.zip', 'w', compression=ZIP_STORED) as zf:
 from zipfile import ZipFile, ZIP_DEFLATED
 
 with ZipFile('archive.zip', 'w', compression=ZIP_DEFLATED) as zf:
-    # Compression adds CPU overhead: O(m log m)
-    # But reduces file size
-    zf.write('file.txt')  # O(m log m) time
+    # Compression adds CPU overhead (still linear in input size)
+    zf.write('file.txt')  # O(m)
 ```
 
 ## Common Patterns
@@ -294,13 +291,6 @@ with ZipFile('archive.zip', 'r') as zf:
                 break
             process_chunk(chunk)
 ```
-
-## Version Notes
-
-- **Python 2.6+**: Basic zipfile support
-- **Python 3.0+**: Enhanced features
-- **Python 3.6+**: Support for bz2 and lzma compression
-- **Python 3.8+**: Performance improvements
 
 ## Related Documentation
 

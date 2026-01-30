@@ -10,7 +10,7 @@ The `urllib` module provides utilities for working with URLs, including fetching
 | `urllib.parse.urlencode()` | O(n*m) | O(n*m) | n = items, m = avg value length |
 | `urllib.parse.quote()` | O(n) | O(n) | n = string length |
 | `urllib.parse.unquote()` | O(n) | O(n) | n = string length |
-| `urllib.request.urlopen()` | O(response) | O(response) | Network-bound; response size dominates |
+| `urllib.request.urlopen()` | O(response) | O(1) | Network-bound; response size dominates |
 | `response.read()` | O(n) | O(n) | n = response size |
 
 ## URL Parsing
@@ -114,12 +114,11 @@ from urllib.request import urlopen
 try:
     with urlopen('https://example.com') as response:  # O(network)
         content = response.read()  # O(n) - n = response size
+        # Access response metadata - O(1)
+        status = response.status  # 200
+        headers = response.headers  # dict-like
 except Exception as e:
     print(f"Error: {e}")
-
-# Access response metadata - O(1)
-status = response.status  # 200
-headers = response.headers  # dict-like
 ```
 
 ### Reading Response Content
@@ -308,25 +307,6 @@ def fetch_with_retry(url, max_retries=3):
 content = fetch_with_retry('https://example.com')  # O(response)
 ```
 
-## Limitations and Alternatives
-
-### When to Use requests Library
-
-```python
-# urllib is built-in but basic
-# For more features, use requests library (not built-in)
-
-# urllib - basic, manual handling
-from urllib.request import urlopen
-response = urlopen('https://api.example.com/data')
-data = response.read()
-
-# requests - higher-level, more convenient
-import requests  # Must install: pip install requests
-response = requests.get('https://api.example.com/data')
-data = response.json()  # Auto JSON parsing
-```
-
 ## Performance Considerations
 
 ### Batch Fetching
@@ -378,17 +358,10 @@ content1 = fetch_cached('https://example.com')
 content2 = fetch_cached('https://example.com')
 ```
 
-## Version Notes
-
-- **Python 2.x**: `urllib` and `urllib2` separate modules
-- **Python 3.x**: `urllib.request`, `urllib.parse`, `urllib.error` (reorganized)
-- **All versions**: Basic functionality stable
-
 ## Related Modules
 
 - **[http.client](http.md)** - Lower-level HTTP client
 - **[json](json.md)** - Parse JSON responses
-- **requests** - Higher-level HTTP library (external)
 
 ## Best Practices
 

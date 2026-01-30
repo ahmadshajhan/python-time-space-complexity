@@ -316,6 +316,7 @@ nav:
     - Typing: stdlib/typing.md
     - Timeit: stdlib/timeit.md
     - Unittest: stdlib/unittest.md
+    - Unicodedata: stdlib/unicodedata.md
     - Uuid: stdlib/uuid.md
     - Urllib: stdlib/urllib.md
     - Uu: stdlib/uu.md

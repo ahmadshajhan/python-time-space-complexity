@@ -1,4 +1,4 @@
-# Weakref Module
+# weakref Module
 
 The `weakref` module provides utilities for creating weak references to objects, allowing garbage collection when objects are no longer strongly referenced.
 
@@ -115,7 +115,11 @@ class CachedResource:
 
 # Usage
 cache = CachedResource()
-obj1 = {"data": "value"}
+class Data:
+    def __init__(self, value):
+        self.value = value
+
+obj1 = Data("value")
 cache.register("key1", obj1)
 
 retrieved = cache.get("key1")  # O(1)
@@ -235,9 +239,9 @@ class Registry:
 # Usage
 registry = Registry()
 
-obj1 = {"id": 1}
-obj2 = {"id": 2}
-obj3 = {"id": 3}
+obj1 = Data(1)
+obj2 = Data(2)
+obj3 = Data(3)
 
 registry.register(obj1)  # O(1)
 registry.register(obj2)  # O(1)
@@ -297,7 +301,7 @@ class TransientCache:
 
 # Usage
 cache = TransientCache()
-obj = {"data": "value"}
+obj = Data("value")
 cache._cache["key"] = obj  # O(1)
 
 # Query without keeping obj alive
@@ -307,13 +311,7 @@ data = cache.query("key")  # O(1)
 exists = cache.query_exists("key")  # O(1) - won't prevent GC
 ```
 
-## Version Notes
-
-- **Python 2.6+**: Basic weakref support
-- **Python 3.x**: All features available
-- **Python 3.13+**: Performance improvements
-
 ## Related Documentation
 
-- Gc Module - Garbage collection control
+- [gc Module](gc.md) - Garbage collection control
 - [Collections Module](collections.md) - OrderedDict alternatives

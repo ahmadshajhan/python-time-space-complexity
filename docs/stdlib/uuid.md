@@ -301,13 +301,8 @@ u = uuid4()  # O(1) - cryptographically secure, globally unique
 # Random string (worse)
 uid = ''.join(random.choices(string.ascii_letters, k=36))  # O(n) - collision possible
 
-# UUID is guaranteed unique across systems and time
+# UUIDs are designed to be globally unique, but not absolutely guaranteed
 ```
-
-## Version Notes
-
-- **Python 3.x**: Full UUID support
-- **Python 3.6+**: UUID object improvements
 
 ## Related Documentation
 
