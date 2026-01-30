@@ -32,7 +32,7 @@ try:
         new_settings
     )
     
-    # Now stdin is in raw mode
+    # Now stdin is in non-canonical mode (not full raw mode)
     ch = sys.stdin.read(1)
     print(f"Got: {repr(ch)}")
     

@@ -317,12 +317,6 @@ import tokenize
 # ENDMARKER - end of input
 ```
 
-## Version Notes
-
-- **Python 2.6+**: Basic tokenization
-- **Python 3.x**: All features available
-- **Python 3.10+**: Enhanced token types
-
 ## Related Documentation
 
 - [Ast Module](ast.md) - Abstract syntax trees

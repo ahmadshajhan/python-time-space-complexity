@@ -8,7 +8,6 @@ The `typing` module provides support for type hints, allowing developers to anno
 |-----------|------|-------|-------|
 | Type annotation | O(1) | O(1) | Define hint (no runtime check) |
 | `get_type_hints()` | O(k) | O(k) | k = number of annotations; involves string evaluation |
-| Type checking with `isinstance()` | O(1) | O(1) | Runtime check (limited) |
 | Generic type creation | O(1) | O(1) | Create parameterized type |
 
 ## Basic Type Hints
@@ -283,8 +282,8 @@ def validate_types(func):
             if i < len(arg_names):
                 arg_name = arg_names[i]
                 expected_type = hints[arg_name]
-                
-                if not isinstance(arg, expected_type):
+                # Note: isinstance() won't work for many typing constructs
+                if isinstance(expected_type, type) and not isinstance(arg, expected_type):
                     raise TypeError(f"{arg_name} must be {expected_type}")
         
         return func(*args, **kwargs)
@@ -399,16 +398,8 @@ def process_data(items, processor, config=None):
 # Use type hints for better code documentation and IDE support
 ```
 
-## Version Notes
-
-- **Python 3.5+**: Basic type hints support
-- **Python 3.6+**: Variable annotations
-- **Python 3.9+**: Can use `list[int]` instead of `List[int]`
-- **Python 3.10+**: Union with `|` syntax: `int | None`
-
 ## Related Modules
 
-- **pydantic** - Runtime type validation (external)
 - **[dataclasses](dataclasses.md)** - Type hints for data classes
 - **collections.abc** - Abstract base classes
 

@@ -6,11 +6,11 @@ The `tempfile` module provides utilities for creating and managing temporary fil
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| `NamedTemporaryFile()` | O(1) | O(1) initial | Create file; O(n) for data written |
-| `TemporaryFile()` | O(1) | O(1) initial | Create file; O(n) for data written |
-| `TemporaryDirectory()` | O(1) | O(1) initial | Create dir; O(n) for files created |
-| `mktemp()` | O(1) | O(n) | Generate temp name (deprecated) |
-| `mkdtemp()` | O(1) | O(n) | Create temp directory safely |
+| `NamedTemporaryFile()` | O(r) | O(1) initial | r = name attempts (<= TMP_MAX) |
+| `TemporaryFile()` | O(r) | O(1) initial | r = name attempts (<= TMP_MAX) |
+| `TemporaryDirectory()` | O(r) | O(1) initial | r = name attempts (<= TMP_MAX) |
+| `mktemp()` | O(r) | O(1) | Generate temp name (deprecated) |
+| `mkdtemp()` | O(r) | O(1) | Create temp directory safely |
 | `gettempdir()` | O(1) | O(1) | Get system temp directory |
 | `gettempprefix()` | O(1) | O(1) | Get temp filename prefix |
 
@@ -18,7 +18,9 @@ The `tempfile` module provides utilities for creating and managing temporary fil
 
 ### NamedTemporaryFile()
 
-#### Time Complexity: O(1)
+#### Time Complexity: O(r)
+
+Where r = number of name attempts (<= TMP_MAX).
 
 ```python
 import tempfile
@@ -53,20 +55,22 @@ with tempfile.NamedTemporaryFile() as f:
 
 ### TemporaryFile()
 
-#### Time Complexity: O(1)
+#### Time Complexity: O(r)
+
+Where r = number of name attempts (<= TMP_MAX).
 
 ```python
 import tempfile
 
-# In-memory file (Unix)
+# Unnamed temp file; uses O_TMPFILE when supported, otherwise creates and unlinks
 with tempfile.TemporaryFile(mode='w+') as f:
     f.write('data')
     f.seek(0)
     content = f.read()  # O(n) read
     # Auto-deleted
 
-# File-based fallback (Windows)
-# Operation time still O(1) for creation
+# File-based fallback (e.g., when O_TMPFILE is unsupported)
+# Creation time still O(r) for name attempts
 temp = tempfile.TemporaryFile()
 temp.write(b'content')
 temp.close()
@@ -86,7 +90,9 @@ with tempfile.TemporaryFile() as f:
 
 ### TemporaryDirectory()
 
-#### Time Complexity: O(1)
+#### Time Complexity: O(r)
+
+Where r = number of name attempts (<= TMP_MAX).
 
 ```python
 import tempfile
@@ -124,7 +130,9 @@ with tempfile.TemporaryDirectory() as tmpdir:
 
 ### mkdtemp()
 
-#### Time Complexity: O(1)
+#### Time Complexity: O(r)
+
+Where r = number of name attempts (<= TMP_MAX).
 
 ```python
 import tempfile
@@ -140,13 +148,13 @@ tmpdir = tempfile.mkdtemp(prefix='myapp_')
 tmpdir = tempfile.mkdtemp(suffix='_backup')
 ```
 
-#### Space Complexity: O(n)
+#### Space Complexity: O(1)
 
 ```python
 import tempfile
 
 # Directory name stored
-tmpdir = tempfile.mkdtemp()  # O(n) for path string
+tmpdir = tempfile.mkdtemp()  # O(1) extra memory
 ```
 
 ### gettempdir()
@@ -294,11 +302,6 @@ else:  # Unix/Linux
 # Explicit control
 tmpdir = tempfile.mkdtemp(dir='/custom/path')
 ```
-
-## Version Notes
-
-- **Python 3.10+**: Improved cleanup with weak references
-- **Python 3.12+**: Enhanced security defaults
 
 ## Related Documentation
 

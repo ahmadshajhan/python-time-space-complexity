@@ -27,10 +27,6 @@ def my_func():
 if isinstance(my_func, types.FunctionType):
     print("It's a function")  # O(1)
 
-# Type comparisons: O(1)
-if type(obj) == types.ListType:  # Deprecated, use list
-    pass
-
 # Check callable: O(1)
 if isinstance(obj, types.FunctionType):
     pass
@@ -331,12 +327,6 @@ type(obj) == types.FunctionType  # O(1) - less Pythonic
 # Using callable()
 callable(obj)  # O(1) - but less specific
 ```
-
-## Version Notes
-
-- **Python 3.x**: Full type support
-- **Python 3.7+**: `GenericAlias` for type hints
-- **Python 3.10+**: Union type support
 
 ## Related Documentation
 

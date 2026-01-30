@@ -68,4 +68,3 @@ screen.exitonclick()
 ## Related Documentation
 
 - [tkinter Module](tkinter.md)
-- [graphics Library](https://pypi.org/project/graphics/)

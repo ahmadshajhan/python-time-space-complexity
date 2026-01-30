@@ -5,8 +5,8 @@ This document tracks the coverage of built-in functions, types, and standard lib
 ## Overview
 
 - **Total Items**: 313 (150 builtins + 163 stdlib modules)
-- **Documented**: 385 (174 builtins + 211 stdlib)
-- **Coverage**: 123.0%
+- **Documented**: 386 (174 builtins + 212 stdlib)
+- **Coverage**: 123.3%
 
 **Note**: Coverage exceeds 100% because comprehensive documentation files (like `exceptions.md`) cover multiple individual items, and we document deprecated/removed modules for historical reference.
 
@@ -203,7 +203,7 @@ Complete coverage of all built-in functions, types, exceptions, and constants:
 
 ## Standard Library Modules
 
-**Coverage: 129.4% (211/163)**
+**Coverage: 130.1% (212/163)**
 
 All standard library modules are fully documented, including new Python 3.14 modules. Coverage exceeds 100% due to documentation of deprecated/removed modules for historical reference.
 
@@ -312,11 +312,11 @@ All file and I/O modules now documented:
 - ✅ `shutil` - High-level file operations
 - ✅ `tempfile` - Temporary files
 
-### ✅ ALL MODULES COMPLETE (211/211)
+### ✅ ALL MODULES COMPLETE (212/212)
 
 All 108 previously undocumented stdlib modules have been added:
 
-**Utilities & System (22)**
+**Utilities & System (23)**
 - ✅ `ast` - Abstract syntax trees
 - ✅ `dis` - Disassembler for bytecode
 - ✅ `doctest` - Testing via docstrings
@@ -338,6 +338,7 @@ All 108 previously undocumented stdlib modules have been added:
 - ✅ `stat` - File status constants
 - ✅ `sysconfig` - System configuration
 - ✅ `syslog` - System logger
+- ✅ `time` - Time-related functions
 - ✅ `trace` - Trace execution
 
 **String & Text Processing (4)**

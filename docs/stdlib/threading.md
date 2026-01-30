@@ -17,7 +17,7 @@ The `threading` module enables building multi-threaded applications using thread
 import threading
 import time
 
-# Define function - O(n)
+# Define function - O(1)
 def worker():
     print("Worker running")
     time.sleep(1)  # O(1) - sleep
@@ -40,14 +40,14 @@ import threading
 def task(name):
     print(f"Task {name}")
 
-# Create threads - O(n)
+# Create threads - O(n) total
 threads = []
 for i in range(5):
     t = threading.Thread(target=task, args=(i,))  # O(1)
     threads.append(t)
     t.start()  # O(t)
 
-# Wait all - O(n*w)
+# Wait all - O(n + sum of waits)
 for t in threads:
     t.join()  # O(w) each
 ```

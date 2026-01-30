@@ -32,7 +32,8 @@ except ZeroDivisionError:
     print(error_str)
     
     # Print just the exception - O(1) time/space
-    traceback.print_exception(type, value, traceback)
+    exc_type, exc_value, exc_tb = sys.exc_info()
+    traceback.print_exception(exc_type, exc_value, exc_tb)
 ```
 
 ### Extracting Traceback Information
@@ -151,13 +152,6 @@ except:
         exc_type, exc_value, exc_tb, limit=10
     )
 ```
-
-## Version Notes
-
-- **Python 2.6+**: Basic functionality available
-- **Python 3.5+**: `walk_tb()` for iterating tracebacks
-- **Python 3.10+**: Various improvements
-- **Python 3.13+**: Enhanced error messages
 
 ## Related Documentation
 

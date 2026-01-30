@@ -223,11 +223,6 @@ best = min(times)  # Use best run
 # Avoid: Too few repetitions
 time = timeit('x = 1', number=10)  # Too little data
 # May be affected by system noise
-
-# Good: Disable optimization checks
-import sys
-old_check = sys.flags.optimize
-# Time with/without optimization
 ```
 
 ### Avoiding Overhead
@@ -240,13 +235,13 @@ time = timeit('x.append(1)', setup='x = []', number=1000000)
 
 # Avoid: Including setup in timed code
 time = timeit('x = []; x.append(1)', number=1000000)
-# Setup overhead counted!
+# Setup is counted because it's part of the statement
 
 # Good: Minimal setup
 setup = 'x = []'  # Just what's needed
 
-# Avoid: Complex setup
-setup = 'import numpy as np; x = np.array([...])'  # Counted!
+# Note: setup runs once and is not included in the measured time
+setup = 'import numpy as np; x = np.array([...])'
 ```
 
 ## Comparison with cProfile

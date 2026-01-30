@@ -6,8 +6,7 @@ The `tabnanny` module checks Python source files for mixed tabs and spaces in in
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| Check file | O(n) | O(n) | n = file lines |
-| Verify indent | O(1) | O(1) | Per line |
+| Check file/directory | O(n) | O(d) | n = file tokens scanned, d = max indent depth |
 
 ## Checking Indentation
 
@@ -17,11 +16,7 @@ The `tabnanny` module checks Python source files for mixed tabs and spaces in in
 import tabnanny
 
 # Check file - O(n)
-result = tabnanny.check('myfile.py')
-
-# Returns True if issues found
-if result:
-    print("File has tab/space issues")
+tabnanny.check('myfile.py')  # Prints diagnostics to stdout; returns None
 
 # Or from command line:
 # python -m tabnanny myfile.py

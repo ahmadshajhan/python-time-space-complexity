@@ -19,7 +19,7 @@ import sys
 import termios
 
 # Save terminal settings
-old_settings = termios.tcgetattr(sys.stdin)
+old_settings = termios.tcgetattr(sys.stdin.fileno())
 
 try:
     # Set raw mode - O(1)
@@ -41,7 +41,7 @@ import tty
 import sys
 import termios
 
-old_settings = termios.tcgetattr(sys.stdin)
+old_settings = termios.tcgetattr(sys.stdin.fileno())
 
 try:
     # Set cbreak mode - O(1)

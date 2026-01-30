@@ -6,36 +6,33 @@ The `tarfile` module provides tools for working with TAR archives.
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| `TarFile.open(name)` | O(n) | O(n) | Open and read directory |
+| `TarFile.open(name)` | O(1) | O(1) | Opens archive; no full header scan |
 | `TarFile.getmembers()` | O(n) | O(n) | Get all member info, n = file count |
-| `TarFile.getmember(name)` | O(n) | O(1) | Linear search through headers |
-| `TarFile.extractfile(name)` | O(m) | O(m) | Extract single file, m = size |
-| `TarFile.extract(name)` | O(m) | O(m) | Extract to filesystem |
-| `TarFile.extractall()` | O(m) | O(m) | Extract all files |
+| `TarFile.getmember(name)` | O(n) | O(n) | Loads member list on first call |
+| `TarFile.extractfile(name)` | O(n) | O(1) | Returns file object; reading is O(m) |
+| `TarFile.extract(name)` | O(n + m) | O(k) | n = members, m = file size, k = buffer |
+| `TarFile.extractall()` | O(n + m) | O(n + k) | Member cache for seekable archives |
 | `TarFile.add(name)` | O(m) | O(k) | Add file, k = buffer size |
 
 ## Opening Archives
 
-### Time Complexity: O(n)
-
-Where n = number of files in archive (reading headers).
+### Time Complexity: O(1)
 
 ```python
 import tarfile
 
-# Opening TAR: O(n) where n = number of files
-# Reads all headers sequentially
+# Opening TAR: O(1) relative to archive size
+# Headers are read lazily when you iterate or call getmembers()
 with tarfile.open('archive.tar', 'r') as tar:
-    # O(n) to process headers
-    members = tar.getmembers()  # O(n)
+    members = tar.getmembers()  # O(n) when called
 ```
 
-### Space Complexity: O(n)
+### Space Complexity: O(1) until you load members
 
 ```python
 import tarfile
 
-# Memory for member information
+# Memory for member information is allocated on getmembers()
 with tarfile.open('archive.tar', 'r') as tar:
     # Stores info for all files: O(n)
     members = tar.getmembers()  # O(n) memory
@@ -52,15 +49,16 @@ import tarfile
 
 with tarfile.open('archive.tar', 'r') as tar:
     # Finding member: O(n) linear search
-    # (no index, searches headers sequentially)
+    # (no index; member list is built by scanning headers)
     member = tar.getmember('file.txt')  # O(n)
     
+    # Getting a file object: O(n)
+    f = tar.extractfile('file.txt')  # O(n)
     # Reading file: O(m)
-    f = tar.extractfile('file.txt')  # O(m)
     content = f.read()  # O(m)
 ```
 
-### Space Complexity: O(m)
+### Space Complexity: O(k) unless you read everything
 
 ```python
 import tarfile
@@ -113,7 +111,7 @@ with tarfile.open('archive.tar', 'r') as tar:
 
 ## Extracting Files
 
-### Time Complexity: O(m)
+### Time Complexity: O(n + m)
 
 Where m = total size of extracted files.
 
@@ -121,29 +119,32 @@ Where m = total size of extracted files.
 import tarfile
 
 with tarfile.open('archive.tar', 'r') as tar:
-    # Extract single file: O(m)
-    # m = file size
-    tar.extract('file.txt')  # O(m)
+    # Extract single file: O(n + m)
+    # n = header scan (if not loaded), m = file size
+    tar.extract('file.txt')  # O(n + m)
     
-    # Extract all: O(sum of sizes)
+    # Extract all: O(n + sum of sizes)
     # Processes each file sequentially
-    tar.extractall()  # O(m) where m = total uncompressed size
+    tar.extractall()  # O(n + m) where m = total uncompressed size
     
-    # Extract with path: O(m) + filesystem I/O
-    tar.extractall(path='output_dir')  # O(m)
+    # Extract with path: O(n + m) + filesystem I/O
+    tar.extractall(path='output_dir')  # O(n + m)
 ```
 
-### Space Complexity: O(k)
+### Space Complexity: O(n + k) for seekable archives
 
 Where k = buffer size during extraction.
 
 ```python
 import tarfile
 
-# Extraction uses streaming buffers
+# Extraction uses streaming buffers; seekable archives cache members
 with tarfile.open('archive.tar', 'r') as tar:
-    tar.extractall()  # O(k) space, k = buffer size
-                      # NOT O(m), memory efficient
+    tar.extractall()  # O(n + k) space (member cache + buffers)
+
+# Stream modes avoid member caching
+with tarfile.open('archive.tar', 'r|*') as tar:
+    tar.extractall()  # O(k) space
 ```
 
 ## Creating Archives
@@ -217,6 +218,16 @@ import tarfile
 # XZ: Best compression ratio, slowest
 with tarfile.open('archive.tar.xz', 'w:xz') as tar:
     tar.add('file.txt')  # O(m) with highest constant factor
+```
+
+### Zstandard Compression (tar.zst)
+
+```python
+import tarfile
+
+# Zstandard: fast with tunable compression
+with tarfile.open('archive.tar.zst', 'w:zst') as tar:
+    tar.add('file.txt')  # O(m) with compression overhead
 ```
 
 ## Common Patterns
@@ -340,6 +351,7 @@ with tarfile.open('archive.tar.xz', 'w:xz') as tar:
 - **Python 2.7+**: Enhanced features
 - **Python 3.0+**: Improved compression support
 - **Python 3.3+**: Support for XZ compression
+- **Python 3.14+**: Support for Zstandard compression
 
 ## Related Documentation
 

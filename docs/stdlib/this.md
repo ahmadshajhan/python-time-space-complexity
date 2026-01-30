@@ -6,14 +6,14 @@ The `this` module displays the Zen of Python, a philosophy guide for Python prog
 
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
-| Import module | O(1) | O(1) | Decodes and prints Zen text |
+| Import module | O(n) | O(n) | n = Zen text length (decode + print) |
 
 ## The Zen of Python
 
 ### Viewing the Zen
 
 ```python
-import this
+import this  # Prints on import
 
 # Prints:
 # The Zen of Python, by Tim Peters

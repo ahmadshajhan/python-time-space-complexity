@@ -7,7 +7,7 @@ The `tkinter` module provides Python bindings to Tk, a popular GUI toolkit for c
 | Operation | Time | Space | Notes |
 |-----------|------|-------|-------|
 | Create widget | O(1) | O(1) | Initialize component; Tk call overhead |
-| Draw GUI | O(n) | O(n) | n = widgets; rendering is OS-dependent |
+| Draw GUI | O(n) | O(n) | n = widgets; rendering cost is OS-dependent |
 | Event handling | O(1) | O(1) | Per event dispatch; handler complexity varies |
 
 ## Building GUI Applications
@@ -35,7 +35,7 @@ def on_click():
 
 button.config(command=on_click)
 
-# Run event loop - O(m)
+# Run event loop - O(e) where e = events processed
 root.mainloop()
 ```
 

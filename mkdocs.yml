@@ -307,6 +307,7 @@ nav:
     - Tomllib: stdlib/tomllib.md
     - Tracemalloc: stdlib/tracemalloc.md
     - This: stdlib/this.md
+    - Time: stdlib/time.md
     - Tkinter: stdlib/tkinter.md
     - Turtle: stdlib/turtle.md
     - Turtledemo: stdlib/turtledemo.md

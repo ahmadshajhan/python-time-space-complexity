@@ -273,15 +273,13 @@ filled = fill(text, width=80)  # O(n) once
 ```python
 from textwrap import wrap
 
-# For very large text, generator approach
-def wrap_large_text(text, width=80):
-    """Wrap large text efficiently."""
-    for line in wrap(text, width=width):  # O(n)
-        yield line  # Lazy evaluation
+# wrap() returns a list, so it still holds all lines in memory
+lines = wrap(huge_text, width=80)  # O(n) memory
 
-# Process one line at a time
-for wrapped_line in wrap_large_text(huge_text):
-    process(wrapped_line)
+# For large inputs, wrap per paragraph to limit peak memory
+for paragraph in huge_text.split("\n\n"):
+    for line in wrap(paragraph, width=80):
+        process(line)
 ```
 
 ## TextWrapper Class

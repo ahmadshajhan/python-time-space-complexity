@@ -24,10 +24,6 @@ Demo complexity varies by algorithm:
 # where f = frames, k = operations per frame
 ```
 
-## Version Notes
-
-- **All Python 3.x versions**: Available as part of turtle module
-
 ## Related Documentation
 
 - [Turtle Module](turtle.md)
