@@ -1,9 +1,12 @@
 site_name: Python Time & Space Complexity
 site_description: Comprehensive documentation of time and space complexity for Python built-ins and standard library
 site_url: https://pythoncomplexity.com
+repo_url: https://github.com/heikkitoivonen/python-time-space-complexity
+repo_name: GitHub
 
 theme:
   name: material
+  custom_dir: docs/overrides
   features:
     - navigation.instant
     - navigation.tracking
@@ -384,8 +387,7 @@ extra:
   analytics:
     provider: google
     property: G-7QJ6R1ZTRV
-  social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/heikkitoivonen/python-time-space-complexity
+extra_css:
+  - stylesheets/extra.css
 
 copyright: Copyright &copy; 2026

@@ -1,0 +1,55 @@
+/* Hide header repo badge; show repo in footer right via override */
+.md-header__source {
+  display: none;
+}
+
+.footer-meta {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  width: 100%;
+}
+
+.footer-meta__left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.footer-meta__right {
+  margin-left: auto;
+  flex: 0 0 auto;
+}
+
+.footer-meta__right .md-source {
+  max-width: none;
+  overflow: visible;
+  white-space: nowrap;
+  width: auto;
+  display: inline-flex;
+}
+
+.footer-meta__right .md-source__repository,
+.footer-meta__right .md-source__facts {
+  white-space: nowrap;
+  max-width: none;
+}
+
+.footer-meta__right .md-ellipsis {
+  overflow: visible;
+  text-overflow: clip;
+}
+
+@media screen and (max-width: 44em) {
+  .footer-meta {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .footer-meta__right {
+    display: flex;
+    justify-content: flex-end;
+    margin-left: 0;
+  }
+}
