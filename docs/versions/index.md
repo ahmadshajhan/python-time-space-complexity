@@ -6,13 +6,13 @@ Different Python versions have made various optimizations and changes that affec
 
 | Version | Release | Status | Notes |
 |---------|---------|--------|-------|
+| 3.14 | Oct 2025 | Bugfix | Max-heap support, incremental GC |
+| 3.13 | Oct 2024 | Bugfix | Free-threading (experimental) |
+| 3.12 | Oct 2023 | Security | Better specialization |
+| 3.11 | Oct 2022 | Security | Inline caching, 10-60% faster |
+| 3.10 | Oct 2021 | Security | Pattern matching |
+| 3.9 | Oct 2020 | EOL | Type hints, new parsers |
 | 3.8 | Oct 2019 | EOL | Assignment expressions (walrus) |
-| 3.9 | Oct 2020 | Security fixes | Type hints, new parsers |
-| 3.10 | Oct 2021 | Security fixes | Pattern matching |
-| 3.11 | Oct 2022 | Bugfix | Inline caching, 10-60% faster |
-| 3.12 | Oct 2023 | Current | Better specialization |
-| 3.13 | Oct 2024 | Current | Free-threading (experimental) |
-| 3.14 | Oct 2025 | Current | Max-heap support, incremental GC |
 
 ## Quick Links
 
@@ -148,13 +148,13 @@ def func(x, /, y):
 
 | Version | EOL Date |
 |---------|----------|
-| 3.8 | Oct 2024 (EOL) |
-| 3.9 | Oct 2025 |
-| 3.10 | Oct 2026 |
-| 3.11 | Oct 2027 |
-| 3.12 | Oct 2028 |
-| 3.13 | Oct 2029 |
 | 3.14 | Oct 2030 |
+| 3.13 | Oct 2029 |
+| 3.12 | Oct 2028 |
+| 3.11 | Oct 2027 |
+| 3.10 | Oct 2026 |
+| 3.9 | Oct 2025 (EOL) |
+| 3.8 | Oct 2024 (EOL) |
 
 Plan upgrades before EOL.
 
@@ -196,8 +196,8 @@ Python 3.13 → Python 3.14  Better GC pauses, new heapq functions
 | Comprehension inlining | 3.12+ | Stable |
 | Free-threading | 3.13+ | Experimental |
 | JIT compiler | 3.13+ | Experimental |
-| Max-heap (heapq) | 3.14+ | New |
-| Incremental GC | 3.14+ | New |
+| Max-heap (heapq) | 3.14+ | Stable |
+| Incremental GC | 3.14+ | Stable |
 
 ## Complexity Characteristics by Version
 
