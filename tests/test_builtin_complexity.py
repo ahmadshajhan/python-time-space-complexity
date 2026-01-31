@@ -686,3 +686,334 @@ class TestStrComplexity:
         assert is_linear_time(small_time, large_time, self.SIZE_RATIO), (
             f"encode() doesn't appear linear: {small_time:.2e}s vs {large_time:.2e}s"
         )
+
+
+class TestBytesComplexity:
+    """Test bytes operation complexities as documented in docs/builtins/bytes.md."""
+
+    SMALL_SIZE = 1_000
+    LARGE_SIZE = 100_000
+    SIZE_RATIO = LARGE_SIZE / SMALL_SIZE
+
+    def test_len_is_o1(self) -> None:
+        """len() should be O(1) - direct lookup."""
+        small_bytes = b"a" * self.SMALL_SIZE
+        large_bytes = b"a" * self.LARGE_SIZE
+
+        small_time = measure_time(lambda: len(small_bytes))
+        large_time = measure_time(lambda: len(large_bytes))
+
+        assert is_constant_time(small_time, large_time), (
+            f"len() appears non-constant: {small_time:.2e}s vs {large_time:.2e}s"
+        )
+
+    def test_index_access_is_o1(self) -> None:
+        """bytes[i] should be O(1) - direct indexing."""
+        small_bytes = b"a" * self.SMALL_SIZE
+        large_bytes = b"a" * self.LARGE_SIZE
+
+        small_time = measure_time(lambda: small_bytes[self.SMALL_SIZE // 2])
+        large_time = measure_time(lambda: large_bytes[self.LARGE_SIZE // 2])
+
+        assert is_constant_time(small_time, large_time), (
+            f"Index access appears non-constant: {small_time:.2e}s vs {large_time:.2e}s"
+        )
+
+    def test_in_membership_is_on(self) -> None:
+        """'in' membership should be O(n) - linear search."""
+        small_bytes = b"a" * self.SMALL_SIZE
+        large_bytes = b"a" * self.LARGE_SIZE
+
+        small_time = measure_time(lambda: b"b" in small_bytes, iterations=50)
+        large_time = measure_time(lambda: b"b" in large_bytes, iterations=50)
+
+        assert is_linear_time(small_time, large_time, self.SIZE_RATIO), (
+            f"'in' doesn't appear linear: {small_time:.2e}s vs {large_time:.2e}s"
+        )
+
+    def test_count_is_on(self) -> None:
+        """bytes.count() should be O(n) - linear scan."""
+        small_bytes = b"a" * self.SMALL_SIZE
+        large_bytes = b"a" * self.LARGE_SIZE
+
+        small_time = measure_time(lambda: small_bytes.count(b"a"), iterations=50)
+        large_time = measure_time(lambda: large_bytes.count(b"a"), iterations=50)
+
+        assert is_linear_time(small_time, large_time, self.SIZE_RATIO), (
+            f"count() doesn't appear linear: {small_time:.2e}s vs {large_time:.2e}s"
+        )
+
+    def test_slice_is_ok(self) -> None:
+        """Slicing should be O(k) where k = slice length."""
+        large_bytes = b"a" * self.LARGE_SIZE
+
+        small_slice_time = measure_time(
+            lambda: large_bytes[: self.SMALL_SIZE], iterations=50
+        )
+        large_slice_time = measure_time(
+            lambda: large_bytes[: self.LARGE_SIZE], iterations=50
+        )
+
+        assert is_linear_time(small_slice_time, large_slice_time, self.SIZE_RATIO), (
+            f"Slicing doesn't scale linearly: {small_slice_time:.2e}s vs {large_slice_time:.2e}s"
+        )
+
+
+class TestBytearrayComplexity:
+    """Test bytearray operation complexities as documented in docs/builtins/bytes.md."""
+
+    SMALL_SIZE = 1_000
+    LARGE_SIZE = 100_000
+    SIZE_RATIO = LARGE_SIZE / SMALL_SIZE
+
+    def test_len_is_o1(self) -> None:
+        """len() should be O(1) - direct lookup."""
+        small_ba = bytearray(b"a" * self.SMALL_SIZE)
+        large_ba = bytearray(b"a" * self.LARGE_SIZE)
+
+        small_time = measure_time(lambda: len(small_ba))
+        large_time = measure_time(lambda: len(large_ba))
+
+        assert is_constant_time(small_time, large_time), (
+            f"len() appears non-constant: {small_time:.2e}s vs {large_time:.2e}s"
+        )
+
+    def test_index_access_is_o1(self) -> None:
+        """bytearray[i] should be O(1) - direct indexing."""
+        small_ba = bytearray(b"a" * self.SMALL_SIZE)
+        large_ba = bytearray(b"a" * self.LARGE_SIZE)
+
+        small_time = measure_time(lambda: small_ba[self.SMALL_SIZE // 2])
+        large_time = measure_time(lambda: large_ba[self.LARGE_SIZE // 2])
+
+        assert is_constant_time(small_time, large_time), (
+            f"Index access appears non-constant: {small_time:.2e}s vs {large_time:.2e}s"
+        )
+
+    def test_in_membership_is_on(self) -> None:
+        """'in' membership should be O(n) - linear search."""
+        small_ba = bytearray(b"a" * self.SMALL_SIZE)
+        large_ba = bytearray(b"a" * self.LARGE_SIZE)
+
+        small_time = measure_time(lambda: b"b" in small_ba, iterations=50)
+        large_time = measure_time(lambda: b"b" in large_ba, iterations=50)
+
+        assert is_linear_time(small_time, large_time, self.SIZE_RATIO), (
+            f"'in' doesn't appear linear: {small_time:.2e}s vs {large_time:.2e}s"
+        )
+
+    def test_count_is_on(self) -> None:
+        """bytearray.count() should be O(n) - linear scan."""
+        small_ba = bytearray(b"a" * self.SMALL_SIZE)
+        large_ba = bytearray(b"a" * self.LARGE_SIZE)
+
+        small_time = measure_time(lambda: small_ba.count(97), iterations=50)
+        large_time = measure_time(lambda: large_ba.count(97), iterations=50)
+
+        assert is_linear_time(small_time, large_time, self.SIZE_RATIO), (
+            f"count() doesn't appear linear: {small_time:.2e}s vs {large_time:.2e}s"
+        )
+
+
+class TestSetComplexity:
+    """Test set operation complexities as documented in docs/builtins/set.md."""
+
+    SMALL_SIZE = 1_000
+    LARGE_SIZE = 100_000
+
+    def test_len_is_o1(self) -> None:
+        """len() should be O(1) - direct count."""
+        small_set = set(range(self.SMALL_SIZE))
+        large_set = set(range(self.LARGE_SIZE))
+
+        small_time = measure_time(lambda: len(small_set))
+        large_time = measure_time(lambda: len(large_set))
+
+        assert is_constant_time(small_time, large_time), (
+            f"len() appears non-constant: {small_time:.2e}s vs {large_time:.2e}s"
+        )
+
+    def test_in_membership_is_o1_avg(self) -> None:
+        """'in' membership should be O(1) average - hash lookup."""
+        small_set = set(range(self.SMALL_SIZE))
+        large_set = set(range(self.LARGE_SIZE))
+
+        small_time = measure_time(lambda: (self.SMALL_SIZE - 1) in small_set)
+        large_time = measure_time(lambda: (self.LARGE_SIZE - 1) in large_set)
+
+        assert is_constant_time(small_time, large_time, tolerance=5.0), (
+            f"'in' appears non-constant: {small_time:.2e}s vs {large_time:.2e}s"
+        )
+
+
+class TestFrozensetComplexity:
+    """Test frozenset operation complexities as documented in docs/builtins/frozenset.md."""
+
+    SMALL_SIZE = 1_000
+    LARGE_SIZE = 100_000
+    SIZE_RATIO = LARGE_SIZE / SMALL_SIZE
+
+    def test_constructor_is_on(self) -> None:
+        """frozenset(iterable) should be O(n)."""
+        small_list = list(range(self.SMALL_SIZE))
+        large_list = list(range(self.LARGE_SIZE))
+
+        small_time = measure_time(lambda: frozenset(small_list), iterations=50)
+        large_time = measure_time(lambda: frozenset(large_list), iterations=50)
+
+        assert is_linear_time(small_time, large_time, self.SIZE_RATIO), (
+            f"frozenset() constructor doesn't appear linear: "
+            f"{small_time:.2e}s vs {large_time:.2e}s"
+        )
+
+    def test_in_membership_is_o1_avg(self) -> None:
+        """'in' membership should be O(1) average - hash lookup."""
+        small_fs = frozenset(range(self.SMALL_SIZE))
+        large_fs = frozenset(range(self.LARGE_SIZE))
+
+        small_time = measure_time(lambda: (self.SMALL_SIZE - 1) in small_fs)
+        large_time = measure_time(lambda: (self.LARGE_SIZE - 1) in large_fs)
+
+        assert is_constant_time(small_time, large_time, tolerance=5.0), (
+            f"'in' appears non-constant: {small_time:.2e}s vs {large_time:.2e}s"
+        )
+
+
+class TestDictComplexity:
+    """Test dict operation complexities as documented in docs/builtins/dict.md."""
+
+    SMALL_SIZE = 1_000
+    LARGE_SIZE = 100_000
+
+    def test_len_is_o1(self) -> None:
+        """len() should be O(1) - direct count."""
+        small_dict = {i: i for i in range(self.SMALL_SIZE)}
+        large_dict = {i: i for i in range(self.LARGE_SIZE)}
+
+        small_time = measure_time(lambda: len(small_dict))
+        large_time = measure_time(lambda: len(large_dict))
+
+        assert is_constant_time(small_time, large_time), (
+            f"len() appears non-constant: {small_time:.2e}s vs {large_time:.2e}s"
+        )
+
+    def test_access_is_o1_avg(self) -> None:
+        """dict[key] should be O(1) average - hash lookup."""
+        small_dict = {i: i for i in range(self.SMALL_SIZE)}
+        large_dict = {i: i for i in range(self.LARGE_SIZE)}
+
+        small_time = measure_time(lambda: small_dict[self.SMALL_SIZE - 1])
+        large_time = measure_time(lambda: large_dict[self.LARGE_SIZE - 1])
+
+        assert is_constant_time(small_time, large_time, tolerance=5.0), (
+            f"dict access appears non-constant: {small_time:.2e}s vs {large_time:.2e}s"
+        )
+
+    def test_in_membership_is_o1_avg(self) -> None:
+        """'key in dict' should be O(1) average - hash lookup."""
+        small_dict = {i: i for i in range(self.SMALL_SIZE)}
+        large_dict = {i: i for i in range(self.LARGE_SIZE)}
+
+        small_time = measure_time(lambda: (self.SMALL_SIZE - 1) in small_dict)
+        large_time = measure_time(lambda: (self.LARGE_SIZE - 1) in large_dict)
+
+        assert is_constant_time(small_time, large_time, tolerance=5.0), (
+            f"'in' appears non-constant: {small_time:.2e}s vs {large_time:.2e}s"
+        )
+
+
+class TestRangeComplexity:
+    """Test range operation complexities as documented in docs/builtins/range.md."""
+
+    SMALL_SIZE = 1_000
+    LARGE_SIZE = 100_000
+
+    def test_len_is_o1(self) -> None:
+        """len() should be O(1) - calculated."""
+        small_range = range(self.SMALL_SIZE)
+        large_range = range(self.LARGE_SIZE)
+
+        small_time = measure_time(lambda: len(small_range))
+        large_time = measure_time(lambda: len(large_range))
+
+        assert is_constant_time(small_time, large_time), (
+            f"len() appears non-constant: {small_time:.2e}s vs {large_time:.2e}s"
+        )
+
+    def test_index_access_is_o1(self) -> None:
+        """range[i] should be O(1) - direct calculation."""
+        small_range = range(self.SMALL_SIZE)
+        large_range = range(self.LARGE_SIZE)
+
+        small_time = measure_time(lambda: small_range[self.SMALL_SIZE // 2])
+        large_time = measure_time(lambda: large_range[self.LARGE_SIZE // 2])
+
+        assert is_constant_time(small_time, large_time), (
+            f"Index access appears non-constant: {small_time:.2e}s vs {large_time:.2e}s"
+        )
+
+    def test_in_membership_is_o1(self) -> None:
+        """'in' membership should be O(1) - arithmetic check."""
+        small_range = range(self.SMALL_SIZE)
+        large_range = range(self.LARGE_SIZE)
+
+        small_time = measure_time(lambda: (self.SMALL_SIZE - 1) in small_range)
+        large_time = measure_time(lambda: (self.LARGE_SIZE - 1) in large_range)
+
+        assert is_constant_time(small_time, large_time), (
+            f"'in' appears non-constant: {small_time:.2e}s vs {large_time:.2e}s"
+        )
+
+
+class TestIntComplexity:
+    """Test int operation complexities as documented in docs/builtins/int.md."""
+
+    SMALL_BITS = 1_000
+    LARGE_BITS = 10_000
+    SIZE_RATIO = LARGE_BITS / SMALL_BITS
+
+    def test_addition_scales_with_bit_length(self) -> None:
+        """Large int addition should scale with bit length."""
+        small_a = (1 << self.SMALL_BITS) - 1
+        small_b = (1 << self.SMALL_BITS) - 1
+        large_a = (1 << self.LARGE_BITS) - 1
+        large_b = (1 << self.LARGE_BITS) - 1
+
+        small_time = measure_time(lambda: small_a + small_b, iterations=50)
+        large_time = measure_time(lambda: large_a + large_b, iterations=50)
+
+        assert is_linear_time(small_time, large_time, self.SIZE_RATIO), (
+            f"int addition doesn't appear linear: {small_time:.2e}s vs {large_time:.2e}s"
+        )
+
+
+class TestFloatComplexity:
+    """Test float operation complexities as documented in docs/builtins/float.md."""
+
+    def test_addition_is_o1(self) -> None:
+        """Float addition should be O(1)."""
+        small_float = 1.2345
+        large_float = 1.2345e300
+
+        small_time = measure_time(lambda: small_float + 1.0)
+        large_time = measure_time(lambda: large_float + 1.0)
+
+        assert is_constant_time(small_time, large_time), (
+            f"float addition appears non-constant: {small_time:.2e}s vs {large_time:.2e}s"
+        )
+
+
+class TestBoolComplexity:
+    """Test bool operation complexities as documented in docs/builtins/bool.md."""
+
+    def test_logical_ops_are_o1(self) -> None:
+        """Boolean logic should be O(1)."""
+        small_bool = True
+        large_bool = False
+
+        small_time = measure_time(lambda: small_bool and True)
+        large_time = measure_time(lambda: large_bool and True)
+
+        assert is_constant_time(small_time, large_time), (
+            f"bool logic appears non-constant: {small_time:.2e}s vs {large_time:.2e}s"
+        )
