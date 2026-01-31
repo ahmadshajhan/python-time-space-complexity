@@ -5,7 +5,17 @@ according to their documented complexity.
 """
 
 import time
-from collections import deque
+from collections import (
+    ChainMap,
+    Counter,
+    OrderedDict,
+    UserDict,
+    UserList,
+    UserString,
+    defaultdict,
+    deque,
+    namedtuple,
+)
 from typing import Any, Callable
 
 
@@ -292,4 +302,223 @@ class TestDequeComplexity:
 
         assert is_linear_time(small_time, large_time, self.SIZE_RATIO), (
             f"reverse() doesn't appear linear: {small_time:.2e}s vs {large_time:.2e}s"
+        )
+
+
+class TestNamedTupleComplexity:
+    """Test namedtuple operation complexities."""
+
+    SMALL_SIZE = 1_000
+    LARGE_SIZE = 100_000
+    SIZE_RATIO = LARGE_SIZE / SMALL_SIZE
+
+    def test_attribute_access_is_o1(self) -> None:
+        """Field access should be O(1)."""
+        Point = namedtuple("Point", ["x", "y"])
+        small_pt = Point(1, 2)
+        large_pt = Point(1, 2)
+
+        small_time = measure_time(lambda: small_pt.x)
+        large_time = measure_time(lambda: large_pt.x)
+
+        assert is_constant_time(small_time, large_time), (
+            f"namedtuple attribute access appears non-constant: "
+            f"{small_time:.2e}s vs {large_time:.2e}s"
+        )
+
+    def test_asdict_is_on(self) -> None:
+        """_asdict() should be O(n) in number of fields."""
+        SmallNT = namedtuple("SmallNT", [f"f{i}" for i in range(10)])
+        LargeNT = namedtuple("LargeNT", [f"f{i}" for i in range(1000)])
+        small_nt = SmallNT(*range(10))
+        large_nt = LargeNT(*range(1000))
+
+        small_time = measure_time(lambda: small_nt._asdict(), iterations=50)
+        large_time = measure_time(lambda: large_nt._asdict(), iterations=50)
+
+        assert is_linear_time(small_time, large_time, 100), (
+            f"_asdict() doesn't appear linear: {small_time:.2e}s vs {large_time:.2e}s"
+        )
+
+
+class TestChainMapComplexity:
+    """Test ChainMap operation complexities."""
+
+    SMALL_SIZE = 1_000
+    LARGE_SIZE = 100_000
+
+    def test_lookup_is_o1_avg(self) -> None:
+        """Lookup should be O(1) average (first mapping)."""
+        small_map = ChainMap({i: i for i in range(self.SMALL_SIZE)})
+        large_map = ChainMap({i: i for i in range(self.LARGE_SIZE)})
+
+        small_time = measure_time(lambda: small_map[self.SMALL_SIZE - 1])
+        large_time = measure_time(lambda: large_map[self.LARGE_SIZE - 1])
+
+        assert is_constant_time(small_time, large_time, tolerance=5.0), (
+            f"ChainMap lookup appears non-constant: "
+            f"{small_time:.2e}s vs {large_time:.2e}s"
+        )
+
+
+class TestCounterComplexity:
+    """Test Counter operation complexities."""
+
+    SMALL_SIZE = 1_000
+    LARGE_SIZE = 100_000
+    SIZE_RATIO = LARGE_SIZE / SMALL_SIZE
+
+    def test_update_is_on(self) -> None:
+        """update(iterable) should be O(n)."""
+        small_items = list(range(self.SMALL_SIZE))
+        large_items = list(range(self.LARGE_SIZE))
+
+        small_counter = Counter()
+        large_counter = Counter()
+
+        small_time = measure_time(lambda: small_counter.update(small_items), iterations=20)
+        large_time = measure_time(lambda: large_counter.update(large_items), iterations=20)
+
+        assert is_linear_time(small_time, large_time, self.SIZE_RATIO), (
+            f"Counter update doesn't appear linear: "
+            f"{small_time:.2e}s vs {large_time:.2e}s"
+        )
+
+
+class TestOrderedDictComplexity:
+    """Test OrderedDict operation complexities."""
+
+    SMALL_SIZE = 1_000
+    LARGE_SIZE = 100_000
+
+    def test_get_is_o1_avg(self) -> None:
+        """Key lookup should be O(1) average."""
+        small_od = OrderedDict((i, i) for i in range(self.SMALL_SIZE))
+        large_od = OrderedDict((i, i) for i in range(self.LARGE_SIZE))
+
+        small_time = measure_time(lambda: small_od[self.SMALL_SIZE - 1])
+        large_time = measure_time(lambda: large_od[self.LARGE_SIZE - 1])
+
+        assert is_constant_time(small_time, large_time, tolerance=5.0), (
+            f"OrderedDict lookup appears non-constant: "
+            f"{small_time:.2e}s vs {large_time:.2e}s"
+        )
+
+    def test_move_to_end_is_o1(self) -> None:
+        """move_to_end() should be O(1) average."""
+        small_od = OrderedDict((i, i) for i in range(self.SMALL_SIZE))
+        large_od = OrderedDict((i, i) for i in range(self.LARGE_SIZE))
+
+        small_time = measure_time(lambda: small_od.move_to_end(self.SMALL_SIZE - 1))
+        large_time = measure_time(lambda: large_od.move_to_end(self.LARGE_SIZE - 1))
+
+        assert is_constant_time(small_time, large_time, tolerance=5.0), (
+            f"move_to_end() appears non-constant: "
+            f"{small_time:.2e}s vs {large_time:.2e}s"
+        )
+
+
+class TestDefaultDictComplexity:
+    """Test defaultdict operation complexities."""
+
+    SMALL_SIZE = 1_000
+    LARGE_SIZE = 100_000
+
+    def test_missing_key_is_o1_avg(self) -> None:
+        """Missing key access should be O(1) average."""
+        small_dd: defaultdict[int, int] = defaultdict(int, {i: i for i in range(self.SMALL_SIZE)})
+        large_dd: defaultdict[int, int] = defaultdict(int, {i: i for i in range(self.LARGE_SIZE)})
+
+        small_time = measure_time(lambda: small_dd[self.SMALL_SIZE + 1])
+        large_time = measure_time(lambda: large_dd[self.LARGE_SIZE + 1])
+
+        assert is_constant_time(small_time, large_time, tolerance=5.0), (
+            f"defaultdict missing-key access appears non-constant: "
+            f"{small_time:.2e}s vs {large_time:.2e}s"
+        )
+
+
+class TestUserDictComplexity:
+    """Test UserDict operation complexities."""
+
+    SMALL_SIZE = 1_000
+    LARGE_SIZE = 100_000
+
+    def test_get_is_o1_avg(self) -> None:
+        """UserDict key lookup should be O(1) average."""
+        small_ud = UserDict({i: i for i in range(self.SMALL_SIZE)})
+        large_ud = UserDict({i: i for i in range(self.LARGE_SIZE)})
+
+        small_time = measure_time(lambda: small_ud[self.SMALL_SIZE - 1])
+        large_time = measure_time(lambda: large_ud[self.LARGE_SIZE - 1])
+
+        assert is_constant_time(small_time, large_time, tolerance=5.0), (
+            f"UserDict lookup appears non-constant: "
+            f"{small_time:.2e}s vs {large_time:.2e}s"
+        )
+
+
+class TestUserListComplexity:
+    """Test UserList operation complexities."""
+
+    SMALL_SIZE = 1_000
+    LARGE_SIZE = 100_000
+    SIZE_RATIO = LARGE_SIZE / SMALL_SIZE
+
+    def test_len_is_o1(self) -> None:
+        """len() should be O(1)."""
+        small_ul = UserList(range(self.SMALL_SIZE))
+        large_ul = UserList(range(self.LARGE_SIZE))
+
+        small_time = measure_time(lambda: len(small_ul))
+        large_time = measure_time(lambda: len(large_ul))
+
+        assert is_constant_time(small_time, large_time), (
+            f"UserList len appears non-constant: {small_time:.2e}s vs {large_time:.2e}s"
+        )
+
+    def test_count_is_on(self) -> None:
+        """count() should be O(n)."""
+        small_ul = UserList(range(self.SMALL_SIZE))
+        large_ul = UserList(range(self.LARGE_SIZE))
+
+        small_time = measure_time(lambda: small_ul.count(0), iterations=50)
+        large_time = measure_time(lambda: large_ul.count(0), iterations=50)
+
+        assert is_linear_time(small_time, large_time, self.SIZE_RATIO), (
+            f"UserList count doesn't appear linear: "
+            f"{small_time:.2e}s vs {large_time:.2e}s"
+        )
+
+
+class TestUserStringComplexity:
+    """Test UserString operation complexities."""
+
+    SMALL_SIZE = 1_000
+    LARGE_SIZE = 100_000
+    SIZE_RATIO = LARGE_SIZE / SMALL_SIZE
+
+    def test_len_is_o1(self) -> None:
+        """len() should be O(1)."""
+        small_us = UserString("a" * self.SMALL_SIZE)
+        large_us = UserString("a" * self.LARGE_SIZE)
+
+        small_time = measure_time(lambda: len(small_us))
+        large_time = measure_time(lambda: len(large_us))
+
+        assert is_constant_time(small_time, large_time), (
+            f"UserString len appears non-constant: {small_time:.2e}s vs {large_time:.2e}s"
+        )
+
+    def test_count_is_on(self) -> None:
+        """count() should be O(n)."""
+        small_us = UserString("a" * self.SMALL_SIZE)
+        large_us = UserString("a" * self.LARGE_SIZE)
+
+        small_time = measure_time(lambda: small_us.count("a"), iterations=50)
+        large_time = measure_time(lambda: large_us.count("a"), iterations=50)
+
+        assert is_linear_time(small_time, large_time, self.SIZE_RATIO), (
+            f"UserString count doesn't appear linear: "
+            f"{small_time:.2e}s vs {large_time:.2e}s"
         )
