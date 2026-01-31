@@ -41,7 +41,7 @@
   text-overflow: clip;
 }
 
-@media screen and (max-width: 26em) {
+@media screen and (max-width: 24em) {
   .footer-meta {
     flex-direction: column;
     align-items: stretch;
